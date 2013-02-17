@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Vineet's blog</title><link href="http://naiquevin.github.com/" rel="alternate"></link><link href="http://naiquevin.github.com/feeds/javascript.atom.xml" rel="self"></link><id>http://naiquevin.github.com/</id><updated>2010-07-28T23:37:34+05:30</updated><entry><title>Identifying clicked mouse button in IE &amp; other browsers</title><link href="http://naiquevin.github.com/identifying-clicked-mouse-button-in-ie-other-browsers.html" rel="alternate"></link><updated>2010-07-28T23:37:34+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2010-07-28:identifying-clicked-mouse-button-in-ie-other-browsers.html</id><summary type="html">&lt;p&gt;Last month I spent some hours coding the popular game
+&lt;a href="https://github.com/naiquevin/mines"&gt;minesweeper&lt;/a&gt; in javascript. It
+was a fun project. And as it has always been, fun projects are the
+best ways to learn something new. Add to that the universal reach of
+web applications. So apart from coding, putting it up on the server
+and getting your friends and their friends to play the game &lt;del
+datetime="2010-07-26T17:47:42+00:00"&gt;while frequently checking the
+analytics&lt;/del&gt; was an equally enjoyable experience.&lt;/p&gt;
+&lt;p&gt;But after putting it up, just when the game was getting its share of
+attention and people were liking it, one of my friends informed that
+it didn't work in IE8. Now IE has always been infamous for its ways
+and usually its just the IE6. But in this case even IE7 and IE8 had
+joined the party.&lt;/p&gt;
+&lt;p&gt;Getting to the central idea of this blog post - Identifying which
+mouse button was clicked is essential in minesweeper as it is played
+using the mouse :) and there are three possible moves for a player at
+any given time, which are, left click, right click and both buttons
+clicked at the same time.&lt;/p&gt;
+&lt;p&gt;Jquery makes identifying the clicked button very easy with the event
+object being passed to the callback functions of the mouse events
+by-default.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;.cell&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;mouseup&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+        &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;button&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;button&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//this will return the mouse button as int&amp;lt;/p&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;When I checked, the problem was with mouse button detection. As I
+said, e.button will return an integer. Sadly, it means different
+things in IE and other browsers.&lt;/p&gt;
+&lt;p&gt;For smarter ones:&lt;br /&gt;
+0 = left button; 1 = both buttons or the scroll wheel ; 2 = right button&lt;/p&gt;
+&lt;p&gt;For IE:&lt;br /&gt;
+1 = left button ; 2 = right button ; nothing for both buttons :|&lt;/p&gt;
+&lt;p&gt;Obviously the solution was having different conditions for IE and the
+other browsers. Now comes the best part. Detecting the browser. This
+is the most compact and insane hack I have ever come across for
+IE-detection (courtesy:
+&lt;a href="http://dean.edwards.name/weblog/2007/03/sniff/"&gt;http://dean.edwards.name/weblog/2007/03/sniff/&lt;/a&gt;
+)&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;IE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="cm"&gt;/*@cc_on!@*/&lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In all IE versions, the &lt;code&gt;/*@cc_on!@*/&lt;/code&gt; part will evaluate to &lt;code&gt;!&lt;/code&gt;
+(not) and thus the value of IE will be true while in other browsers it
+will be false.&lt;/p&gt;
+&lt;p&gt;comments closed as some bastards are at work.&lt;/p&gt;</summary></entry><entry><title>Reduce testing while writing code</title><link href="http://naiquevin.github.com/reduce-testing-while-writing-code.html" rel="alternate"></link><updated>2009-09-13T23:38:17+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-09-13:reduce-testing-while-writing-code.html</id><summary type="html">&lt;p&gt;Very often it happens that more time goes into testing than writing code. Particularly when ajax is involved.&lt;/p&gt;
+&lt;p&gt;For example, imagine this scenario.. you are working on an online store and you want to allow a user to remove items from the cart using ajax. ie. when the 'remove from cart' button is clicked the item must disappear from the cart...&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;When the code is run for the first time, nothing happens! (Yes, it happens with me a lot of times :P). Thanks to tools like Firebug, it is confirmed that some silly javascripting mistakes are the cause..you try to fix and refresh the page to see if its working now. But the thing has now gone from the cart as there is no problem with the server side script. So, you have to  go back to the product page, add a few products, and come back to the cart to test. If it fails this time as well, repeat the same thing again. Loss of time.&lt;/p&gt;
+&lt;p&gt;I recently started using a reverse approach to avoid all this drama. In cases like these, I start with writing an action that only returns true to the call back function of the ajax request without making a server trip. If anything doesnt work at this stage then its definitely javascript at fault. Only when its fixed, that I write the remaining code. This way I have experienced that a considerable amount of time is saved for other activities like tweeting!&lt;/p&gt;
+&lt;p&gt;I have found this approach extremely effective when some irreversible effect is involved, mostly deleting something or in other cases such as adding an email address (or any other field) in a table where the email column accepts only unique values.&lt;/p&gt;</summary><category term="ajax"></category><category term="php"></category><category term="web development"></category></entry></feed>

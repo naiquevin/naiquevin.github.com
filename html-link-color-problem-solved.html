@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HTML link color problem solved</title>
+    <link href="http://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./theme/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="./theme/css/pygments.css"/>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38557598-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>    <div class="container">
+      <div class="header">
+        <h1><a href="/">vineet@naik:~/$ cat mind &gt;&gt; web</a></h1>
+        <ul>
+                      <li><a href="http://github.com/naiquevin">github</a></li>
+                      <li><a href="/pages/about.html">about</a></li>
+                  </ul>
+      </div>
+      <div class="content">
+          <section class="article">
+    <h1 class="articleTitle">HTML link color problem solved</h1>
+    <div class="postInfo">
+      Written on <span class="published" title="2009-05-14T17:21:00">Thu 14 May 2009</span>
+    </div>
+    <div class="articleContent">
+      <p><strong>Problem:</strong> Some browsers show links in the default color in spite of being styled in CSS. On hover the CSS styling works.</p>
+<p><strong>Problem faced in:</strong> Google Chrome and IE6. No problem in FF</p>
+<p><strong>Solution:</strong>It is pretty simple by the way. There are two ways to resolve this ..</p>
+<ol>
+<li>Dont use a:link ie. instead of</li>
+</ol>
+<div class="codehilite"><pre>    <span class="nc">.menu</span> <span class="nt">a</span><span class="nd">:link</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+</pre></div>
+
+
+<p>just use,</p>
+<div class="codehilite"><pre>    <span class="p">.</span><span class="n">menu</span> <span class="n">a</span> <span class="p">{...}</span>
+</pre></div>
+
+
+<p>And the other way is declare the colors for all the states of the link</p>
+<div class="codehilite"><pre>    <span class="p">.</span><span class="n">menu</span> <span class="n">a</span><span class="o">:</span><span class="n">link</span> <span class="p">{...}</span>
+    <span class="p">.</span><span class="n">menu</span> <span class="n">a</span><span class="o">:</span><span class="n">visited</span> <span class="p">{...}</span>
+    <span class="p">.</span><span class="n">menu</span> <span class="n">a</span><span class="o">:</span><span class="n">hover</span> <span class="p">{...}</span>
+    <span class="p">.</span><span class="n">menu</span> <span class="n">a</span><span class="o">:</span><span class="n">active</span> <span class="p">{...}</span>
+</pre></div>
+
+
+<p>Remember the order. Its very important .. (Mnemonic - LoVe HAte)</p>
+<p><strong>Many thanks to:</strong> A certain CSS freak at webmasterworld forums</p>
+    </div>
+  </section>
+  <div class="articleEnd">---</div>
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'naiquevinsblog'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>      </div>
+      <div class="footer">
+        <div class="copyright">Copyright &copy; 2009-present, Vineet Naik</div>
+      </div>
+    </div>
+    <script type="text/javascript" src="./theme/javascript/main.js"></script>
+  </body>
+</html>

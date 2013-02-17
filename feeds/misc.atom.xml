@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Vineet's blog</title><link href="http://naiquevin.github.com/" rel="alternate"></link><link href="http://naiquevin.github.com/feeds/misc.atom.xml" rel="self"></link><id>http://naiquevin.github.com/</id><updated>2010-07-07T00:12:02+05:30</updated><entry><title>Useful learning</title><link href="http://naiquevin.github.com/useful-learning.html" rel="alternate"></link><updated>2010-07-07T00:12:02+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2010-07-07:useful-learning.html</id><summary type="html">&lt;p&gt;Last week was one of those few weeks in which a lot of learning happens. Not very uncommon if you are in a profession that needs you to constantly keep pace with something as dynamic as the world wide web. But this time it made me understand what makes useful learning more enjoyable than compulsive learning. And the answer is simple - Because the we actually end up using the former.&lt;/p&gt;
+&lt;p&gt;Ever tried word power books for improving your vocabulary. I remember when I was reading Norman Lewis, words that I had recently learnt appeared in whatever I read at that time. Same way this time I found that almost every one was suddenly tweeting and sharing articles related to the information I was trying to dig up.&lt;/p&gt;</summary></entry><entry><title>Does Firefox gets you into bad coding habits?</title><link href="http://naiquevin.github.com/does-firefox-gets-you-into-bad-coding-habits.html" rel="alternate"></link><updated>2009-11-22T11:16:46+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-11-22:does-firefox-gets-you-into-bad-coding-habits.html</id><summary type="html">&lt;p&gt;We all know how good Firefox is and if something works in FF and
+doesn't work in other browsers, we generally blame the others for not
+being as good. Recently I have started to discover a downside of using
+FF. I came across a few situations where FF was too lenient and I
+could realize my mistake only upon (accidently) checking the code in
+CHROME.&lt;/p&gt;
+&lt;p&gt;Let me give a few examples where FF covers your mistakes before I tell
+you what I understood from it&lt;/p&gt;
+&lt;p&gt;1) Check out this
+&lt;a href="http://www.noiseokplease.com/sampleCode/jqueryChrome"&gt;example&lt;/a&gt;. If a
+certain element say 'A' is placed inside another element 'B' then FF
+considers the parent-child relationship of A and B without giving a
+damn about whether its a valid HTML markup or not.&lt;/p&gt;
+&lt;p&gt;So if I write some text directly inside a table tag, omitting the &lt;tr&gt;
+and &lt;td&gt; tags it will blow up in any browser - even FF and the markup
+will obviously not validate. But what if its an hidden input
+field. You won't realize that its wrong unless you alert the value of
+the the hidden field by using one of &lt;a href="http://jquery.com/"&gt;jquery's&lt;/a&gt;
+&lt;a href="http://docs.jquery.com/DOM/Traversing"&gt;DOM traversing mothods&lt;/a&gt;.. something
+like,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;#buttonInsideTD&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;click&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;parent&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;parent&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;siblings&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;:input&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;val&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Please correct me if I am wrong, but logically its not valid
+markup... because input cannot be a valid child of table. It fails the
+&lt;a href="http://validator.w3.org/"&gt;W3C validator&lt;/a&gt; (which says -- &lt;em&gt;document
+type does not allow element "input" here&lt;/em&gt;) and even eclipse throws
+those annoying yellow coloured warnings .. But it makes no difference
+to FF.&lt;/p&gt;
+&lt;p&gt;2) Ever tried parsing xml using jquery's
+&lt;a href="http://docs.jquery.com/Traversing/find"&gt;$.find&lt;/a&gt; method ? FireFox
+parses it beautifully while Chrome and the others refuse to do it. I
+once came across a message board where some one was cribbing of $.find
+not working in chrome on an xml string. Infact I had come there in
+search of exactly the same thing. Some briliant guy had answered it by
+asking a counter question - &lt;em&gt;why should a browser parse xml if its
+supposed to understand only html?&lt;/em&gt; Sounds right!  But FF parses it and
+without letting you know even one bit that what you are doing is
+wrong. (The solution to make it work is by writing a separate function
+that makes the xml suitable for parsing .. but that would be a topic
+for another blog post)&lt;/p&gt;
+&lt;p&gt;3) Firefox doesnt have any problem with the following mark up&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But again, its wrong as per the standards.&lt;/p&gt;
+&lt;p&gt;So what I can understand from these examples is that Firefox treats
+html like xml and doesnt care if html rules are obeyed or not. If
+there are incorrectly coded elements in your document and the final
+result doesn't show up in the browser, they will pass as valid html
+and can only be detected if the source is tested for compatibility
+with standards or some dom methods are used on them and that too if
+checked in some other browser. (I am sure there is more to it than
+just this and I might be wrong as well. So any corrections are
+welcome.. )&lt;/p&gt;
+&lt;p&gt;So from now on its going to be simultaneous development and testing on
+both Firefox and chrome. But Firefox still remains my default browser
+for the firebug, the echofon, the frequent updates and every thing
+that makes Firefox exemplify the true open source spirit.&lt;/p&gt;</summary></entry><entry><title>IE6 FIX-ed......Part I</title><link href="http://naiquevin.github.com/ie6-fix-edpart-i.html" rel="alternate"></link><updated>2009-05-06T03:44:44+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-05-06:ie6-fix-edpart-i.html</id><summary type="html">&lt;p&gt;Imagine a scenario,&lt;/p&gt;
+&lt;p&gt;For past one and a half month you have been working hard on your
+website, creating graphics in Ps, accurately positioning them along
+with all the other components using CSS and adding 100 lines of new
+code everyday... and then one day you read something about cross
+browser compatibility issues and open the website in IE6 just to see
+how it works there.&lt;/p&gt;
+&lt;p&gt;The feeling will be nothing less than what you will experience when
+you forget to use Ctrl+S and power cut occurs..&lt;/p&gt;
+&lt;p&gt;Two weeks back, I had a similar feeling when I noticed that IE6
+doesn't like my neatly made PNG images that use transparent
+backgrounds.&lt;/p&gt;
+&lt;p&gt;So I 'googled' to see if I can get any help and to my surprise it
+showed 368,000 results.&lt;/p&gt;
+&lt;p&gt;But only one fix yielded results. The one I found last night at
+&lt;a href="http://www.twinhelix.com/css/iepngfix/demo/"&gt;http://www.twinhelix.com/css/iepngfix/demo/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It was pretty easy, just paste the code in the header and it works
+beautifully. Although someday I would like to take a look at what the
+.htc file actually does, I guess this is not the right time to get
+into such details.&lt;/p&gt;
+&lt;p&gt;But now I realize that this was just one of the problems...&lt;/p&gt;
+&lt;p&gt;Other than PNG,&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Browser doesn't respond to links styled using CSS properly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;And the biggest blow is that the login script doesn't work! It
+   calls the same .php file but nothing happens.. not even an error msg..&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Hope, I ll be able to fix these problems soon. Off to 'google-ing'
+fixes now.&lt;/p&gt;
+&lt;p&gt;Edit: Both of the above mentioned problems are solved. Please check
+the 'CROSS BROWSER' page of this blog for the fixes.&lt;/p&gt;</summary><category term="IE6 fix"></category><category term="web development languages"></category><category term="CSS"></category></entry></feed>

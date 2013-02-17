@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>5 Eclipse PDT configuration tips</title>
+    <link href="http://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./theme/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="./theme/css/pygments.css"/>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38557598-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>    <div class="container">
+      <div class="header">
+        <h1><a href="/">vineet@naik:~/$ cat mind &gt;&gt; web</a></h1>
+        <ul>
+                      <li><a href="http://github.com/naiquevin">github</a></li>
+                      <li><a href="/pages/about.html">about</a></li>
+                  </ul>
+      </div>
+      <div class="content">
+          <section class="article">
+    <h1 class="articleTitle">5 Eclipse PDT configuration tips</h1>
+    <div class="postInfo">
+      Written on <span class="published" title="2009-12-17T17:51:20">Thu 17 December 2009</span>
+    </div>
+    <div class="articleContent">
+      <p>Update: I have stopped using Eclipse and moved to Emacs</p>
+<p>Last friday as we resumed the daily knowledge sharing sessions at <a href="http://www.kodeplay.com/">kodeplay</a>, it was my turn first up and my topic for the day was eclipse &amp; svn. For those who are not familiar, <a href="http://www.eclipse.org/pdt/">Eclipse PDT</a> (PHP development tools) is an excellent IDE for php development and someone who is looking to move up from a normal editor to an IDE must certainly consider trying it out.</p>
+<p>For those who are already fans of PDT like me and who are using it, I am going to share a few tips and discoveries that will make your life easy.<!--more--></p>
+<ol>
+<li>
+<p><strong>Choose only what Eclipse must load</strong>: Eclipse is not doubt slow to start and the reason for this is that it loads various plugins and components while starting up. But you may not be using all of them unless you already live and breathe PDT! (and that should be having me asking for tips.) A few I prefer not to load are the ones related to usage data gathering and automatic updates. To switch off the unnecessary plugins goto,
+   Window&gt;Preferences&gt;General&gt;Startup &amp; shutdown and uncheck the ones you don't require.</p>
+</li>
+<li>
+<p><strong>Refreshing the workspace</strong>: The eclipse workspace doesn't refresh automatically by default which means that if I create a folder inside my project from outside (say using windows explorer), eclipse will not show the changes till i press F5 (refresh manually.) To save the trouble we can do one of the two things depending upon how we like to use the editor. The first way is to ask Eclipse to refresh on every start up. To do this follow exactly the same path as in tip #1 and select the "refresh workspace on startup" checkbox. The second way is to ask eclipse to keep refreshing the workspace. To enable this goto,
+   Window&gt;Preferences&gt;General&gt;Workspace and select the refresh automatically option.</p>
+</li>
+<li>
+<p><strong>Associate other file types with the editor</strong>: If you work with files other than .php such as .tpl, then viewing the file in the editor will remind you of notepad. Personally I like my javascript to be easily noticeable within the html and php code which will not happen in tpl files by default. To restore the colourfulness :), you will have to associate the file type with content type, ( here <em>.tpl with php content.)  Goto<strong><em> Preferences&gt;General&gt;Content types</em></strong>. Select </em>text<em> &gt; </em>php content type<em>. Add a new file type here (</em>.tpl) and then reload all the tpl files for the effect to be seen.</p>
+</li>
+<li>
+<p><strong>Using Code templates</strong>: If you follow a certain pattern while writing code (I believe every one of us do and to clarify, following a pattern doesn't necessarily mean code duplication) then knowing this setting is bound to change your life. For all the code that you keep typing again and again will be stored as a template and can be pasted in to the code using just typing out its name. For using templates first  go to <strong><em>Preferences&gt;PHP&gt;editor&gt;templates</em></strong>. A list of templates can be seen. Clicking on specific names will load the preview. Using the add button, add new templates and forget the code for ever!
+   for eg. add a new template for writing a small comment like,
+   /<em> code edited by vineet </em>/
+   and then wherever required, just type in the name and press <em>ctrl+space</em> and allow the magic to happen.</p>
+</li>
+<li>
+<p><strong>Filter the Resource: </strong>The final tip will help a lot if you keep multiple projects in one workspace and even more if you have multiple platforms based projects in the same workspace for eg. two<a href="http://wordpress.org/"> wordpress</a> based blogs. By pressing <strong><em>ctr+shift+r</em></strong>, we can <em>open the resource</em> to find a particular file. Suppose I want to find a commonly found file called "style.css" and the workspace has wordpress, opencart installations and some other projects in my own code then the open resource will show me a list of "style.css" files which will, instead of doing any good, actually bring me to the initial point . So, in order to filter the resource and keep it confined to a particular project or folder, do an "open resource" and click on the downward arrow on the right top. Create a new <em>working set there </em>and select it by clicking on the arrow again. Now eclipse will search only the working set and return specific results.</p>
+</li>
+</ol>
+<p>Hope these tips will save you from some everyday trouble. Will try to share more such PDT related discoveries. Helpful tips from your side by the way of comments are most welcome :)</p>
+    </div>
+  </section>
+  <div class="articleEnd">---</div>
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'naiquevinsblog'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>      </div>
+      <div class="footer">
+        <div class="copyright">Copyright &copy; 2009-present, Vineet Naik</div>
+      </div>
+    </div>
+    <script type="text/javascript" src="./theme/javascript/main.js"></script>
+  </body>
+</html>

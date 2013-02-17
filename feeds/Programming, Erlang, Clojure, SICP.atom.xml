@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Vineet's blog</title><link href="http://naiquevin.github.com/" rel="alternate"></link><link href="http://naiquevin.github.com/feeds/Programming,%20Erlang,%20Clojure,%20SICP.atom.xml" rel="self"></link><id>http://naiquevin.github.com/</id><updated>2012-07-21T18:14:00+05:30</updated><entry><title>Erlang is next, Clojure shall wait</title><link href="http://naiquevin.github.com/erlang-is-next-clojure-shall-wait.html" rel="alternate"></link><updated>2012-07-21T18:14:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2012-07-21:erlang-is-next-clojure-shall-wait.html</id><summary type="html">&lt;p&gt;A few weeks back, when I was close to completing chapter 1 exercises
+of &lt;a href="http://mitpress.mit.edu/sicp/"&gt;SICP&lt;/a&gt;, I had decided that after
+completing this chapter, I would take some time off it to learn
+Clojure. If you ask why Clojure, then frankly speaking, because it's
+being talked about a lot these days. At the same time, having watched
+a couple of brilliant talks by it's author
+&lt;a href="https://twitter.com/richhickey"&gt;Rick Hickey&lt;/a&gt; and having come across
+&lt;a href="https://github.com/technomancy/leiningen"&gt;some&lt;/a&gt;
+&lt;a href="https://github.com/noir-clojure/noir"&gt;of&lt;/a&gt;
+&lt;a href="https://github.com/clojure/clojurescript"&gt;the&lt;/a&gt;
+&lt;a href="http://mad.emotionull.com/"&gt;cool&lt;/a&gt;
+&lt;a href="https://github.com/overtone/overtone"&gt;stuff&lt;/a&gt; that the Clojure fellows
+are building and the
+&lt;a href="https://github.com/overtone/emacs-live"&gt;way they are using emacs&lt;/a&gt; for
+it, it makes me believe that Clojure completely lives upto the
+hype. BTW, I have started loving lisp courtesy of Scheme and Emacs.&lt;/p&gt;
+&lt;p&gt;Today I have completed the SICP chapter 1 exercises and as planned I
+am going to start learning a new language. This new language is
+however &lt;a href="http://www.erlang.org/"&gt;Erlang&lt;/a&gt; and not Clojure!&lt;/p&gt;
+&lt;p&gt;So what happened? Last week I felt a strong urge to learn Erlang. I
+thought, learning some basics would do no harm and went ahead with
+&lt;a href="http://learnyousomeerlang.com/"&gt;LYSE&lt;/a&gt;. On second thought, I realized
+that diving deep into erlang at this point of time might not be a bad
+idea after all. Over the last few months I have been working with the
+&lt;a href="http://www.ejabberd.im/"&gt;Ejabberd XMPP server&lt;/a&gt; at work. With no
+significant erlang knowledge I have been able to configure it greatly
+(All credit for which goes to the ever helpful ejabberd community and
+it's well documented config file!). Not only that, I have been able to
+help "newer-bies" on the ejabberd mailing list in whatever way I can
+for eg. pointing them to documentation etc. But to someone like me, an
+outsider coming from a Python background, Erlang looks like a weird
+language with a weird syntax (IMO more weird than what lisp seemed at
+first). Not knowing Erlang can be very limiting if I want to seriously
+achieve anything with Ejabberd. So I have come to the conclusion that
+if I don't learn erlang now, it would be like being dishonest with
+both myself and ejabberd!&lt;/p&gt;
+&lt;p&gt;On the otherside, if I learn Clojure, one of the following things are
+likely to happen&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;I will have my aha! moments in Clojure and after solving some
+exercises I never really use it for anything non-trivial.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I would absolutely fall in love with Clojure and want to use it
+more and more. But there is a slight problem here. There is no real
+chance I can start using it at work anytime in the near future because
+it takes a lot for a team of programmers to embrace a non-mainstream
+language like Clojure. Sure, I would use it for a couple of side
+projects but from my experience, the chance that these projects would
+solve a real problem is rather remote.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Did you notice that I haven't mentioned "Not liking Clojure" as one of
+the possibility? That's because I don't think I will not like it :) again
+because of the same reasons I have stated earlier. &lt;/p&gt;
+&lt;p&gt;So my next language is going to be Erlang. Well, atleast I am going to
+make a determined effort for a month (while trying hard not to give in
+everytime some Clojure library or article gets featured on Hacker
+News!) But I will continue to solve SICP exercises as I find it
+relaxing as an after work activity. All pending work on my Python,
+PHP, Javascript side projects gets done this weeekend and in the
+coming week, looking forward to meet you erlang, Clojure shall wait.&lt;/p&gt;</summary></entry></feed>

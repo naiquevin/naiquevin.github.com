@@ -1,0 +1,1399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Vineet's blog</title><link href="http://naiquevin.github.com/" rel="alternate"></link><link href="http://naiquevin.github.com/feeds/all.atom.xml" rel="self"></link><id>http://naiquevin.github.com/</id><updated>2012-07-21T18:14:00+05:30</updated><entry><title>Erlang is next, Clojure shall wait</title><link href="http://naiquevin.github.com/erlang-is-next-clojure-shall-wait.html" rel="alternate"></link><updated>2012-07-21T18:14:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2012-07-21:erlang-is-next-clojure-shall-wait.html</id><summary type="html">&lt;p&gt;A few weeks back, when I was close to completing chapter 1 exercises
+of &lt;a href="http://mitpress.mit.edu/sicp/"&gt;SICP&lt;/a&gt;, I had decided that after
+completing this chapter, I would take some time off it to learn
+Clojure. If you ask why Clojure, then frankly speaking, because it's
+being talked about a lot these days. At the same time, having watched
+a couple of brilliant talks by it's author
+&lt;a href="https://twitter.com/richhickey"&gt;Rick Hickey&lt;/a&gt; and having come across
+&lt;a href="https://github.com/technomancy/leiningen"&gt;some&lt;/a&gt;
+&lt;a href="https://github.com/noir-clojure/noir"&gt;of&lt;/a&gt;
+&lt;a href="https://github.com/clojure/clojurescript"&gt;the&lt;/a&gt;
+&lt;a href="http://mad.emotionull.com/"&gt;cool&lt;/a&gt;
+&lt;a href="https://github.com/overtone/overtone"&gt;stuff&lt;/a&gt; that the Clojure fellows
+are building and the
+&lt;a href="https://github.com/overtone/emacs-live"&gt;way they are using emacs&lt;/a&gt; for
+it, it makes me believe that Clojure completely lives upto the
+hype. BTW, I have started loving lisp courtesy of Scheme and Emacs.&lt;/p&gt;
+&lt;p&gt;Today I have completed the SICP chapter 1 exercises and as planned I
+am going to start learning a new language. This new language is
+however &lt;a href="http://www.erlang.org/"&gt;Erlang&lt;/a&gt; and not Clojure!&lt;/p&gt;
+&lt;p&gt;So what happened? Last week I felt a strong urge to learn Erlang. I
+thought, learning some basics would do no harm and went ahead with
+&lt;a href="http://learnyousomeerlang.com/"&gt;LYSE&lt;/a&gt;. On second thought, I realized
+that diving deep into erlang at this point of time might not be a bad
+idea after all. Over the last few months I have been working with the
+&lt;a href="http://www.ejabberd.im/"&gt;Ejabberd XMPP server&lt;/a&gt; at work. With no
+significant erlang knowledge I have been able to configure it greatly
+(All credit for which goes to the ever helpful ejabberd community and
+it's well documented config file!). Not only that, I have been able to
+help "newer-bies" on the ejabberd mailing list in whatever way I can
+for eg. pointing them to documentation etc. But to someone like me, an
+outsider coming from a Python background, Erlang looks like a weird
+language with a weird syntax (IMO more weird than what lisp seemed at
+first). Not knowing Erlang can be very limiting if I want to seriously
+achieve anything with Ejabberd. So I have come to the conclusion that
+if I don't learn erlang now, it would be like being dishonest with
+both myself and ejabberd!&lt;/p&gt;
+&lt;p&gt;On the otherside, if I learn Clojure, one of the following things are
+likely to happen&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;I will have my aha! moments in Clojure and after solving some
+exercises I never really use it for anything non-trivial.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I would absolutely fall in love with Clojure and want to use it
+more and more. But there is a slight problem here. There is no real
+chance I can start using it at work anytime in the near future because
+it takes a lot for a team of programmers to embrace a non-mainstream
+language like Clojure. Sure, I would use it for a couple of side
+projects but from my experience, the chance that these projects would
+solve a real problem is rather remote.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Did you notice that I haven't mentioned "Not liking Clojure" as one of
+the possibility? That's because I don't think I will not like it :) again
+because of the same reasons I have stated earlier. &lt;/p&gt;
+&lt;p&gt;So my next language is going to be Erlang. Well, atleast I am going to
+make a determined effort for a month (while trying hard not to give in
+everytime some Clojure library or article gets featured on Hacker
+News!) But I will continue to solve SICP exercises as I find it
+relaxing as an after work activity. All pending work on my Python,
+PHP, Javascript side projects gets done this weeekend and in the
+coming week, looking forward to meet you erlang, Clojure shall wait.&lt;/p&gt;</summary></entry><entry><title>Own the Editor</title><link href="http://naiquevin.github.com/own-the-editor.html" rel="alternate"></link><updated>2012-05-11T23:28:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2012-05-11:own-the-editor.html</id><summary type="html">&lt;p&gt;Recently I have noticed a changing trend in the choice of text editor/IDE among my
+colleagues. From 100% Eclipse users a few months back, today we have -&lt;/p&gt;
+&lt;p&gt;6 &lt;a href="http://www.sublimetext.com/"&gt;Sublime Text 2&lt;/a&gt; Users&lt;br /&gt;
+3 &lt;a href="http://www.eclipse.org/projects/"&gt;Eclipse&lt;/a&gt; Users&lt;br /&gt;
+1 &lt;a href="http://www.vim.org/"&gt;Vim&lt;/a&gt; User&lt;br /&gt;
+1 &lt;a href="http://www.gnu.org/software/emacs/"&gt;Emacs&lt;/a&gt; User  &lt;/p&gt;
+&lt;p&gt;I am the lone emacs user which you would already guessed from the
+tagline of this blog. This post is not about emacs though.  I used
+Eclipse for a long time until I discovered Emacs which was about 1
+year ago. I don't regret switching to emacs, but looking back, I admit
+that I wasn't a good eclipse user then because I never really used it
+beyond writing code and using it's subversion client for version
+control.  So, while it's good to see people moving to Sublime Text2 (a
+fine editor) and Vim (an awesome editor) from IDEs which I personally
+hate, it's important to realize that an editor will work wonders for
+your productivity only when you learn to use it to it's full potential
+and it's only then that you can appreciate the awesomeness of it.&lt;/p&gt;
+&lt;p&gt;The point I am trying to make here is that whichever editor/IDE you
+choose to use, you must use it like YOU OWN IT! If you are a
+programmer, then the editor is your primary toolkit because you spend
+more than 60% of your time inside it and so there is no reason for not
+trying to master it.&lt;/p&gt;
+&lt;p&gt;This post is about what you must look for in an editor for efficient
+and enjoyable editing and it will also try to cover some of the must
+know tricks irrespective of which editor you use.  Your editor may not
+support all these features but there is a good chance that they do and
+you haven't yet had the time or reason to discover them.  So if you
+think that you are only complacently using your editor and not getting
+the most out of it, I think this post will show you some direction.&lt;/p&gt;
+&lt;h3&gt;A few important points first&lt;/h3&gt;
+&lt;p&gt;Firstly, I don't claim to be an emacs guru although I am a passionate
+user.  Secondly, in this post, you will find that I have mentioned
+emacs a lot of times although having said that the post is not about
+it. The intention is not to annoy the readers. Wherever applicable, I
+have mentioned how to do a particular thing in emacs or the term used
+for it so you can then easily google it up for some other editor as in
+"abc equivalent of emacs in X editor" or "How to do abc in editor X?".&lt;/p&gt;
+&lt;h3&gt;Terminology&lt;/h3&gt;
+&lt;p&gt;Like many other things, before you can dive deep into something, it's
+very important to have an understanding of the terms that other folks
+in the community use to describe different things related to the
+editor.  Unless you are familiar with the terms and their meanings you
+will not be able to communicate on mailing lists and forums where
+there are a lot of people with talent and readiness to help you out.
+So get yourself familiar with atleast some of the basic terminology
+first.&lt;/p&gt;
+&lt;h3&gt;Shortcuts and mouse-less editing&lt;/h3&gt;
+&lt;p&gt;Knowing and using shortcuts is a key to faster editing. As a quick
+example, it's obviously faster to type ctrl-s than clicking on File &amp;gt;
+Save. A killer thing about text editors such as vim and emacs is
+economy of motion, which means that the shortcuts and key sequences
+are specifically designed in such a fashion that it's easier and
+faster for the fingers to type. Well this makes them time consuming to
+learn and get used to initially, but if you make a determined effort
+then very soon they are registered into muscle memory and you hardly
+have to think while using them.&lt;/p&gt;
+&lt;p&gt;Another thing is that using mouse is not particularly efficient while
+writing code so you should avoid that as much as possible.  Learning
+shortcuts fixes this.  In the rest of this post, when I say "learn how
+to do x" I always mean learn the shortcut or the command to do it.&lt;/p&gt;
+&lt;h3&gt;Moving around&lt;/h3&gt;
+&lt;p&gt;Imagine how much time you could save if you were able to go back to
+the line of code where you want to paste stuff that you just copied or
+open the file where a particular function is defined. Invest some time
+in learning how to move across code and files fast and with minimum
+effort.&lt;/p&gt;
+&lt;h3&gt;Searching&lt;/h3&gt;
+&lt;p&gt;If you are using vim or emacs, then you will quickly realize that
+searching is an efficient way of moving around. A good editor treats
+files, directory listing, configuration interface etc consistently
+which means that you can move around these interfaces in the same way
+as you do in files. Search in files (rgrep in emacs) is a handy tool
+as well.&lt;/p&gt;
+&lt;h3&gt;Cut/Copy/Paste and the "kill ring"&lt;/h3&gt;
+&lt;p&gt;It's indeed convenient if the editor remembers what all things were
+cut or copied in current session and doesn't lose them the moment
+something else is copied to the clipboard. It's also important that
+you are able to quickly move around the clipboard contents. In emacs
+there is a kill ring where anything that's &lt;em&gt;cut&lt;/em&gt; or &lt;em&gt;killed&lt;/em&gt; goes and
+anything that's &lt;em&gt;pasted&lt;/em&gt; or &lt;em&gt;yanked&lt;/em&gt; comes from.&lt;/p&gt;
+&lt;h3&gt;Lines&lt;/h3&gt;
+&lt;p&gt;As programmers we deal with lines of code, so we must know how to work
+with lines.  For eg. deleting to end of line, deleting a line (moving
+up the next one), adding a line after the current one (from any
+position in the current line) taking the cursor there ready to type,
+adding a line before the current one and moving to it to quickly add a
+doc string, going to the next line respecting the indent (electric
+return), swapping two lines and a lot of other things.&lt;/p&gt;
+&lt;h3&gt;Region&lt;/h3&gt;
+&lt;p&gt;It helps to know how to work on a region of code or text. For
+eg. indenting a region to right/left, Commenting/uncommenting a region
+and doing things that you normally do in files only on this region
+such as search/replace in region, undo/redo in region (yes this is
+possible in emacs)&lt;/p&gt;
+&lt;h3&gt;File Browsing&lt;/h3&gt;
+&lt;p&gt;Do you have to click on File &amp;gt; Open &amp;gt; Select &amp;gt; Open to open a file in
+the editor? If yes, you should change your editor!  Other file
+operations such as new file, delete, move, delete directory
+recursively are similarly important.  Added bonus if it also allows
+chmod and chown. In emacs, all these things are possible in the dired
+buffer.&lt;/p&gt;
+&lt;h3&gt;Screen Splitting&lt;/h3&gt;
+&lt;p&gt;Often we need to go back and forth between many files to refer to
+function definitions, example usage, tests, shell sessions etc.  A
+handy feature to have in this case is to be able to view many files at
+a time on the screen. Most editors support screen splitting in a
+number of ways.  Find out which one works for you and use it to reduce
+effort of moving between files.&lt;/p&gt;
+&lt;h3&gt;Jump to function definition&lt;/h3&gt;
+&lt;p&gt;Most editors provide a better and faster way for this than searching
+in files. In emacs this can be achieved by generating a TAG table
+which is basically just a file that acts as an index.&lt;/p&gt;
+&lt;h3&gt;Autocomplete&lt;/h3&gt;
+&lt;p&gt;In a single editor, there can be many types of autocompletion
+implementations and most of them are very handy and would probably be
+the most used in day to day editng. For eg. in emacs we can define
+abbreviations which are stored in files and can be expanded by TAB
+key. Then there are dynamic abbreviations (M-/) or more sophisticated
+Yasnippets which are capable of expanding to commonly used code
+templates. I am not a Yasnippets user although I use the other two
+types all the time.&lt;/p&gt;
+&lt;h3&gt;Polyglot friendliness&lt;/h3&gt;
+&lt;p&gt;If you use multiple languages, learn how to configure the editor
+differently for various languages for eg. I use 4 spaces indent for
+python, php and javascript whereas 2 spaces for ruby and html.&lt;/p&gt;
+&lt;h3&gt;Source Control from editor&lt;/h3&gt;
+&lt;p&gt;As a Git user, I am happy with the command line and don't use any
+emacs git mode myself. But I think it is something worth learning and
+considering trying out &lt;a href="https://github.com/magit/magit"&gt;Magit&lt;/a&gt; since a
+long time but haven't had the time yet.&lt;/p&gt;
+&lt;h3&gt;Running Shell inside the editor&lt;/h3&gt;
+&lt;p&gt;This is a powerful and must have feature for any editor. I personally
+use it a lot when I am trying out stuff in python or scheme. You can
+even evaluate a region.&lt;/p&gt;
+&lt;h3&gt;Plugins and Extending the editor&lt;/h3&gt;
+&lt;p&gt;Usually, editors have a good plugin ecosystem. If you use an
+opensource editor, you can even search github repositories for plugins
+that you wouldn't have imagined could exist. Learn how to install or
+set them up and also aim towards learning how to write them yourself
+and give back to the community.&lt;/p&gt;
+&lt;h3&gt;Syntax Checking and Lint&lt;/h3&gt;
+&lt;p&gt;Any decent editor supports on the fly syntax checking of code. This
+would typically be packaged as a plugin or a mode. There are also
+tools that help you find out on the fly whether your code is code
+style compatible for eg. whether your python code is
+&lt;a href="http://www.python.org/dev/peps/pep-0008/"&gt;PEP 8&lt;/a&gt; compliant or not.&lt;/p&gt;
+&lt;h3&gt;Support for non-programming formats&lt;/h3&gt;
+&lt;p&gt;Chances are that your editor has support for editing files other than
+programming languages. For eg. markdown or restructured text.  It's
+very handy to have such a feature as it makes editing documentation
+convenient.&lt;/p&gt;
+&lt;h3&gt;Macros&lt;/h3&gt;
+&lt;p&gt;Macros provide a way to record a set of actions so that they can be
+replayed again. As an example, the first non-trivial macros I had used
+was for converting a paypal integration form in html to a python
+dictionary of parameters to be posted to paypal. It took me around 5
+mins to record it and 1 min to repeat it on all the form fields
+clearly saving me a lot of time and shit work.&lt;/p&gt;
+&lt;h3&gt;Have fun&lt;/h3&gt;
+&lt;p&gt;It's fun to be able to use your editor for a things for which other
+people use softwares that flood the screen with popouts such as email,
+irc or even twitter clients, note taking apps or even games.&lt;/p&gt;
+&lt;p&gt;So this is all I can think of right now. It's definitely by no means
+an exhaustive list but I hope this helps you get started with fast,
+efficient and enjoyable editing.&lt;/p&gt;</summary></entry><entry><title>Hello Octopress</title><link href="http://naiquevin.github.com/hello-octopress.html" rel="alternate"></link><updated>2012-02-18T22:50:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2012-02-18:hello-octopress.html</id><summary type="html">&lt;p&gt;&lt;em&gt;Note: I no longer use Octopress. The blog is currently powered by
+Pelican, another fine static site generator.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I have been using wordpress for my blog for more than 2 years and now 
+I am making a switch to Octopress. While I haven't had any
+problems with wordpress, I always felt managing a self hosted wordpress
+installation for a blog that's seldom updated a bit of an overkill.
+I did consider moving back to hosted wordress but then decided to give
+octopress a try and after I did, I found that writing posts in markdown and 
+deploying them as static html pages makes perfect sense for people 
+who know enough of these two technologies.&lt;/p&gt;
+&lt;p&gt;In the meanwhile I have been trying hard to make emacs my default editor for almost all 
+the things ranging from writing code to taking notes to connecting to IRC. 
+Moving to octopress also means that now, I can write blog posts in emacs and 
+publish them only when I feel they are complete. Also, I hope that those half 
+completed posts written in org-mode that somehow didn't make it to wordpress
+will find their way to the internets soon. &lt;/p&gt;
+&lt;p&gt;I know how much ever I try, I am always going to be irregular at blogging 
+so I have decided to go with a setup that requires very less maintainance from my side. 
+This blog will be version controlled and hosted on github. Disqus will be used for managing 
+comments. &lt;/p&gt;
+&lt;p&gt;The domain vineetnaik.me will continue to point to the old server which will be used for 
+hosting demos along with a &lt;a href="http://vineetnaik.me"&gt;single page website&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Finally I think I should give credit to the guy who wrote this &lt;a href="https://gist.github.com/1239373"&gt;script&lt;/a&gt; 
+on github that helped me migrate my old wordpress blog posts effortlessly.&lt;/p&gt;
+&lt;p&gt;Stayed tuned - particularly if you are interested in emacs, python, django or javascript.&lt;/p&gt;</summary></entry><entry><title>Adding text vertically on multiple lines (region)</title><link href="http://naiquevin.github.com/adding-text-vertically-on-multiple-lines-region.html" rel="alternate"></link><updated>2011-08-04T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2011-08-04:adding-text-vertically-on-multiple-lines-region.html</id><summary type="html">&lt;p&gt;Ok. Finally a new emacs trick. Actually I had come across this a while
+back but then I went on a short vacation and later picked up a John
+Grisham book (one of the hard-to-put-down types) and so the delay.&lt;/p&gt;
+&lt;p&gt;This one is about adding stuff vertically in a line in the buffer. It
+might seem to be a bit vague and useless at first but it perfectly
+fits a problem I face everyday in php-mode.&lt;/p&gt;
+&lt;p&gt;Now php-mode is not all that great if compared to the rest of the
+emacs awesomeness.&lt;/p&gt;
+&lt;p&gt;The problem is that when I try to comment a region, it wraps each line
+of the region in block comments ie. &lt;code&gt;/* */&lt;/code&gt; which looks kind of ugly
+and may be objectionable by fellow team members too.&lt;/p&gt;
+&lt;p&gt;So I started using this command as a work around to comment out a
+region in php by prefixing each line with &lt;code&gt;//&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The way I do this is as follows:&lt;/p&gt;
+&lt;p&gt;Set the mark at the required position on the starting line (in my case
+column 0 or the start of the line)&lt;/p&gt;
+&lt;p&gt;Then move the cursor to the ending line using C-n normally.&lt;/p&gt;
+&lt;p&gt;Then type, &lt;code&gt;C-x r t&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;String Rectangle :&lt;/code&gt; will appear in the mini buffer.&lt;/p&gt;
+&lt;p&gt;Type &lt;code&gt;//&lt;/code&gt; to comment out each line and press &lt;code&gt;RET&lt;/code&gt;.&lt;/p&gt;</summary><category term="emacs"></category><category term="editing"></category></entry><entry><title>Bookmarking in Emacs</title><link href="http://naiquevin.github.com/bookmarking-in-emacs.html" rel="alternate"></link><updated>2011-07-22T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2011-07-22:bookmarking-in-emacs.html</id><summary type="html">&lt;p&gt;Emacs allows bookmarking inside buffers so that you can quicky visit
+those at a later time. And by later time I mean any time later, even
+if its a new emacs session.&lt;/p&gt;
+&lt;p&gt;The commands are as follows :&lt;/p&gt;
+&lt;p&gt;Set bookmark &lt;code&gt;C-X r m &amp;lt;bookmark_name&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;View bookmarks in the minibuffer &lt;code&gt;C-X r b &amp;lt;up/down arrow&amp;gt;&lt;/code&gt; or &lt;code&gt;C-s&lt;/code&gt; to
+I-search (Sounds familiar?)&lt;/p&gt;
+&lt;p&gt;View a list of all bookmarks &lt;code&gt;C-X r l&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Delete bookmark &lt;code&gt;C-X r l&lt;/code&gt; (to view list) and then mark with &lt;code&gt;D&lt;/code&gt; and delete
+with &lt;code&gt;x&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;As you can see a nice thing with emacs is that a lot of old concepts
+apply to the newly learned stuff for eg. in this case searching for a
+bookmark can be related to searching for open buffers and deleting
+bookmarks is to be done just the way we kill open buffers.&lt;/p&gt;
+&lt;p&gt;Also, if a bookmark is set, it persists in subsequent sessions as well
+until its deleted. And to jump to any set bookmark, it doesn't require
+the buffer to be open.&lt;/p&gt;
+&lt;p&gt;I never used bookmarks in my previous ide which was eclipse. But here
+it seems quite useful to me. I personally don't like the open files in
+previous ide session auto-opening up at startup. I prefer starting
+with a clean slate. So I can just set a bookmark on the dired buffers
+of the projects that I am working on currently or just set one before
+wrapping up day's work so that I can start from there the next day.&lt;/p&gt;</summary><category term="emacs"></category><category term="editing"></category></entry><entry><title>Killing buffers</title><link href="http://naiquevin.github.com/killing-buffers.html" rel="alternate"></link><updated>2011-07-19T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2011-07-19:killing-buffers.html</id><summary type="html">&lt;p&gt;In emacs, as we open files, a lot of dired buffers get accumulated. I
+personally find them a nuisance after a while specially during longer
+emacs sessions. Killing them one by one using &lt;code&gt;C-X k&lt;/code&gt; would be quite
+tedious. Fortunately there is better way to kill many buffers at a
+time.&lt;/p&gt;
+&lt;p&gt;For this we list all the buffers using &lt;code&gt;C-X C-b&lt;/code&gt;. The list opens in
+a new buffer so we need to switch to this buffer using &lt;code&gt;C-x o&lt;/code&gt;. Now
+we need to mark all the buffers that we wish to kill by typing
+&lt;code&gt;d&lt;/code&gt;. As we mark, a capital &lt;code&gt;D&lt;/code&gt; appears alongside the buffers'
+names. After all buffers to be killed are marked, just press &lt;code&gt;x&lt;/code&gt; and
+all the buffers will get killed.&lt;/p&gt;</summary><category term="emacs"></category><category term="editing"></category></entry><entry><title>Keyboard macros in emacs</title><link href="http://naiquevin.github.com/keyboard-macros-in-emacs.html" rel="alternate"></link><updated>2011-07-16T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2011-07-16:keyboard-macros-in-emacs.html</id><summary type="html">&lt;p&gt;Just learnt how to set and use Keyboard Macros in emacs. This looks
+pretty useful and something I feel will come in handy while
+refactoring code.&lt;/p&gt;
+&lt;p&gt;Firstly, to set a keyboard macros means recording a sequence of
+actions (keystrokes) and saving them. Later you can ask emacs to just
+repeat them for you whenever you want using a single command.&lt;/p&gt;
+&lt;p&gt;Setting macros is quite simple,&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;C-X (&lt;/code&gt;  ......begin a macro definition&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;...&amp;lt;do some keystrokes that you want to record&amp;gt;...&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;C-X )&lt;/code&gt;  ......end the macro definition&lt;/p&gt;
+&lt;p&gt;Now to "play" your recording anywhere, all you need to do is &lt;code&gt;C-X e&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Lets imagine a screnario:&lt;/p&gt;
+&lt;p&gt;In a php class (say a controller in an MVC application) the following
+expression is written a number of times to get a particular request
+param and assign it to a variable&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+    &lt;span class="nv"&gt;$id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;request&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;param&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;..............&lt;/span&gt; &lt;span class="nv"&gt;$user_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;request&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;param&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;user_id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;    
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Suppose I want to pass a second optional parameter of value &lt;code&gt;0&lt;/code&gt; to 
+all of the function calls ie change them such as,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+    &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;request&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;param&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To do this using a macro, &lt;/p&gt;
+&lt;p&gt;move to the beginning of the buffer by typing &lt;code&gt;M-S-&amp;lt;&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;Begin the macro definition &lt;code&gt;C-X (&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Incremental search for &lt;code&gt;$this-&amp;gt;request-&amp;gt;param&lt;/code&gt; using &lt;code&gt;C-s&lt;/code&gt; and then &lt;code&gt;RET&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;end of line &lt;code&gt;C-e&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;backward twice &lt;code&gt;C-b * 2&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;type &lt;code&gt;, 0&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;end macro definition &lt;code&gt;C-X )&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Now keep doing &lt;code&gt;C-X e&lt;/code&gt; till all the method calls are modified.&lt;/p&gt;
+&lt;p&gt;(This was somewhat a vague example but I hope you get the idea :-))&lt;/p&gt;</summary><category term="emacs"></category><category term="editing"></category><category term="macros"></category></entry><entry><title>Speedy navigation across the buffer in emacs</title><link href="http://naiquevin.github.com/speedy-navigation-across-the-buffer-in-emacs.html" rel="alternate"></link><updated>2011-07-15T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2011-07-15:speedy-navigation-across-the-buffer-in-emacs.html</id><summary type="html">&lt;p&gt;Okay. So here goes the first one. Very often I find myself searching
+for a line of code in the same file so that I can copy it over into
+some other function or a method. This whole process of moving to the
+desired line of code, copying it over, coming back to where you
+started the search and yanking it can be done unbelievably fast in
+emacs. This is because emacs keeps setting marks for you automatically
+while you navigate through the lines of code (noticed the words "Mark
+Set" in the minibuffer ?). In other words it keeps saving your
+previous positions. So all you need to master is how to move back to
+the previous position quicky after copying. To move to the previous
+mark the command is C-u C-SPC&lt;/p&gt;
+&lt;p&gt;So for the above scenario the command sequence would be,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;C-s or C-r (search forward or backward)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;C-m or RET (after finding the desired line)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;C-a  (moving to the start of the line)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;C-SPC (to set the mark)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;C-e (move to the end of the line thereby selecting a region)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;M-w (copy region)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;C-u C--SPC * 2 (to return back to the initial mark)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Looks like too much work for the fingers but its definitely faster
+than the right click scroll thing one would have to do with a mouse.&lt;/p&gt;
+&lt;p&gt;Just think as if you are driving a racing car. It can go from 0-60 in
+3.5 secs, &lt;em&gt;provided&lt;/em&gt; you can shift gears fast enough :)&lt;/p&gt;</summary><category term="emacs"></category><category term="editing"></category></entry><entry><title>Moving towards Test Driven Development</title><link href="http://naiquevin.github.com/moving-towards-test-driven-development.html" rel="alternate"></link><updated>2010-12-14T17:48:28+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2010-12-14:moving-towards-test-driven-development.html</id><summary type="html">&lt;p&gt;Recently, I have been reading a lot about Unit Testing and other stuff
+related to Test Driven Development. What generates an interest is that
+the idea itself looks promising and totally convinces me. Something
+that will, upon a single command tell if everything is upto the mark
+at any given time is beyond any doubt a sure shot #win! Also, in all
+the online articles and the subsequent discussions that I have read
+about TDD, I haven't come across even one "why-TDD-is-bad" or
+"has-a-downside" argument.&lt;/p&gt;
+&lt;p&gt;I believe that by default, it doesn't take much time for a developer
+to realize that testing is an integral part of development. Right from
+the first "hello world" to that impressive little facebook app you
+just rolled out, every application goes through
+let-me-first-see-if-it-works phase before its shown to friends and
+colleagues. Developers at all levels of skills, expertise and
+experience have to test their code.&lt;/p&gt;
+&lt;p&gt;As a beginner I wanted all things to work. At times my code passed the
+test, then I changed something that broke it, which meant testing it
+all over again and that was just frustrating. I wonder what would have
+been my first opinion about TDD if I had read it then. Because as I
+see it, TDD is about how to use those dreaded terms such as &lt;em&gt;Fatal
+Error&lt;/em&gt;, &lt;em&gt;Notice&lt;/em&gt;, &lt;em&gt;Warning,&lt;/em&gt; and even worst, &lt;em&gt;An Uncaught Exception
+&lt;/em&gt;to your advantage. Nevertheless from my experience, I believe that
+with more and more coding, we naturally come up with our own
+convenient testing techniques and tricks. What I have observed is that
+in a way it brings us close to the concept of Unit Testing and TDD.&lt;/p&gt;
+&lt;p&gt;One and probably my first such self discovered trick was testing
+callback functions of ajax requests in javascript. It involves not
+making the ajax request at all at first and directly calling the code
+that would have been the call back of the request. The function takes
+an argument that later on would be replaced by the actual server
+response. Say for example, I need to post a form by making an ajax
+request.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;#submit&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;click&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;resp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nx"&gt;resp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;status&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;done!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;                 
+        &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;          
+            &lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;failed!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Once this thing passes, my only concern is that the server response
+should get me &lt;code&gt;status = 0&lt;/code&gt; if something goes wrong and &lt;code&gt;status =
+1&lt;/code&gt; if everything works fine. Then there is no need to test the
+callback code, which in actual scenario, would obviously be more
+complex.&lt;/p&gt;
+&lt;p&gt;Another trick I discovered was that instead of making a thousand
+clicks to test server side code, its far more convenient to create a
+dummy action in your controller (I mostly use the zend framework)
+where the CRUD will be first tested before it goes into its dedicated
+action. This gives a lot of confidence because the code will be dealt
+with a lot of test cases while it is still in the dummy action. To
+relate this example with the previous one,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;dummyAction&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nv"&gt;$post&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;vineet&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+            &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;helloworld&amp;#39;&lt;/span&gt;
+        &lt;span class="p"&gt;);&lt;/span&gt;    
+        &lt;span class="nv"&gt;$resp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;    
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;doSomething&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$post&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nv"&gt;$resp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;status&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nv"&gt;$resp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;status&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;    
+        &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="nx"&gt;Json&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="na"&gt;encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$resp&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;    
+        &lt;span class="c1"&gt;//stop zf from looking for a view for this action and show result in browser for now    &lt;/span&gt;
+        &lt;span class="k"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So now just navigate to this dummy action and see if its working. Then
+test it for different set of inputs until you feel confident
+enough. No need to say that the next step is to connect these two
+segments of throughly tested code. This also saves us from a lot of
+debugging from the firebug console.&lt;/p&gt;
+&lt;p&gt;But after using this technique for a while, I felt something was wrong
+about this method. The code inside the dummy action was shortlived as
+very soon it would get replaced by fresh code that needed to be
+tested. This was resolved by creating a dedicated controller for all
+my tests which would of course be actions that would stay in the
+controller for further testing. This method also allows directly
+testing other actions in the same or different controllers thanks to
+the &lt;code&gt;forward&lt;/code&gt; method of the &lt;code&gt;Zend_Controller_Action&lt;/code&gt;. Also to avoid
+writing duplicate code for setting global variables, I created a
+simple class that acts as a Helper to the TestController&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+    &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MyTestHelper&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;mergePost&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nv"&gt;$_POST&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;array_merge&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$_POST&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;$data&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;mergeGet&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then create our TestController that will hold all the tests.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;    
+    &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;TestController&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Zend_Controller_Action&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;preDispatch&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;testHelper&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;MyTestHelper&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;testcontactformAction&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;testHelper&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;mergePost&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="s1"&gt;&amp;#39;email&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;fake@email.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="s1"&gt;&amp;#39;comment&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;test comment&amp;#39;&lt;/span&gt;
+            &lt;span class="p"&gt;));&lt;/span&gt;
+            &lt;span class="c1"&gt;//forward it to where the actual action happens (pun intended!)&lt;/span&gt;
+            &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;_forward&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;contactform&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;index&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;    
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Whenever something needs to be tested, I just look up this controller
+for the test action and run it in the browser. It also makes
+refactoring hastle free to some extent.&lt;/p&gt;
+&lt;p&gt;An important point to note is that error reporting must be turned on
+for this to work.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;    
+    &lt;span class="nb"&gt;error_reporting&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;E_ALL&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;E_STRICT&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nb"&gt;ini_set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;display_errors&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;on&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Although these methods have many limitations and are very raw as
+compared to testing frameworks such as phpUnit, it works for me at the
+moment. Regarding phpUnit, I feel its a great tool. I do use it for
+testing utility functions and methods that don't involve fetching and
+saving to the database. I have read phpUnit can manage that, just need
+to sit down some time and try it out.&lt;/p&gt;</summary></entry><entry><title>Guitar Players you must definitely subscribe to on Youtube</title><link href="http://naiquevin.github.com/guitar-players-you-must-definitely-subscribe-to-on-youtube.html" rel="alternate"></link><updated>2010-10-23T15:35:39+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2010-10-23:guitar-players-you-must-definitely-subscribe-to-on-youtube.html</id><summary type="html">&lt;p&gt;And if you thought I would mention the channels of master guitar players then you got it wrong. We all know they are brilliant and it is very easy to find their videos by typing in the search box. But here is a list of players you might not be knowing of but definitely can't afford to miss if you are a guitar player or a music lover. These are guitar players from around the world whose channels I stumbled across and whose videos have always been source of inspiration for me since then.&lt;/p&gt;
+&lt;p&gt;So here it goes, in no particular order -
+&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.youtube.com/user/DRAGIANNI"&gt;Dragianni&lt;/a&gt;
+Is a steve vai look alike and more so because of the Ibanez Jem. But he has his own style when it comes to melodies and phrases. Certainly lives upto his chosen weapon!&lt;/p&gt;
+&lt;p&gt;&lt;object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="480" height="385" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;embed type="application/x-shockwave-flash" width="480" height="385" src="http://www.youtube.com/v/0acV5BYHHMk?fs=1&amp;hl=en_US" allowscriptaccess="always" allowfullscreen="true"&gt;&lt;/embed&gt;&lt;/object&gt;&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href="http://www.youtube.com/user/GGuerra"&gt;Gustavo Guerra&lt;/a&gt;
+Winner of the Guitar Idol competition 2008. Insane shredder and a great performer. Known on youtube for his smile while playing and the various guitars he owns. You name one and he has it!&lt;/p&gt;
+&lt;p&gt;http://www.youtube.com/watch?v=6P_FvWqpCZk&amp;amp;feature=related&lt;/p&gt;
+&lt;p&gt;[embedding disabled on the channel]&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href="http://www.youtube.com/user/CesarHuescaMusic"&gt;Cesar Huesca&lt;/a&gt;
+My favourite player on youtube. Has got everything - technique, phrasing and feel, topped with an insane control over whammy, wah and pickup switching. His Steve Vai covers are also worth watching apart from the original music. Received a special mention from the judges at Guitar Idol 2008 competition but unfortunately couldn't make it to the finals.&lt;/p&gt;
+&lt;p&gt;&lt;object width="480" height="385"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;embed src="http://www.youtube.com/v/_H2_PP5kXao?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385"&gt;&lt;/embed&gt;&lt;/object&gt;&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href="http://www.youtube.com/user/bryanaspey"&gt;Bryan Aspey&lt;/a&gt;
+Winner of the SHRED THIS competition. Particularly check out this fusion/jazz track.&lt;/p&gt;
+&lt;p&gt;&lt;object width="480" height="385"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;embed src="http://www.youtube.com/v/Z2MGTTj-o74?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385"&gt;&lt;/embed&gt;&lt;/object&gt;&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href="http://www.youtube.com/user/damjanpejcinoski"&gt;Damjan Pejcinoski&lt;/a&gt;
+A hybrid picking genius. With due respect to the above guy, a definite winner for me.&lt;/p&gt;
+&lt;p&gt;&lt;object width="480" height="385"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;embed src="http://www.youtube.com/v/6idYhUheUr8?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385"&gt;&lt;/embed&gt;&lt;/object&gt;&lt;/p&gt;
+&lt;p&gt;&lt;hr /&gt;
+&lt;a href="http://www.youtube.com/user/jackthammarat"&gt;Jack Thammarat&lt;/a&gt;
+Is the winner of Guitar Idol 2009. Has a great tone and the tunes are nice and catchy.&lt;/p&gt;
+&lt;p&gt;&lt;object width="480" height="385"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;embed src="http://www.youtube.com/v/8FTryYf5MpY?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385"&gt;&lt;/embed&gt;&lt;/object&gt;&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href="http://www.youtube.com/user/murisv"&gt;Muris Varajic&lt;/a&gt;
+A natural shredder and a great composer in my opinion. Check out this particular track where he is killing it with the Morley Bad Horsie wah pedal.&lt;/p&gt;
+&lt;p&gt;&lt;object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="480" height="385" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;embed type="application/x-shockwave-flash" width="480" height="385" src="http://www.youtube.com/v/y-sizjxwUK8?fs=1&amp;hl=en_US" allowscriptaccess="always" allowfullscreen="true"&gt;&lt;/embed&gt;&lt;/object&gt;&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href="http://www.youtube.com/user/gottyboy"&gt;Daniele Gottardo&lt;/a&gt;
+Has made it to finals of Guitar Idol multiple times and an 8 finger tapping monster! Check out this original named Cardiology.&lt;/p&gt;
+&lt;p&gt;&lt;object width="480" height="385"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;embed src="http://www.youtube.com/v/glJU4wMFvdk?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385"&gt;&lt;/embed&gt;&lt;/object&gt;&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;So that was it from me. In case I have missed someone please do share the link and let me know. I always keep looking for inspiration on youtube.&lt;/p&gt;</summary><category term="guitar"></category><category term="shred this"></category><category term="guitar idol competition"></category><category term="music"></category><category term="youtube"></category></entry><entry><title>Essential Javascript for Jquery users (Part 1 : DOM Selection)</title><link href="http://naiquevin.github.com/essential-javascript-for-jquery-users-part-1-dom-selection.html" rel="alternate"></link><updated>2010-08-24T12:07:11+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2010-08-24:essential-javascript-for-jquery-users-part-1-dom-selection.html</id><summary type="html">&lt;p&gt;I remember when the first time I tried to learn some Javascript for
+accomplishing basic form validation, it wasn't as simple as HTML and
+CSS or even PHP for that matter. Plus being unfamiliar with stuff like
+&lt;a href="https://addons.mozilla.org/en-US/firefox/addon/1843/"&gt;Firebug&lt;/a&gt; in the
+early days of programming, doesn't help. So there was a time when,
+having not realized the power of the language yet, I looked to avoided
+JS wherever possible. Then Jquery happened. And it was life
+changing. Life changing because it not only made doing things easier,
+but also eventually made me like the vanilla flavour of javascript.&lt;/p&gt;
+&lt;p&gt;Now usually there is a thing with frameworks and libraries that they
+will work for you only if you know the basics clearly. After all
+frameworks are build using the basics right. But in my opinion jquery
+is an exception. People will disagree but let me put it this way - if
+you have just started with jquery, after some initial copy pasting a
+time will come when you will fairly undertand how 3 things work, the
+jquery syntax, the methods, and how these two fit together. After that
+you can easily make fancy things work without advanced javascript
+knowledge until one of the readymade plugin breaks or your client
+comes up with an insanely out of the box requirement. Then you will
+have to go to vanilla and probably learn to use things like OOP,
+patterns as well. And it will all be for the good. This is my personal
+experience.&lt;/p&gt;
+&lt;p&gt;Okay, coming to the point, this blog post is the first one of the
+series on some essential javascript knowledge you must have if your
+case is similar to mine ie already doing pretty well with jquery but
+not confident enough if that small file of minified code is taken away
+for whatever reason. Apart from that, for me, being able to write long
+and informative blog posts is going to be one of the motives behind
+learning something I know I am hardly going to use in the presence of
+jquery but which is very important.&lt;/p&gt;
+&lt;p&gt;The first few topics will cover basic things which are actually left
+redundant by the awesomeness of jquery, but i guess it will be a good
+starting point.&lt;/p&gt;
+&lt;p&gt;So lets get started with Part 1 : DOM selection. (I am assuming the
+reader is familiar with the acronym
+&lt;a href="http://www.w3schools.com/htmldom/default.asp"&gt;DOM&lt;/a&gt;.)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$("selecter")&lt;/code&gt; in jquery makes selecting elements from the document
+real easy right ? But how to do it using plain js ?  There are
+different ways depending upon the element.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Selecting by id&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;myid&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="c1"&gt;//select the first div by its id&lt;/span&gt;
+    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;#myid&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;//jquery&lt;/span&gt;
+    &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;myid&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//plain js&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// note that plain js selector properties and methods cannot be&lt;/span&gt;
+    &lt;span class="c1"&gt;// applied in the first case as the plain js way returns an object&lt;/span&gt;
+    &lt;span class="c1"&gt;// while jquery returns an array of js objects. in this case the&lt;/span&gt;
+    &lt;span class="c1"&gt;// length will be 1 as we are getting it by id. To use it any way&lt;/span&gt;
+    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;#myid&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;style&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Accessing by Tag Name&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementsByTagName&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ul&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Notice the getElement&lt;strong&gt;s&lt;/strong&gt; This will return an array of size equal to
+number of ul elements in the document&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Accessing Children of elements&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In js all elements are referred to as nodes of the DOM tree.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;childtest&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Hello world. Now check this &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;link&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;arr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;childtest&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;childNodes&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The output if logged in firebug console will show an array of all
+children of the element childtest selected. But it will be different
+from what &lt;code&gt;$("#childtest").children()&lt;/code&gt; will return.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TextNode and accessing the text&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If you have already logged the above example to a firebug console, you
+can see that apart from the actual child element ie anchor tag, it
+also shows a Textnode (which is skipped by the jquery
+&lt;code&gt;$("#childtest").children()&lt;/code&gt; code). To get its value just select
+that particular child and get the property 'nodeValue'. This is how
+the jquery &lt;code&gt;.text&lt;/code&gt; method does the job.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;childtest&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;childNodes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;nodeValue&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Accessing the siblings&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Jquery lets us get all siblings of an element as an array. Javascript
+gives us only the next and the previous sibling Something like this&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;childtest&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;childNodes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;nextSibling&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+    &lt;span class="c1"&gt;// or  ...childNodes[1].previousSibling&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So how to get all siblings of an element? Well, to do this, first we
+can traverse to an elements parent and then get all its childNodes.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Accessing the parent element&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;As simple as it can get&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;childtest&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;childNodes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;parentNode&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So, this was pretty much about selecting the elements. In the next
+part we will see how to manipulate them by dealing with css and also
+how to make fancy things.&lt;/p&gt;</summary><category term="jquery"></category><category term="HTML"></category><category term="web 2.0"></category><category term="javascript"></category><category term="web development"></category></entry><entry><title>Identifying clicked mouse button in IE &amp; other browsers</title><link href="http://naiquevin.github.com/identifying-clicked-mouse-button-in-ie-other-browsers.html" rel="alternate"></link><updated>2010-07-28T23:37:34+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2010-07-28:identifying-clicked-mouse-button-in-ie-other-browsers.html</id><summary type="html">&lt;p&gt;Last month I spent some hours coding the popular game
+&lt;a href="https://github.com/naiquevin/mines"&gt;minesweeper&lt;/a&gt; in javascript. It
+was a fun project. And as it has always been, fun projects are the
+best ways to learn something new. Add to that the universal reach of
+web applications. So apart from coding, putting it up on the server
+and getting your friends and their friends to play the game &lt;del
+datetime="2010-07-26T17:47:42+00:00"&gt;while frequently checking the
+analytics&lt;/del&gt; was an equally enjoyable experience.&lt;/p&gt;
+&lt;p&gt;But after putting it up, just when the game was getting its share of
+attention and people were liking it, one of my friends informed that
+it didn't work in IE8. Now IE has always been infamous for its ways
+and usually its just the IE6. But in this case even IE7 and IE8 had
+joined the party.&lt;/p&gt;
+&lt;p&gt;Getting to the central idea of this blog post - Identifying which
+mouse button was clicked is essential in minesweeper as it is played
+using the mouse :) and there are three possible moves for a player at
+any given time, which are, left click, right click and both buttons
+clicked at the same time.&lt;/p&gt;
+&lt;p&gt;Jquery makes identifying the clicked button very easy with the event
+object being passed to the callback functions of the mouse events
+by-default.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;.cell&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;mouseup&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+        &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;button&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;button&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//this will return the mouse button as int&amp;lt;/p&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;When I checked, the problem was with mouse button detection. As I
+said, e.button will return an integer. Sadly, it means different
+things in IE and other browsers.&lt;/p&gt;
+&lt;p&gt;For smarter ones:&lt;br /&gt;
+0 = left button; 1 = both buttons or the scroll wheel ; 2 = right button&lt;/p&gt;
+&lt;p&gt;For IE:&lt;br /&gt;
+1 = left button ; 2 = right button ; nothing for both buttons :|&lt;/p&gt;
+&lt;p&gt;Obviously the solution was having different conditions for IE and the
+other browsers. Now comes the best part. Detecting the browser. This
+is the most compact and insane hack I have ever come across for
+IE-detection (courtesy:
+&lt;a href="http://dean.edwards.name/weblog/2007/03/sniff/"&gt;http://dean.edwards.name/weblog/2007/03/sniff/&lt;/a&gt;
+)&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;IE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="cm"&gt;/*@cc_on!@*/&lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In all IE versions, the &lt;code&gt;/*@cc_on!@*/&lt;/code&gt; part will evaluate to &lt;code&gt;!&lt;/code&gt;
+(not) and thus the value of IE will be true while in other browsers it
+will be false.&lt;/p&gt;
+&lt;p&gt;comments closed as some bastards are at work.&lt;/p&gt;</summary></entry><entry><title>Useful learning</title><link href="http://naiquevin.github.com/useful-learning.html" rel="alternate"></link><updated>2010-07-07T00:12:02+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2010-07-07:useful-learning.html</id><summary type="html">&lt;p&gt;Last week was one of those few weeks in which a lot of learning happens. Not very uncommon if you are in a profession that needs you to constantly keep pace with something as dynamic as the world wide web. But this time it made me understand what makes useful learning more enjoyable than compulsive learning. And the answer is simple - Because the we actually end up using the former.&lt;/p&gt;
+&lt;p&gt;Ever tried word power books for improving your vocabulary. I remember when I was reading Norman Lewis, words that I had recently learnt appeared in whatever I read at that time. Same way this time I found that almost every one was suddenly tweeting and sharing articles related to the information I was trying to dig up.&lt;/p&gt;</summary></entry><entry><title>Windows 7-Ubuntu dual boot without using wubi</title><link href="http://naiquevin.github.com/windows-7-ubuntu-dual-boot-without-using-wubi.html" rel="alternate"></link><updated>2010-06-12T23:29:03+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2010-06-12:windows-7-ubuntu-dual-boot-without-using-wubi.html</id><summary type="html">&lt;p&gt;Last week I finally managed to set up a windows 7 - Ubuntu dual boot
+system on my home computer after spending substantial amount of time
+on the &lt;a href="http://ubuntuforums.org"&gt;ubuntuforums&lt;/a&gt;. So i thought, why not
+note down the process while all the new concepts, problems and
+workarounds are fresh in the mind. And what would be a better way to
+do this than writing a blog post. I am sure this guide will help any
+one looking to set up a windows-ubuntu dual boot.&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;Before I start, let me be very clear that I am not a Ubuntu expert let
+alone a Linux expert. But I won't call myself a beginner either. I
+have been using Jaunty Jackalope (9.04) at work for some 3-4 months
+and am very comfortable at it. The only problem I have is that, well,
+its wubi installed.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Why is 'wubi-installed' a problem?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://wubi-installer.org/"&gt;wubi&lt;/a&gt; is the name of the installer that
+comes with the ubuntu iso. It installs ubuntu on windows (and can
+later uninstall it) just like any other program and thus saving us the
+effort of formatting and partitioning of disks. And its very very
+easy, infact it can't get any more easier than this. But there are
+problems. My limited knowledge allows me to have only two of them.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;The maximum memory available for use in wubi installed ubuntu is
+   30gb which i feel is very less. Only 3 months and its already reduced
+   to just 10gb.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I am not able to figure out if and how i can recover data stored
+   under ubuntu if any thing goes wrong. Thankfully, all the code is safe
+   with svn in place.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;So, in order to fight these two problems, i was really looking forward
+to doing a live cd installation with partitioning of disks and
+everything as soon as I get my hard disk upgraded so that I could do
+it in office with some experience.&lt;/p&gt;
+&lt;p&gt;Okay, so lets get started.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Requirements-&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ubuntu 10.04 iso downloaded from &lt;a href="http://www.ubuntu.com/desktop/get-ubuntu/download"&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;An already running windows OS.&lt;/li&gt;
+&lt;li&gt;A decently fast internet connection.&lt;/li&gt;
+&lt;li&gt;All data backed up if at all anything goes wrong at any stage.&lt;/li&gt;
+&lt;li&gt;A blank cd to write the iso to.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Step 1: The ubuntu image file.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The ubuntu image file is an iso file which can either be burnt into a
+cd or can be extracted using
+&lt;a href="http://www.rarlab.com/download.htm"&gt;winrar&lt;/a&gt;. The later method is
+recommended if you want to do a wubi installation. If you are trying
+Ubuntu for the first time there is absolutely no harm in going for the
+wubi installation. In fact it will help you familiarize yourself with
+Linux OS and decide if you want to switch to it full time. In case you
+do, just make sure you don't keep using wubi the way I did.&lt;/p&gt;
+&lt;p&gt;We are interested in the first method, so burn the image into a
+CD. With the live CD, we can still try Ubuntu without installation
+which is what we are going to do now.&lt;/p&gt;
+&lt;p&gt;Insert the CD into your CD-ROM and restart the machine. Make sure
+'boot from CD/DVD' option is selected in the BIOS as priority so that
+the system starts Ubuntu instead of loading windows. Now I don't
+know how to explain this without a screen-shot but when you see a
+purple background with two weird icons (one that looks like vitruvian
+man and the other like a window or may be a keyboard) at the bottom,
+press any key. It will now show a menu and the good old memories of
+doom and quake will come to your mind.  Select the option 'Try Ubuntu
+without installation'. At this stage you may want to go ahead with the
+installation if partitioning is done. But I would strongly advise
+against it as it showed me some error. The install option is available
+later as well.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 2: Connecting to the INTERNET&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Running Ubuntu w/o installation is also an opportunity of preparing
+for the installation. An important part of that is connecting to the
+Internet. Actually, it is not absolutely necessary but only if you
+don't mind the Linux clock a few hours ahead of (or behind) your
+windows clock. Trust me its really annoying. Good news is that there
+is a way to fix that too. The second reason for this is that it gives
+you something to do while the system installs itself.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 3: Partition the disks.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Yes we will be using Linux for partitioning. But before that its time
+to understand some partitioning basics.  In windows we have our hard
+disk organized in more than one drives which have alphabetical names
+like C,D,E etc. In Linux however the naming convention is
+different. The drives C,D,E in windows will be called something like
+sda1, sda2, sda3 etc. To check this, open up the terminal and type,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nv"&gt;$ &lt;/span&gt;sudo fdisk -l
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;With some knowledge about the space in each drive and a little guess
+work, it is quite easy to map the drives in these two systems.&lt;/p&gt;
+&lt;p&gt;Now I am assuming that you already have windows running where all
+available hard disk memory has been allocated to different drives. In
+this case we need to free up some memory for Ubuntu. That is by
+shrinking the drives. I prefer to do this in windows. So restart your
+machine after ejecting the Ubuntu CD allowing windows to load this
+time.  Inside windows 7, click on start and search for 'Computer
+Management'. When the window opens, go to Storage &amp;gt; Disk Management
+and all the disks will appear there. Right click on the disk you don't
+mind shrinking, and say shrink volume. Then simply follow the
+instructions. When shrinking is complete you will see some part of
+memory shown as 'Unallocated'. This is where Ubuntu will reside.&lt;/p&gt;
+&lt;p&gt;For installing Ubuntu, we will need 3 partitions. We will get to that
+in a bit. For now, lets continue with some more partitioning concepts.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Primary, Extended and Logical Partitions&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;Any hard drive can have a maximum of 4 primary partitions. But more
+partitions are possible by defining one of the partitions as
+'Extended' and then partitioning it further into any number of
+'Logical' partitions. More info
+&lt;a href="http://www.pcguide.com/ref/hdd/file/structPartitions-c.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;With this much knowledge we go back to Ubuntu and again say, '&lt;em&gt;try
+without installation&lt;/em&gt;' when prompted and connect to the Internet. Now
+start &lt;a href="http://gparted.sourceforge.net/"&gt;GParted&lt;/a&gt; (or Disk Utility)
+from system &amp;gt; administration and create 3 partitions. First create a
+primary partition of the entire unallocated space and mark it as
+'Extended'. Then divide this into 3 logical partitions as follows,&lt;/p&gt;
+&lt;p&gt;Say we have 150 GB for Ubuntu in total&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1st partition will be around 20gb. choose the
+  &lt;a href="http://en.wikipedia.org/wiki/Ext3"&gt;EXT Journaling file system&lt;/a&gt;. I
+  selected EXT3.&lt;/li&gt;
+&lt;li&gt;2nd partition will be around twice the size of your RAM. I selected
+  8gb. This will be used as &lt;em&gt;swap space&lt;/em&gt; which will kind of support
+  the RAM if required when running multiple applications on
+  Ubuntu. Under files system, choose '&lt;em&gt;Linux swap&lt;/em&gt;' option for this.&lt;/li&gt;
+&lt;li&gt;Now allocate all the remaining space to the 3rd partition which will
+  also be a logical partition and EXT3.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Why do we need 3 partitions?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Lets call the above partitions A, B, C for understanding
+convenience. During installation we will select such a configuration
+that Ubuntu is installed on A and we have the bigger C for storage
+while B will be used as swap. This will make sure the data is safe if
+we need to reinstall or upgrade Ubuntu at any time.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 4: Proceeding with installation&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;With this much knowledge we can start the installation. Click on the
+'install Ubuntu' icon on desktop.&lt;/p&gt;
+&lt;p&gt;I don't think detailed procedure is required after this as it is a
+very straight forward process. Just keep following the instructions
+until you reach the disk partitioning stage.&lt;/p&gt;
+&lt;p&gt;Here select '&lt;em&gt;manually partition disks&lt;/em&gt;'. In the next screen, you can
+see the three partitions we just created along with the windows
+partitions. Now is the moment we tell the installer where to install
+what by specifying the mount point for each disk. For our disk A
+above, we select '/' (root) as the mount point and for the disk C we
+select '/home'. The mount point field for swap area will be rightly
+disabled.&lt;/p&gt;
+&lt;p&gt;Then proceed to follow some more instructions until it the actual
+coying of files and installation starts. Open up Firefox to surf the
+Internet or just sit back and relax. After the installation is
+complete restart the machine and the system will prompt you to choose
+the OS to load at boot. Congrats you just installed Ubuntu aside
+windows 7.&lt;/p&gt;
+&lt;p&gt;I hope this helped. Now you might want to read my
+&lt;a href="http://www.kodeplay.com/2010/04/windows-to-linux-transition/"&gt;post&lt;/a&gt;
+on my company's &lt;a href="http://www.kodeplay.com/blog"&gt;blog&lt;/a&gt; about setting up
+PHP development environment on Ubuntu and a few other tricks.&lt;/p&gt;</summary><category term="Ubuntu"></category><category term="disk"></category><category term="partition"></category><category term="wubi"></category><category term="Linux"></category></entry><entry><title>Nights in Shining Karma - guitar-pro tab</title><link href="http://naiquevin.github.com/nights-in-shining-karma-guitar-pro-tab.html" rel="alternate"></link><updated>2010-04-04T12:33:53+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2010-04-04:nights-in-shining-karma-guitar-pro-tab.html</id><summary type="html">&lt;p&gt;For a change I am deviating from the usual programming stuff and a
+posting a music related update. This one is a guitar-pro TAB of the
+title track from the album 'Nights in Shining Karma' by
+&lt;a href="http://www.blackstratblues.com/"&gt;Blackstratblues&lt;/a&gt; (Warren Mendonsa).&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://dl.dropbox.com/u/65344446/nights-in-shining-karma.zip"&gt;Download&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Note: &lt;a href="http://www.guitar-pro.com/en/index.php"&gt;Guitar pro 5&lt;/a&gt; will be
+required to view the contents of this file.&lt;/p&gt;
+&lt;p&gt;I started working on it a while back and had left it half done before
+losing it to a disk format. Surprisingly, I found it among old backed
+up files the other day and completed it. Please don't take the drums
+and the bass seriously ;) and also the synth track which i have added
+to somewhat emulate the effects. Feel free to submit corrections if
+any.&lt;/p&gt;
+&lt;p&gt;In case you stumbled upon this site and don't know about Warren
+Mendonsa and the wonderful music, you need to visit
+&lt;a href="http://www.blackstratblues.com/"&gt;here&lt;/a&gt; and
+&lt;a href="http://en.wikipedia.org/wiki/Blackstratblues"&gt;here&lt;/a&gt; first.&lt;/p&gt;</summary><category term="guitar-pro"></category><category term="tablature"></category><category term="music"></category><category term="warren mendonsa"></category><category term="blackstratblues"></category></entry><entry><title>Top 10 comments my blog received (and will keep receiving!)</title><link href="http://naiquevin.github.com/top-10-comments-my-blog-received-and-will-keep-receiving.html" rel="alternate"></link><updated>2010-04-04T00:28:35+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2010-04-04:top-10-comments-my-blog-received-and-will-keep-receiving.html</id><summary type="html">&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;"The subject is fully clear but why does the text lack clarity? But
+in general your blog is great." - &lt;strong&gt;gualetar&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;"I fully agree with the author."  - &lt;strong&gt;Accounting&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;"Thanks the author for article. The main thing do not forget about
+users, and continue in the same spirit."  - &lt;strong&gt;ZAREMA&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;"My opinion is a bit another how it is possible to talk to the
+author, for example on an e-mail?" - &lt;strong&gt;biomedtalk&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;"Am. hope to see same more info."  &lt;em&gt;(yes same more :))&lt;/em&gt; -
+&lt;strong&gt;Vintage-Insurance-915&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;"Why u thk so? I have other mind. Could u spoke about it in a bit!?"&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;euronis-free&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;"The author of the rights and a material really interesting. I will
+subscribe on RSS" - &lt;strong&gt;medtopix&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;"good post awesome post – i’m creating video about it and i will post
+it to youtube !  if you wana to help or just need a link send me email
+!"  &lt;em&gt;(and subscribe to spam!)&lt;/em&gt; - &lt;strong&gt;Watch movies&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;"Interestingly, and advertising posts are removed or you can write." -
+&lt;strong&gt;Nicerb&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;"Amazing one. I ll tell my cousin about it!" - &lt;strong&gt;cryoy507&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;All these moved me so much that i moved them to thrash!&lt;/p&gt;</summary></entry><entry><title>How to get rid of searchportal.information.com redirection</title><link href="http://naiquevin.github.com/how-to-get-rid-of-searchportalinformationcom-redirection.html" rel="alternate"></link><updated>2010-02-14T12:18:28+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2010-02-14:how-to-get-rid-of-searchportalinformationcom-redirection.html</id><summary type="html">&lt;p&gt;&lt;em&gt;Important note before you read further: The other day i found out that this wasn't quite the solution.  But in case you are desperately trying to get rid of this thing, this article might still give you some clues.  Please find explanation at the end of this post.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In case you encounter the problem of redirection to a website called &lt;strong&gt;&lt;em&gt;searchportal.information.com&lt;/em&gt;&lt;/strong&gt; then this article is for you. I was facing this problem where, whenever I tried to access this domain ie. www.noiseokplease.com, it redirected me to searchportal.information page which was full of links but having the heading 'Noiseokplease'!&lt;/p&gt;
+&lt;p&gt;And the worst part which actually gets you to your wits end is that the problem happens only on a specific machine, on all browsers, miraculously fixes itself after sometime and reappears again in a few days. It stays even after deleting all the cookies and a full system scan or a good anti-virus scan fails to fix it.&lt;/p&gt;
+&lt;p&gt;Here is the solution.&lt;/p&gt;
+&lt;p&gt;It appears that the TCP/IP network connection is in some way the cause. I got this hint while i was going through a certain message board. So just disable the connection and enable it again. If you need dialer to connect then just disconnecting and reconnecting will not work. You will have to disable the 'Local Area Connection' (it is the name on my pc, might be different on yours) and enable it again.&lt;/p&gt;
+&lt;p&gt;Its pretty much a superficial solution but it worked for me and so i decided to share it here. Hope it helps someone.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Edit:&lt;/strong&gt; Yes, so the other day, whatever I have written above didn't work. Couldnt think of anything else but waiting. Today I tweaked some network connection settings and it started working again. But now I am not sure whether it was because of the changes or it fixed itself overtime as it has been happening in the past.&lt;/p&gt;</summary><category term="malware"></category><category term="web 2.0"></category><category term="spyware"></category></entry><entry><title>De-facebook and Anti-social networking.</title><link href="http://naiquevin.github.com/de-facebook-and-anti-social-networking.html" rel="alternate"></link><updated>2010-02-08T22:16:50+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2010-02-08:de-facebook-and-anti-social-networking.html</id><summary type="html">&lt;p&gt;Following is an excerpt from a conversation between two developers -&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;dev1&lt;/strong&gt; : Hey! all web technologies just got owned by this super cool programming language developed by Facebook. Its called FBlang!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;dev2&lt;/strong&gt; : ?? never heard .. Whats so cool about it? ..wait! AFAIK FB uses lamp, python among others.. are you sure ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;dev1&lt;/strong&gt; : yeah man .. facebook sure uses FBlang. Its awesome you know! a scripting language, a database query language and a forum moderation module packed into one.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;dev2&lt;/strong&gt; : wtf!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;dev1&lt;/strong&gt; : Best part is that since the code is simpler to understand than the application itself it is made public on the members' walls..so now even the FB addicts will know whats going on behind while they are busy wasting their time! Here is a sample code which just popped up on my wall as a feed,&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;If 100000 people join this group, facebook will delete group 'fuck india'&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;For the lucky few of you who don't know yet, &lt;a href="http://www.facebook.com/?ref=logo#!/group.php?gid=232125886452&amp;amp;ref=nf"&gt;here&lt;/a&gt; is the link to the &lt;em&gt;epic&lt;/em&gt; group on Facebook which already has more than 300,000 members and is still growing strong :-|
+Well I seriously doubt if I would have ever known about the crappy group had there not been any "If 100000 people.... " feeds popping up every now and then.&lt;/p&gt;</summary><category term="social networking"></category><category term="facebook"></category><category term="boredom"></category></entry><entry><title>Easy filtering of records using PHP and JQuery.</title><link href="http://naiquevin.github.com/easy-filtering-of-records-using-php-and-jquery.html" rel="alternate"></link><updated>2010-01-05T18:11:05+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2010-01-05:easy-filtering-of-records-using-php-and-jquery.html</id><summary type="html">&lt;p&gt;I came upon a method for filtering records using jquery and php. I am
+sure there must be plugins available to do this but this one is super
+easy. Particularly for problems where the elements are to be filtered
+by multiple criteria and each element falls in more than one criteria
+at a time. Consider the following problem.&lt;/p&gt;
+&lt;p&gt;An e-commerce app (a typical online store) has 10 products in 4
+categories and each product can be present in more than one category
+at a time. All these products are to be shown as a list or in rows of
+an html table. Then they have to be filtered by categories (which
+means when i select a particular category from a list of categories in
+a drop down, only those products which are categorized under it should
+appear and the others should not show.)&lt;/p&gt;
+&lt;p&gt;The method i came up with is this.&lt;/p&gt;
+&lt;p&gt;Get data from the database using php (or for that matter any server
+side scripting language)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;an array of all the products &lt;/li&gt;
+&lt;li&gt;an array of all the categories that the product falls under&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The above data can be actually fetched into a single associative array
+for ease of looping&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+    &lt;span class="nv"&gt;$products&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;product_id&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ipod&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;in_categories&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then loop through the above array to show the products in a table and
+add multiple classes to the tr that represents each product depending
+upon the categories under which the product falls.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &amp;lt;table border=&amp;quot;0&amp;quot; cellspacing=&amp;quot;0&amp;quot; cellpadding=&amp;quot;0&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;        &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;  &lt;span class="k"&gt;foreach&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$products&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nv"&gt;$product&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;  &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;            &amp;lt;tr class=&amp;quot;c_all &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt; &lt;span class="k"&gt;foreach&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$product&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;in_categories&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nv"&gt;$cat&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt; &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;c_&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;$cat&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&amp;quot;&amp;gt; &lt;/span&gt;
+&lt;span class="x"&gt;            &amp;lt;!-- don&amp;#39;t forget that space after each class --&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;                &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;                &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;                &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;            &amp;lt;/tr&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;        &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &amp;lt;/table&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Once this is done, filtering is just a matter of writing a javascript
+function and calling it on the onChange event of the category drop
+down box.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;filterProducts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;byCat&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+        &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;c_&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;all&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;hide&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; &lt;span class="c1"&gt;// first hide all records&lt;/span&gt;
+        &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;c_&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;byCat&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;show&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; &lt;span class="c1"&gt;// show records of the category&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="c1"&gt;//calling the function to show products under category 2&lt;/span&gt;
+    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;#filter&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;click&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="nx"&gt;filterProducts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;});&lt;/span&gt;
+    &lt;span class="c1"&gt;// to show all the products back again&lt;/span&gt;
+    &lt;span class="nx"&gt;filterProducts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;all&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;    
+    &lt;span class="c1"&gt;// if your application allows adding adding ,removing or moving&lt;/span&gt;
+    &lt;span class="c1"&gt;// products from one category to another using ajax    &lt;/span&gt;
+    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;#product_&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;productId&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;addClass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;c_&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;catId&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;#product_&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;productId&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;removeClass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;c_&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;catId&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Advantages of the above method:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;no ajax requests as all the data is already there.&lt;/li&gt;
+&lt;li&gt;at any time a product can be added to (or removed from) a
+   particular category by using the addClass and removeClass functions of
+   jquery and it will work perfectly for the later onchange events.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Disadvantages:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;I am not sure what effects if will have on performace.&lt;/li&gt;
+&lt;li&gt;For now, I am leaving aside the jquery performance issues but i
+   think heavy looping in jquery must be better than making ajax requests
+   to the server.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I hope someone will find this helpful. If you know any other alternate
+method for this then please share by commenting on this post. All-hail
+JQuery!&lt;/p&gt;</summary></entry><entry><title>5 Eclipse PDT configuration tips</title><link href="http://naiquevin.github.com/5-eclipse-pdt-configuration-tips.html" rel="alternate"></link><updated>2009-12-17T17:51:20+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-12-17:5-eclipse-pdt-configuration-tips.html</id><summary type="html">&lt;p&gt;Update: I have stopped using Eclipse and moved to Emacs&lt;/p&gt;
+&lt;p&gt;Last friday as we resumed the daily knowledge sharing sessions at &lt;a href="http://www.kodeplay.com/"&gt;kodeplay&lt;/a&gt;, it was my turn first up and my topic for the day was eclipse &amp;amp; svn. For those who are not familiar, &lt;a href="http://www.eclipse.org/pdt/"&gt;Eclipse PDT&lt;/a&gt; (PHP development tools) is an excellent IDE for php development and someone who is looking to move up from a normal editor to an IDE must certainly consider trying it out.&lt;/p&gt;
+&lt;p&gt;For those who are already fans of PDT like me and who are using it, I am going to share a few tips and discoveries that will make your life easy.&lt;!--more--&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Choose only what Eclipse must load&lt;/strong&gt;: Eclipse is not doubt slow to start and the reason for this is that it loads various plugins and components while starting up. But you may not be using all of them unless you already live and breathe PDT! (and that should be having me asking for tips.) A few I prefer not to load are the ones related to usage data gathering and automatic updates. To switch off the unnecessary plugins goto,
+   Window&amp;gt;Preferences&amp;gt;General&amp;gt;Startup &amp;amp; shutdown and uncheck the ones you don't require.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Refreshing the workspace&lt;/strong&gt;: The eclipse workspace doesn't refresh automatically by default which means that if I create a folder inside my project from outside (say using windows explorer), eclipse will not show the changes till i press F5 (refresh manually.) To save the trouble we can do one of the two things depending upon how we like to use the editor. The first way is to ask Eclipse to refresh on every start up. To do this follow exactly the same path as in tip #1 and select the "refresh workspace on startup" checkbox. The second way is to ask eclipse to keep refreshing the workspace. To enable this goto,
+   Window&amp;gt;Preferences&amp;gt;General&amp;gt;Workspace and select the refresh automatically option.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Associate other file types with the editor&lt;/strong&gt;: If you work with files other than .php such as .tpl, then viewing the file in the editor will remind you of notepad. Personally I like my javascript to be easily noticeable within the html and php code which will not happen in tpl files by default. To restore the colourfulness :), you will have to associate the file type with content type, ( here &lt;em&gt;.tpl with php content.)  Goto&lt;strong&gt;&lt;em&gt; Preferences&amp;gt;General&amp;gt;Content types&lt;/em&gt;&lt;/strong&gt;. Select &lt;/em&gt;text&lt;em&gt; &amp;gt; &lt;/em&gt;php content type&lt;em&gt;. Add a new file type here (&lt;/em&gt;.tpl) and then reload all the tpl files for the effect to be seen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Using Code templates&lt;/strong&gt;: If you follow a certain pattern while writing code (I believe every one of us do and to clarify, following a pattern doesn't necessarily mean code duplication) then knowing this setting is bound to change your life. For all the code that you keep typing again and again will be stored as a template and can be pasted in to the code using just typing out its name. For using templates first  go to &lt;strong&gt;&lt;em&gt;Preferences&amp;gt;PHP&amp;gt;editor&amp;gt;templates&lt;/em&gt;&lt;/strong&gt;. A list of templates can be seen. Clicking on specific names will load the preview. Using the add button, add new templates and forget the code for ever!
+   for eg. add a new template for writing a small comment like,
+   /&lt;em&gt; code edited by vineet &lt;/em&gt;/
+   and then wherever required, just type in the name and press &lt;em&gt;ctrl+space&lt;/em&gt; and allow the magic to happen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Filter the Resource: &lt;/strong&gt;The final tip will help a lot if you keep multiple projects in one workspace and even more if you have multiple platforms based projects in the same workspace for eg. two&lt;a href="http://wordpress.org/"&gt; wordpress&lt;/a&gt; based blogs. By pressing &lt;strong&gt;&lt;em&gt;ctr+shift+r&lt;/em&gt;&lt;/strong&gt;, we can &lt;em&gt;open the resource&lt;/em&gt; to find a particular file. Suppose I want to find a commonly found file called "style.css" and the workspace has wordpress, opencart installations and some other projects in my own code then the open resource will show me a list of "style.css" files which will, instead of doing any good, actually bring me to the initial point . So, in order to filter the resource and keep it confined to a particular project or folder, do an "open resource" and click on the downward arrow on the right top. Create a new &lt;em&gt;working set there &lt;/em&gt;and select it by clicking on the arrow again. Now eclipse will search only the working set and return specific results.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Hope these tips will save you from some everyday trouble. Will try to share more such PDT related discoveries. Helpful tips from your side by the way of comments are most welcome :)&lt;/p&gt;</summary><category term="code templates"></category><category term="Eclipse PDT"></category><category term="php"></category><category term="web development"></category><category term="www.kodeplay.com"></category></entry><entry><title>Does Firefox gets you into bad coding habits?</title><link href="http://naiquevin.github.com/does-firefox-gets-you-into-bad-coding-habits.html" rel="alternate"></link><updated>2009-11-22T11:16:46+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-11-22:does-firefox-gets-you-into-bad-coding-habits.html</id><summary type="html">&lt;p&gt;We all know how good Firefox is and if something works in FF and
+doesn't work in other browsers, we generally blame the others for not
+being as good. Recently I have started to discover a downside of using
+FF. I came across a few situations where FF was too lenient and I
+could realize my mistake only upon (accidently) checking the code in
+CHROME.&lt;/p&gt;
+&lt;p&gt;Let me give a few examples where FF covers your mistakes before I tell
+you what I understood from it&lt;/p&gt;
+&lt;p&gt;1) Check out this
+&lt;a href="http://www.noiseokplease.com/sampleCode/jqueryChrome"&gt;example&lt;/a&gt;. If a
+certain element say 'A' is placed inside another element 'B' then FF
+considers the parent-child relationship of A and B without giving a
+damn about whether its a valid HTML markup or not.&lt;/p&gt;
+&lt;p&gt;So if I write some text directly inside a table tag, omitting the &lt;tr&gt;
+and &lt;td&gt; tags it will blow up in any browser - even FF and the markup
+will obviously not validate. But what if its an hidden input
+field. You won't realize that its wrong unless you alert the value of
+the the hidden field by using one of &lt;a href="http://jquery.com/"&gt;jquery's&lt;/a&gt;
+&lt;a href="http://docs.jquery.com/DOM/Traversing"&gt;DOM traversing mothods&lt;/a&gt;.. something
+like,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;#buttonInsideTD&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;click&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;parent&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;parent&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;siblings&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;:input&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;val&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Please correct me if I am wrong, but logically its not valid
+markup... because input cannot be a valid child of table. It fails the
+&lt;a href="http://validator.w3.org/"&gt;W3C validator&lt;/a&gt; (which says -- &lt;em&gt;document
+type does not allow element "input" here&lt;/em&gt;) and even eclipse throws
+those annoying yellow coloured warnings .. But it makes no difference
+to FF.&lt;/p&gt;
+&lt;p&gt;2) Ever tried parsing xml using jquery's
+&lt;a href="http://docs.jquery.com/Traversing/find"&gt;$.find&lt;/a&gt; method ? FireFox
+parses it beautifully while Chrome and the others refuse to do it. I
+once came across a message board where some one was cribbing of $.find
+not working in chrome on an xml string. Infact I had come there in
+search of exactly the same thing. Some briliant guy had answered it by
+asking a counter question - &lt;em&gt;why should a browser parse xml if its
+supposed to understand only html?&lt;/em&gt; Sounds right!  But FF parses it and
+without letting you know even one bit that what you are doing is
+wrong. (The solution to make it work is by writing a separate function
+that makes the xml suitable for parsing .. but that would be a topic
+for another blog post)&lt;/p&gt;
+&lt;p&gt;3) Firefox doesnt have any problem with the following mark up&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But again, its wrong as per the standards.&lt;/p&gt;
+&lt;p&gt;So what I can understand from these examples is that Firefox treats
+html like xml and doesnt care if html rules are obeyed or not. If
+there are incorrectly coded elements in your document and the final
+result doesn't show up in the browser, they will pass as valid html
+and can only be detected if the source is tested for compatibility
+with standards or some dom methods are used on them and that too if
+checked in some other browser. (I am sure there is more to it than
+just this and I might be wrong as well. So any corrections are
+welcome.. )&lt;/p&gt;
+&lt;p&gt;So from now on its going to be simultaneous development and testing on
+both Firefox and chrome. But Firefox still remains my default browser
+for the firebug, the echofon, the frequent updates and every thing
+that makes Firefox exemplify the true open source spirit.&lt;/p&gt;</summary></entry><entry><title>Reduce testing while writing code</title><link href="http://naiquevin.github.com/reduce-testing-while-writing-code.html" rel="alternate"></link><updated>2009-09-13T23:38:17+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-09-13:reduce-testing-while-writing-code.html</id><summary type="html">&lt;p&gt;Very often it happens that more time goes into testing than writing code. Particularly when ajax is involved.&lt;/p&gt;
+&lt;p&gt;For example, imagine this scenario.. you are working on an online store and you want to allow a user to remove items from the cart using ajax. ie. when the 'remove from cart' button is clicked the item must disappear from the cart...&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;When the code is run for the first time, nothing happens! (Yes, it happens with me a lot of times :P). Thanks to tools like Firebug, it is confirmed that some silly javascripting mistakes are the cause..you try to fix and refresh the page to see if its working now. But the thing has now gone from the cart as there is no problem with the server side script. So, you have to  go back to the product page, add a few products, and come back to the cart to test. If it fails this time as well, repeat the same thing again. Loss of time.&lt;/p&gt;
+&lt;p&gt;I recently started using a reverse approach to avoid all this drama. In cases like these, I start with writing an action that only returns true to the call back function of the ajax request without making a server trip. If anything doesnt work at this stage then its definitely javascript at fault. Only when its fixed, that I write the remaining code. This way I have experienced that a considerable amount of time is saved for other activities like tweeting!&lt;/p&gt;
+&lt;p&gt;I have found this approach extremely effective when some irreversible effect is involved, mostly deleting something or in other cases such as adding an email address (or any other field) in a table where the email column accepts only unique values.&lt;/p&gt;</summary><category term="ajax"></category><category term="php"></category><category term="web development"></category></entry><entry><title>A self made Jquery slider</title><link href="http://naiquevin.github.com/a-self-made-jquery-slider.html" rel="alternate"></link><updated>2009-08-23T23:47:23+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-08-23:a-self-made-jquery-slider.html</id><summary type="html">&lt;p&gt;Now this post has been in the drafts section for quite some
+time.. infact some posts which I started to write later made their way
+to the blog before this one.. Anyway, here it is!&lt;/p&gt;
+&lt;p&gt;When one of our clients asked for a slider to show featured products
+on his online store, I felt before going for the ready made plugins
+available on the internet, I could try to create one on my
+own. Although it would be wrong to call this a plugin, it did turn out
+pretty well. Finally we decided to use JCarousal (as its obviously far
+better), but thats a different story.&lt;/p&gt;
+&lt;p&gt;Anyways I am posting it here as its done by me. I would be glad if
+anyone finds it helpful.&lt;/p&gt;
+&lt;p&gt;It is done using Jquery so you will need to download and include the
+&lt;a href="http://docs.jquery.com/Downloading_jQuery"&gt;jquery library&lt;/a&gt; to try it
+out. Here is the code and a
+&lt;a href="http://www.noiseokplease.com/slider/test.html"&gt;working demo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;JAVASCRIPT&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;leftCount&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;rightCount&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;itemCount&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;stripCount&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;itemWid&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;itemPad&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;lastScr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;itemWid&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nx"&gt;itemPad&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.item&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;each&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+            &lt;span class="nx"&gt;itemCount&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;});&lt;/span&gt;
+    &lt;span class="p"&gt;});&lt;/span&gt;
+    &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;moveRight&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;rightCount&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;itemCount&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nx"&gt;stripCount&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nx"&gt;rightCount&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#switcher&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;animate&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="nx"&gt;left&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;120&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="nx"&gt;rightCount&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;slow&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;        
+            &lt;span class="nx"&gt;rightCount&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="nx"&gt;leftCount&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;moveLeft&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;leftCount&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;itemCount&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nx"&gt;stripCount&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#switcher&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;animate&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="nx"&gt;left&lt;/span&gt;&lt;span class="o"&gt;:-&lt;/span&gt;&lt;span class="mi"&gt;120&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;leftCount&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;slow&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+            &lt;span class="nx"&gt;leftCount&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="nx"&gt;rightCount&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;moveLeft&lt;/code&gt; and &lt;code&gt;moveRight&lt;/code&gt; are the functions that do the trick.&lt;/p&gt;
+&lt;p&gt;HTML&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;container&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;switcher&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;item&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;item&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;item&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;item&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;item&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;item&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;item&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;item&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;item&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;item&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;button&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;onclick=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;moveRight();&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;laquo;&lt;/span&gt;Prev&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+            &lt;span class="ni"&gt;&amp;amp;nbsp;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;onclick=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;moveLeft();&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Next&lt;span class="ni"&gt;&amp;amp;raquo;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;dummy&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;style=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;display:none;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt; 
+    &lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finally, CSS&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="k"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="nf"&gt;#container&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;50px&lt;/span&gt; &lt;span class="k"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;width&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;590px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;overflow&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;hidden&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;border&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;1px&lt;/span&gt; &lt;span class="k"&gt;solid&lt;/span&gt; &lt;span class="nb"&gt;black&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;height&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;145px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;moz&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;border&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;radius&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;10px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="nf"&gt;#switcher&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;position&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;relative&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;width&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;20000em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;height&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;120px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;20px&lt;/span&gt; &lt;span class="m"&gt;10px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;overflow&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;hidden&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;padding-left&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;10px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="nc"&gt;.item&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;position&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;relative&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;width&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;100px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;height&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;100px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;float&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;margin-right&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;10px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;border&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;1px&lt;/span&gt; &lt;span class="k"&gt;solid&lt;/span&gt; &lt;span class="nb"&gt;black&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;background-color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;#fad144&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="nf"&gt;#button&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;clear&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;both&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;30px&lt;/span&gt; &lt;span class="m"&gt;340px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;pointer&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;There are two important things to be noted in the CSS:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Position relative to the switcher and item and,&lt;/li&gt;
+&lt;li&gt;Overflow hidden to container and switcher&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Another important thing to be noted is that moveRight is called
+onClick of Previous button and moveLeft is called upon the click of
+next button. This is because moveRight pulls the content to right
+making the 'previous' content visible. Same logic goes for next
+button.&lt;/p&gt;
+&lt;p&gt;Now the limitations. If you are a pro you might have already noticed
+the super normal width given to the switcher div. It is to accomodate
+more number of items. If the width is less, say 1000px and the items
+are more, then the extra items will move down.&lt;/p&gt;
+&lt;p&gt;I am currently trying hard to find time for working on this defect :)
+and also to turn this into an easy-to-use plugin.&lt;/p&gt;
+&lt;p&gt;Note: I admit its not a plugin, but I am posting this here anyway. In
+case you are a pro web developer, this may not excite you as much as
+it excites me. Your comments, suggestions etc. are always welcome.&lt;/p&gt;</summary><category term="jquery"></category><category term="slider"></category><category term="image gallery"></category><category term="web development"></category><category term="image slider"></category></entry><entry><title>To check if atleast one check box is checked using Jquery</title><link href="http://naiquevin.github.com/to-check-if-atleast-one-check-box-is-checked-using-jquery.html" rel="alternate"></link><updated>2009-08-04T23:32:45+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-08-04:to-check-if-atleast-one-check-box-is-checked-using-jquery.html</id><summary type="html">&lt;p&gt;It happens so many times that I need to code something to make the UI
+fool proof. While I have the logic clear in my mind, i often find that
+javascript is of little or no help at all.... Whats amazing is that
+99% of the time jquery does the trick with minimum code and the
+'why-didnt-i-look-up-the-docs-first' feeling strikes!!&lt;/p&gt;
+&lt;p&gt;Jquery can be used as follows to check if at least one checkbox (any
+input field actually) from a number of checkboxes is selected before
+submitting the form on the client side. I came across this when I was
+trying to figure out a way for similar validation when the number of
+check boxes was driven by the database and it was not possible to have
+a common className for them.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;validateCheckbox&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;input:checked&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;    
+        &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;n&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;input:checked&lt;/code&gt; matches all the check boxes which are checked.&lt;/p&gt;</summary></entry><entry><title>My first website goes live..and I am so excited!</title><link href="http://naiquevin.github.com/my-first-website-goes-liveand-i-am-so-excited.html" rel="alternate"></link><updated>2009-05-28T16:53:18+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-05-28:my-first-website-goes-liveand-i-am-so-excited.html</id><summary type="html">&lt;p&gt;&lt;em&gt;Note: This post exists for historical reasons! The website I had
+built is no longer up and I gave up the domain name. I may have lost
+the source code too :-(&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Finally I managed to put a substantial work online. My first website
+&lt;a href="http://www.noiseokplease.com"&gt;Noise OK Please&lt;/a&gt; (broken link) has just been
+launched. This is an online community for musicians and their fans.&lt;/p&gt;
+&lt;p&gt;One special thing about this particular project is that no platform
+has been used. All the code has been written by me. Apart from this,
+whatever you will find on this website is my own work (Except the
+avatars. The southpark avatar comes from
+&lt;a href="http://www.sp-studio.de"&gt;sp-studio.de&lt;/a&gt;). Of course, I have used a lot
+of references for accomplishing the task, such as books and no need to
+mention the greatest resource of the present day - Google.&lt;/p&gt;
+&lt;p&gt;One may ask, why did I try to re-invent the wheel? Its because the
+main intention behind this project is to learn though hands on
+experience.  Other than that I wanted to have my own work to show it
+to recruiters so that they can offer me some cool jobs! :).  As the
+number of users increase, I will be re-building it on some platform.&lt;/p&gt;
+&lt;p&gt;The website may seem like an internet startup in the first glance. But
+as of yet, business is not the first thing I am looking at.&lt;/p&gt;
+&lt;p&gt;There still lot of work to be done yet. Some things in the pipe line
+are,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Invite facility to let users invite others to join the community.&lt;/li&gt;
+&lt;li&gt;An interface to search users based on various criteria. &lt;/li&gt;
+&lt;li&gt;A JavaScript powered WYSIWYG rich text editor to post on the wall. &lt;/li&gt;
+&lt;li&gt;And much more.. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I would also like to mention a few references that helped a lot&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.webmasterworld.com"&gt;webmasterworld forums &lt;/a&gt; where
+  professional developers were kind enough to answer my silliest of
+  doubts.&lt;/li&gt;
+&lt;li&gt;A beautiful book called Head First PHP &amp;amp; MySQL.&lt;/li&gt;
+&lt;li&gt;Online tutorials from&lt;a href="http://w3schools.com"&gt; w3schools&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;PS&amp;gt; If you stumble upon this blog post please take some time to look
+at the website and give me an honest feedback.&lt;/p&gt;
+&lt;p&gt;PPS&amp;gt; If you are a web developer, your feedback and comments are
+extremely valuable.&lt;/p&gt;</summary><category term="social networking"></category><category term="noise ok please"></category><category term="musician community"></category><category term="web development"></category></entry><entry><title>HTML link color problem solved</title><link href="http://naiquevin.github.com/html-link-color-problem-solved.html" rel="alternate"></link><updated>2009-05-14T17:21:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-05-14:html-link-color-problem-solved.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Problem:&lt;/strong&gt; Some browsers show links in the default color in spite of being styled in CSS. On hover the CSS styling works.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Problem faced in:&lt;/strong&gt; Google Chrome and IE6. No problem in FF&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt;It is pretty simple by the way. There are two ways to resolve this ..&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dont use a:link ie. instead of&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nc"&gt;.menu&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="nd"&gt;:link&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;just use,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;menu&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="p"&gt;{...}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And the other way is declare the colors for all the states of the link&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;menu&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="p"&gt;{...}&lt;/span&gt;
+    &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;menu&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;visited&lt;/span&gt; &lt;span class="p"&gt;{...}&lt;/span&gt;
+    &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;menu&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;hover&lt;/span&gt; &lt;span class="p"&gt;{...}&lt;/span&gt;
+    &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;menu&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;active&lt;/span&gt; &lt;span class="p"&gt;{...}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Remember the order. Its very important .. (Mnemonic - LoVe HAte)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Many thanks to:&lt;/strong&gt; A certain CSS freak at webmasterworld forums&lt;/p&gt;</summary><category term="hover"></category><category term="Chrome"></category><category term="IE6"></category><category term="HTML"></category><category term="link color"></category><category term="CSS"></category></entry><entry><title>HTML forms problem in IE6 solved</title><link href="http://naiquevin.github.com/html-forms-problem-in-ie6-solved.html" rel="alternate"></link><updated>2009-05-12T17:28:55+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-05-12:html-forms-problem-in-ie6-solved.html</id><summary type="html">&lt;p&gt;Ah relieved!... finally my website works on IE6. A big problem
+solved&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Problem:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Login and signup script not working in IE6. (works fine in FF &amp;amp;
+Crome). On clicking the submit button, nothing happens, not even an
+error msg.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What was wrong? &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The problem was that I was using images as submit buttons in the HTML
+forms and not checking form submission as per IE6's liking!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Solution: &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;HTML allows us to use images as submit buttons&lt;/p&gt;
+&lt;p&gt;In FF and Chrome (and may be other browsers as well which I dont use),
+if we want to check if submit button is clicked and run a specific
+code, then this serves the purpose&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;isset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$_POST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;submit&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="c1"&gt;// code to be executed&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But IE passes the co-ordinates of click as &lt;code&gt;submit_x&lt;/code&gt; and &lt;code&gt;submit_y&lt;/code&gt;
+instead of just submit=parameter..&lt;/p&gt;
+&lt;p&gt;so to make sure that the form functions in IE, change the above code
+to&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;isset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$_POST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;submit_y&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nb"&gt;isset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$_POST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;submit_x&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="c1"&gt;// code to be executed&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This solved the problem in my case&lt;/p&gt;
+&lt;p&gt;Doing some more G tells me that even if we check just one co-ordinate
+its fine.  But now I have already changed it, and I am too tired to
+change it back again to something else... so I'll let that be.. :)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Thanks to:&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;Webmasterworld forums, Google&lt;/p&gt;</summary><category term="$_POST['submit']"></category><category term="images as buttons"></category><category term="HTML"></category><category term="form"></category><category term="IE6"></category></entry><entry><title>IE6 FIX-ed......Part I</title><link href="http://naiquevin.github.com/ie6-fix-edpart-i.html" rel="alternate"></link><updated>2009-05-06T03:44:44+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-05-06:ie6-fix-edpart-i.html</id><summary type="html">&lt;p&gt;Imagine a scenario,&lt;/p&gt;
+&lt;p&gt;For past one and a half month you have been working hard on your
+website, creating graphics in Ps, accurately positioning them along
+with all the other components using CSS and adding 100 lines of new
+code everyday... and then one day you read something about cross
+browser compatibility issues and open the website in IE6 just to see
+how it works there.&lt;/p&gt;
+&lt;p&gt;The feeling will be nothing less than what you will experience when
+you forget to use Ctrl+S and power cut occurs..&lt;/p&gt;
+&lt;p&gt;Two weeks back, I had a similar feeling when I noticed that IE6
+doesn't like my neatly made PNG images that use transparent
+backgrounds.&lt;/p&gt;
+&lt;p&gt;So I 'googled' to see if I can get any help and to my surprise it
+showed 368,000 results.&lt;/p&gt;
+&lt;p&gt;But only one fix yielded results. The one I found last night at
+&lt;a href="http://www.twinhelix.com/css/iepngfix/demo/"&gt;http://www.twinhelix.com/css/iepngfix/demo/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It was pretty easy, just paste the code in the header and it works
+beautifully. Although someday I would like to take a look at what the
+.htc file actually does, I guess this is not the right time to get
+into such details.&lt;/p&gt;
+&lt;p&gt;But now I realize that this was just one of the problems...&lt;/p&gt;
+&lt;p&gt;Other than PNG,&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Browser doesn't respond to links styled using CSS properly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;And the biggest blow is that the login script doesn't work! It
+   calls the same .php file but nothing happens.. not even an error msg..&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Hope, I ll be able to fix these problems soon. Off to 'google-ing'
+fixes now.&lt;/p&gt;
+&lt;p&gt;Edit: Both of the above mentioned problems are solved. Please check
+the 'CROSS BROWSER' page of this blog for the fixes.&lt;/p&gt;</summary><category term="IE6 fix"></category><category term="web development languages"></category><category term="CSS"></category></entry></feed>

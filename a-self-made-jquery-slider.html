@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A self made Jquery slider</title>
+    <link href="http://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./theme/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="./theme/css/pygments.css"/>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38557598-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>    <div class="container">
+      <div class="header">
+        <h1><a href="/">vineet@naik:~/$ cat mind &gt;&gt; web</a></h1>
+        <ul>
+                      <li><a href="http://github.com/naiquevin">github</a></li>
+                      <li><a href="/pages/about.html">about</a></li>
+                  </ul>
+      </div>
+      <div class="content">
+          <section class="article">
+    <h1 class="articleTitle">A self made Jquery slider</h1>
+    <div class="postInfo">
+      Written on <span class="published" title="2009-08-23T23:47:23">Sun 23 August 2009</span>
+    </div>
+    <div class="articleContent">
+      <p>Now this post has been in the drafts section for quite some
+time.. infact some posts which I started to write later made their way
+to the blog before this one.. Anyway, here it is!</p>
+<p>When one of our clients asked for a slider to show featured products
+on his online store, I felt before going for the ready made plugins
+available on the internet, I could try to create one on my
+own. Although it would be wrong to call this a plugin, it did turn out
+pretty well. Finally we decided to use JCarousal (as its obviously far
+better), but thats a different story.</p>
+<p>Anyways I am posting it here as its done by me. I would be glad if
+anyone finds it helpful.</p>
+<p>It is done using Jquery so you will need to download and include the
+<a href="http://docs.jquery.com/Downloading_jQuery">jquery library</a> to try it
+out. Here is the code and a
+<a href="http://www.noiseokplease.com/slider/test.html">working demo</a></p>
+<p>JAVASCRIPT</p>
+<div class="codehilite"><pre>    <span class="kd">var</span> <span class="nx">leftCount</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">rightCount</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">itemCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">stripCount</span><span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">itemWid</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">itemPad</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">lastScr</span> <span class="o">=</span> <span class="nx">itemWid</span> <span class="o">+</span> <span class="nx">itemPad</span><span class="p">;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.item&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">itemCount</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+    <span class="kd">function</span> <span class="nx">moveRight</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">rightCount</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="nx">itemCount</span> <span class="o">-</span> <span class="nx">stripCount</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">rightCount</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#switcher&#39;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span><span class="nx">left</span><span class="o">:</span><span class="mi">120</span> <span class="o">*</span> <span class="nx">rightCount</span><span class="p">},</span> <span class="s1">&#39;slow&#39;</span><span class="p">);</span>        
+            <span class="nx">rightCount</span><span class="o">++</span><span class="p">;</span>
+            <span class="nx">leftCount</span><span class="o">--</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">moveLeft</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">leftCount</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="nx">itemCount</span> <span class="o">-</span> <span class="nx">stripCount</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#switcher&#39;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span><span class="nx">left</span><span class="o">:-</span><span class="mi">120</span><span class="o">*</span><span class="nx">leftCount</span><span class="p">},</span> <span class="s1">&#39;slow&#39;</span><span class="p">);</span>
+            <span class="nx">leftCount</span><span class="o">++</span><span class="p">;</span>
+            <span class="nx">rightCount</span><span class="o">--</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<p><code>moveLeft</code> and <code>moveRight</code> are the functions that do the trick.</p>
+<p>HTML</p>
+<div class="codehilite"><pre>    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;switcher&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;item&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;item&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;item&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;item&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;item&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;item&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;item&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;item&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;item&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;item&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">onclick=</span><span class="s">&quot;moveRight();&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;laquo;</span>Prev<span class="nt">&lt;/a&gt;</span>
+            <span class="ni">&amp;nbsp;</span>
+            <span class="nt">&lt;a</span> <span class="na">onclick=</span><span class="s">&quot;moveLeft();&quot;</span><span class="nt">&gt;</span>Next<span class="ni">&amp;raquo;</span><span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;dummy&quot;</span> <span class="na">style=</span><span class="s">&quot;display:none;&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> 
+    <span class="nt">&lt;/body&gt;</span>
+</pre></div>
+
+
+<p>Finally, CSS</p>
+<div class="codehilite"><pre>    <span class="nt">body</span> <span class="p">{</span>
+        <span class="k">margin</span><span class="o">:</span><span class="m">0</span> <span class="k">auto</span><span class="p">;</span>
+        <span class="k">padding</span><span class="o">:</span><span class="m">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nf">#container</span> <span class="p">{</span>
+        <span class="k">margin</span><span class="o">:</span><span class="m">50px</span> <span class="k">auto</span><span class="p">;</span>
+        <span class="k">width</span><span class="o">:</span><span class="m">590px</span><span class="p">;</span>
+        <span class="k">overflow</span><span class="o">:</span><span class="k">hidden</span><span class="p">;</span>
+        <span class="k">border</span><span class="o">:</span><span class="m">1px</span> <span class="k">solid</span> <span class="nb">black</span><span class="p">;</span>
+        <span class="k">height</span><span class="o">:</span><span class="m">145px</span><span class="p">;</span>
+        <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="m">10px</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nf">#switcher</span> <span class="p">{</span>
+        <span class="k">position</span><span class="o">:</span><span class="k">relative</span><span class="p">;</span>
+        <span class="k">width</span><span class="o">:</span><span class="m">20000em</span><span class="p">;</span>
+        <span class="k">height</span><span class="o">:</span><span class="m">120px</span><span class="p">;</span>
+        <span class="k">padding</span><span class="o">:</span><span class="m">20px</span> <span class="m">10px</span><span class="p">;</span>
+        <span class="k">overflow</span><span class="o">:</span><span class="k">hidden</span><span class="p">;</span>
+        <span class="k">padding-left</span><span class="o">:</span><span class="m">10px</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.item</span> <span class="p">{</span>
+        <span class="k">position</span><span class="o">:</span><span class="k">relative</span><span class="p">;</span>
+        <span class="k">width</span><span class="o">:</span><span class="m">100px</span><span class="p">;</span>
+        <span class="k">height</span><span class="o">:</span><span class="m">100px</span><span class="p">;</span>
+        <span class="k">float</span><span class="o">:</span><span class="k">left</span><span class="p">;</span>
+        <span class="k">margin-right</span><span class="o">:</span><span class="m">10px</span><span class="p">;</span>
+        <span class="k">border</span><span class="o">:</span><span class="m">1px</span> <span class="k">solid</span> <span class="nb">black</span><span class="p">;</span>
+        <span class="k">background-color</span><span class="o">:</span><span class="m">#fad144</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nf">#button</span> <span class="p">{</span>
+        <span class="k">clear</span><span class="o">:</span><span class="k">both</span><span class="p">;</span>
+        <span class="k">margin</span><span class="o">:</span><span class="m">30px</span> <span class="m">340px</span><span class="p">;</span>
+        <span class="k">cursor</span><span class="o">:</span><span class="k">pointer</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<p>There are two important things to be noted in the CSS:</p>
+<ol>
+<li>Position relative to the switcher and item and,</li>
+<li>Overflow hidden to container and switcher</li>
+</ol>
+<p>Another important thing to be noted is that moveRight is called
+onClick of Previous button and moveLeft is called upon the click of
+next button. This is because moveRight pulls the content to right
+making the 'previous' content visible. Same logic goes for next
+button.</p>
+<p>Now the limitations. If you are a pro you might have already noticed
+the super normal width given to the switcher div. It is to accomodate
+more number of items. If the width is less, say 1000px and the items
+are more, then the extra items will move down.</p>
+<p>I am currently trying hard to find time for working on this defect :)
+and also to turn this into an easy-to-use plugin.</p>
+<p>Note: I admit its not a plugin, but I am posting this here anyway. In
+case you are a pro web developer, this may not excite you as much as
+it excites me. Your comments, suggestions etc. are always welcome.</p>
+    </div>
+  </section>
+  <div class="articleEnd">---</div>
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'naiquevinsblog'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>      </div>
+      <div class="footer">
+        <div class="copyright">Copyright &copy; 2009-present, Vineet Naik</div>
+      </div>
+    </div>
+    <script type="text/javascript" src="./theme/javascript/main.js"></script>
+  </body>
+</html>

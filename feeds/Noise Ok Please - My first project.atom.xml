@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Vineet's blog</title><link href="http://naiquevin.github.com/" rel="alternate"></link><link href="http://naiquevin.github.com/feeds/Noise%20Ok%20Please%20-%20My%20first%20project.atom.xml" rel="self"></link><id>http://naiquevin.github.com/</id><updated>2009-05-28T16:53:18+05:30</updated><entry><title>My first website goes live..and I am so excited!</title><link href="http://naiquevin.github.com/my-first-website-goes-liveand-i-am-so-excited.html" rel="alternate"></link><updated>2009-05-28T16:53:18+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-05-28:my-first-website-goes-liveand-i-am-so-excited.html</id><summary type="html">&lt;p&gt;&lt;em&gt;Note: This post exists for historical reasons! The website I had
+built is no longer up and I gave up the domain name. I may have lost
+the source code too :-(&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Finally I managed to put a substantial work online. My first website
+&lt;a href="http://www.noiseokplease.com"&gt;Noise OK Please&lt;/a&gt; (broken link) has just been
+launched. This is an online community for musicians and their fans.&lt;/p&gt;
+&lt;p&gt;One special thing about this particular project is that no platform
+has been used. All the code has been written by me. Apart from this,
+whatever you will find on this website is my own work (Except the
+avatars. The southpark avatar comes from
+&lt;a href="http://www.sp-studio.de"&gt;sp-studio.de&lt;/a&gt;). Of course, I have used a lot
+of references for accomplishing the task, such as books and no need to
+mention the greatest resource of the present day - Google.&lt;/p&gt;
+&lt;p&gt;One may ask, why did I try to re-invent the wheel? Its because the
+main intention behind this project is to learn though hands on
+experience.  Other than that I wanted to have my own work to show it
+to recruiters so that they can offer me some cool jobs! :).  As the
+number of users increase, I will be re-building it on some platform.&lt;/p&gt;
+&lt;p&gt;The website may seem like an internet startup in the first glance. But
+as of yet, business is not the first thing I am looking at.&lt;/p&gt;
+&lt;p&gt;There still lot of work to be done yet. Some things in the pipe line
+are,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Invite facility to let users invite others to join the community.&lt;/li&gt;
+&lt;li&gt;An interface to search users based on various criteria. &lt;/li&gt;
+&lt;li&gt;A JavaScript powered WYSIWYG rich text editor to post on the wall. &lt;/li&gt;
+&lt;li&gt;And much more.. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I would also like to mention a few references that helped a lot&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.webmasterworld.com"&gt;webmasterworld forums &lt;/a&gt; where
+  professional developers were kind enough to answer my silliest of
+  doubts.&lt;/li&gt;
+&lt;li&gt;A beautiful book called Head First PHP &amp;amp; MySQL.&lt;/li&gt;
+&lt;li&gt;Online tutorials from&lt;a href="http://w3schools.com"&gt; w3schools&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;PS&amp;gt; If you stumble upon this blog post please take some time to look
+at the website and give me an honest feedback.&lt;/p&gt;
+&lt;p&gt;PPS&amp;gt; If you are a web developer, your feedback and comments are
+extremely valuable.&lt;/p&gt;</summary><category term="social networking"></category><category term="noise ok please"></category><category term="musician community"></category><category term="web development"></category></entry></feed>

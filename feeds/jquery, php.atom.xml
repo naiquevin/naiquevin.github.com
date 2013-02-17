@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Vineet's blog</title><link href="http://naiquevin.github.com/" rel="alternate"></link><link href="http://naiquevin.github.com/feeds/jquery,%20php.atom.xml" rel="self"></link><id>http://naiquevin.github.com/</id><updated>2010-01-05T18:11:05+05:30</updated><entry><title>Easy filtering of records using PHP and JQuery.</title><link href="http://naiquevin.github.com/easy-filtering-of-records-using-php-and-jquery.html" rel="alternate"></link><updated>2010-01-05T18:11:05+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2010-01-05:easy-filtering-of-records-using-php-and-jquery.html</id><summary type="html">&lt;p&gt;I came upon a method for filtering records using jquery and php. I am
+sure there must be plugins available to do this but this one is super
+easy. Particularly for problems where the elements are to be filtered
+by multiple criteria and each element falls in more than one criteria
+at a time. Consider the following problem.&lt;/p&gt;
+&lt;p&gt;An e-commerce app (a typical online store) has 10 products in 4
+categories and each product can be present in more than one category
+at a time. All these products are to be shown as a list or in rows of
+an html table. Then they have to be filtered by categories (which
+means when i select a particular category from a list of categories in
+a drop down, only those products which are categorized under it should
+appear and the others should not show.)&lt;/p&gt;
+&lt;p&gt;The method i came up with is this.&lt;/p&gt;
+&lt;p&gt;Get data from the database using php (or for that matter any server
+side scripting language)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;an array of all the products &lt;/li&gt;
+&lt;li&gt;an array of all the categories that the product falls under&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The above data can be actually fetched into a single associative array
+for ease of looping&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+    &lt;span class="nv"&gt;$products&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;product_id&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ipod&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;in_categories&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then loop through the above array to show the products in a table and
+add multiple classes to the tr that represents each product depending
+upon the categories under which the product falls.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &amp;lt;table border=&amp;quot;0&amp;quot; cellspacing=&amp;quot;0&amp;quot; cellpadding=&amp;quot;0&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;        &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;  &lt;span class="k"&gt;foreach&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$products&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nv"&gt;$product&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;  &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;            &amp;lt;tr class=&amp;quot;c_all &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt; &lt;span class="k"&gt;foreach&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$product&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;in_categories&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nv"&gt;$cat&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt; &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;c_&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;$cat&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&amp;quot;&amp;gt; &lt;/span&gt;
+&lt;span class="x"&gt;            &amp;lt;!-- don&amp;#39;t forget that space after each class --&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;                &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;                &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;                &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;            &amp;lt;/tr&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;        &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &amp;lt;/table&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Once this is done, filtering is just a matter of writing a javascript
+function and calling it on the onChange event of the category drop
+down box.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;filterProducts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;byCat&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+        &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;c_&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;all&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;hide&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; &lt;span class="c1"&gt;// first hide all records&lt;/span&gt;
+        &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;c_&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;byCat&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;show&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; &lt;span class="c1"&gt;// show records of the category&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="c1"&gt;//calling the function to show products under category 2&lt;/span&gt;
+    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;#filter&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;click&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+        &lt;span class="nx"&gt;filterProducts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;});&lt;/span&gt;
+    &lt;span class="c1"&gt;// to show all the products back again&lt;/span&gt;
+    &lt;span class="nx"&gt;filterProducts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;all&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;    
+    &lt;span class="c1"&gt;// if your application allows adding adding ,removing or moving&lt;/span&gt;
+    &lt;span class="c1"&gt;// products from one category to another using ajax    &lt;/span&gt;
+    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;#product_&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;productId&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;addClass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;c_&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;catId&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;#product_&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;productId&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;removeClass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;c_&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;catId&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Advantages of the above method:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;no ajax requests as all the data is already there.&lt;/li&gt;
+&lt;li&gt;at any time a product can be added to (or removed from) a
+   particular category by using the addClass and removeClass functions of
+   jquery and it will work perfectly for the later onchange events.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Disadvantages:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;I am not sure what effects if will have on performace.&lt;/li&gt;
+&lt;li&gt;For now, I am leaving aside the jquery performance issues but i
+   think heavy looping in jquery must be better than making ajax requests
+   to the server.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I hope someone will find this helpful. If you know any other alternate
+method for this then please share by commenting on this post. All-hail
+JQuery!&lt;/p&gt;</summary></entry></feed>

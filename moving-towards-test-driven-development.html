@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Moving towards Test Driven Development</title>
+    <link href="http://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./theme/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="./theme/css/pygments.css"/>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38557598-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>    <div class="container">
+      <div class="header">
+        <h1><a href="/">vineet@naik:~/$ cat mind &gt;&gt; web</a></h1>
+        <ul>
+                      <li><a href="http://github.com/naiquevin">github</a></li>
+                      <li><a href="/pages/about.html">about</a></li>
+                  </ul>
+      </div>
+      <div class="content">
+          <section class="article">
+    <h1 class="articleTitle">Moving towards Test Driven Development</h1>
+    <div class="postInfo">
+      Written on <span class="published" title="2010-12-14T17:48:28">Tue 14 December 2010</span>
+    </div>
+    <div class="articleContent">
+      <p>Recently, I have been reading a lot about Unit Testing and other stuff
+related to Test Driven Development. What generates an interest is that
+the idea itself looks promising and totally convinces me. Something
+that will, upon a single command tell if everything is upto the mark
+at any given time is beyond any doubt a sure shot #win! Also, in all
+the online articles and the subsequent discussions that I have read
+about TDD, I haven't come across even one "why-TDD-is-bad" or
+"has-a-downside" argument.</p>
+<p>I believe that by default, it doesn't take much time for a developer
+to realize that testing is an integral part of development. Right from
+the first "hello world" to that impressive little facebook app you
+just rolled out, every application goes through
+let-me-first-see-if-it-works phase before its shown to friends and
+colleagues. Developers at all levels of skills, expertise and
+experience have to test their code.</p>
+<p>As a beginner I wanted all things to work. At times my code passed the
+test, then I changed something that broke it, which meant testing it
+all over again and that was just frustrating. I wonder what would have
+been my first opinion about TDD if I had read it then. Because as I
+see it, TDD is about how to use those dreaded terms such as <em>Fatal
+Error</em>, <em>Notice</em>, <em>Warning,</em> and even worst, <em>An Uncaught Exception
+</em>to your advantage. Nevertheless from my experience, I believe that
+with more and more coding, we naturally come up with our own
+convenient testing techniques and tricks. What I have observed is that
+in a way it brings us close to the concept of Unit Testing and TDD.</p>
+<p>One and probably my first such self discovered trick was testing
+callback functions of ajax requests in javascript. It involves not
+making the ajax request at all at first and directly calling the code
+that would have been the call back of the request. The function takes
+an argument that later on would be replaced by the actual server
+response. Say for example, I need to post a form by making an ajax
+request.</p>
+<div class="codehilite"><pre>    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#submit&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">resp</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="mi">1</span> <span class="o">==</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;done!&#39;</span><span class="p">);</span>                 
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>          
+            <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;failed!&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+</pre></div>
+
+
+<p>Once this thing passes, my only concern is that the server response
+should get me <code>status = 0</code> if something goes wrong and <code>status =
+1</code> if everything works fine. Then there is no need to test the
+callback code, which in actual scenario, would obviously be more
+complex.</p>
+<p>Another trick I discovered was that instead of making a thousand
+clicks to test server side code, its far more convenient to create a
+dummy action in your controller (I mostly use the zend framework)
+where the CRUD will be first tested before it goes into its dedicated
+action. This gives a lot of confidence because the code will be dealt
+with a lot of test cases while it is still in the dummy action. To
+relate this example with the previous one,</p>
+<div class="codehilite"><pre><span class="x">    </span><span class="cp">&lt;?php</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">dummyAction</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$post</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;vineet&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;helloworld&#39;</span>
+        <span class="p">);</span>    
+        <span class="nv">$resp</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>    
+        <span class="k">if</span> <span class="p">(</span><span class="nx">doSomething</span><span class="p">(</span><span class="nv">$post</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$resp</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nv">$resp</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>    
+        <span class="k">echo</span> <span class="nx">Json</span><span class="o">::</span><span class="na">encode</span><span class="p">(</span><span class="nv">$resp</span><span class="p">);</span>    
+        <span class="c1">//stop zf from looking for a view for this action and show result in browser for now    </span>
+        <span class="k">exit</span><span class="p">;</span> 
+    <span class="p">}</span>
+</pre></div>
+
+
+<p>So now just navigate to this dummy action and see if its working. Then
+test it for different set of inputs until you feel confident
+enough. No need to say that the next step is to connect these two
+segments of throughly tested code. This also saves us from a lot of
+debugging from the firebug console.</p>
+<p>But after using this technique for a while, I felt something was wrong
+about this method. The code inside the dummy action was shortlived as
+very soon it would get replaced by fresh code that needed to be
+tested. This was resolved by creating a dedicated controller for all
+my tests which would of course be actions that would stay in the
+controller for further testing. This method also allows directly
+testing other actions in the same or different controllers thanks to
+the <code>forward</code> method of the <code>Zend_Controller_Action</code>. Also to avoid
+writing duplicate code for setting global variables, I created a
+simple class that acts as a Helper to the TestController</p>
+<div class="codehilite"><pre><span class="x">    </span><span class="cp">&lt;?php</span>
+    <span class="k">class</span> <span class="nc">MyTestHelper</span> <span class="p">{</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">mergePost</span> <span class="p">(</span><span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$_POST</span> <span class="o">=</span> <span class="nb">array_merge</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">,</span><span class="nv">$data</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">mergeGet</span> <span class="p">(</span><span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<p>Then create our TestController that will hold all the tests.</p>
+<div class="codehilite"><pre><span class="x">    </span><span class="cp">&lt;?php</span>    
+    <span class="k">class</span> <span class="nc">TestController</span> <span class="k">extends</span> <span class="nx">Zend_Controller_Action</span> <span class="p">{</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">preDispatch</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">testHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyTestHelper</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">testcontactformAction</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">testHelper</span><span class="o">-&gt;</span><span class="na">mergePost</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;email&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;fake@email.com&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;comment&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;test comment&#39;</span>
+            <span class="p">));</span>
+            <span class="c1">//forward it to where the actual action happens (pun intended!)</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_forward</span><span class="p">(</span><span class="s1">&#39;contactform&#39;</span><span class="p">,</span><span class="s1">&#39;index&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>    
+</pre></div>
+
+
+<p>Whenever something needs to be tested, I just look up this controller
+for the test action and run it in the browser. It also makes
+refactoring hastle free to some extent.</p>
+<p>An important point to note is that error reporting must be turned on
+for this to work.</p>
+<div class="codehilite"><pre><span class="x">    </span><span class="cp">&lt;?php</span>    
+    <span class="nb">error_reporting</span><span class="p">(</span><span class="k">E_ALL</span> <span class="o">|</span> <span class="nx">E_STRICT</span><span class="p">);</span>
+    <span class="nb">ini_set</span><span class="p">(</span><span class="s2">&quot;display_errors&quot;</span><span class="p">,</span><span class="s2">&quot;on&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Although these methods have many limitations and are very raw as
+compared to testing frameworks such as phpUnit, it works for me at the
+moment. Regarding phpUnit, I feel its a great tool. I do use it for
+testing utility functions and methods that don't involve fetching and
+saving to the database. I have read phpUnit can manage that, just need
+to sit down some time and try it out.</p>
+    </div>
+  </section>
+  <div class="articleEnd">---</div>
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'naiquevinsblog'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>      </div>
+      <div class="footer">
+        <div class="copyright">Copyright &copy; 2009-present, Vineet Naik</div>
+      </div>
+    </div>
+    <script type="text/javascript" src="./theme/javascript/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Vineet's blog</title><link href="http://naiquevin.github.com/" rel="alternate"></link><link href="http://naiquevin.github.com/feeds/emacs.atom.xml" rel="self"></link><id>http://naiquevin.github.com/</id><updated>2011-08-04T00:00:00+05:30</updated><entry><title>Adding text vertically on multiple lines (region)</title><link href="http://naiquevin.github.com/adding-text-vertically-on-multiple-lines-region.html" rel="alternate"></link><updated>2011-08-04T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2011-08-04:adding-text-vertically-on-multiple-lines-region.html</id><summary type="html">&lt;p&gt;Ok. Finally a new emacs trick. Actually I had come across this a while
+back but then I went on a short vacation and later picked up a John
+Grisham book (one of the hard-to-put-down types) and so the delay.&lt;/p&gt;
+&lt;p&gt;This one is about adding stuff vertically in a line in the buffer. It
+might seem to be a bit vague and useless at first but it perfectly
+fits a problem I face everyday in php-mode.&lt;/p&gt;
+&lt;p&gt;Now php-mode is not all that great if compared to the rest of the
+emacs awesomeness.&lt;/p&gt;
+&lt;p&gt;The problem is that when I try to comment a region, it wraps each line
+of the region in block comments ie. &lt;code&gt;/* */&lt;/code&gt; which looks kind of ugly
+and may be objectionable by fellow team members too.&lt;/p&gt;
+&lt;p&gt;So I started using this command as a work around to comment out a
+region in php by prefixing each line with &lt;code&gt;//&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The way I do this is as follows:&lt;/p&gt;
+&lt;p&gt;Set the mark at the required position on the starting line (in my case
+column 0 or the start of the line)&lt;/p&gt;
+&lt;p&gt;Then move the cursor to the ending line using C-n normally.&lt;/p&gt;
+&lt;p&gt;Then type, &lt;code&gt;C-x r t&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;String Rectangle :&lt;/code&gt; will appear in the mini buffer.&lt;/p&gt;
+&lt;p&gt;Type &lt;code&gt;//&lt;/code&gt; to comment out each line and press &lt;code&gt;RET&lt;/code&gt;.&lt;/p&gt;</summary><category term="emacs"></category><category term="editing"></category></entry><entry><title>Bookmarking in Emacs</title><link href="http://naiquevin.github.com/bookmarking-in-emacs.html" rel="alternate"></link><updated>2011-07-22T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2011-07-22:bookmarking-in-emacs.html</id><summary type="html">&lt;p&gt;Emacs allows bookmarking inside buffers so that you can quicky visit
+those at a later time. And by later time I mean any time later, even
+if its a new emacs session.&lt;/p&gt;
+&lt;p&gt;The commands are as follows :&lt;/p&gt;
+&lt;p&gt;Set bookmark &lt;code&gt;C-X r m &amp;lt;bookmark_name&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;View bookmarks in the minibuffer &lt;code&gt;C-X r b &amp;lt;up/down arrow&amp;gt;&lt;/code&gt; or &lt;code&gt;C-s&lt;/code&gt; to
+I-search (Sounds familiar?)&lt;/p&gt;
+&lt;p&gt;View a list of all bookmarks &lt;code&gt;C-X r l&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Delete bookmark &lt;code&gt;C-X r l&lt;/code&gt; (to view list) and then mark with &lt;code&gt;D&lt;/code&gt; and delete
+with &lt;code&gt;x&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;As you can see a nice thing with emacs is that a lot of old concepts
+apply to the newly learned stuff for eg. in this case searching for a
+bookmark can be related to searching for open buffers and deleting
+bookmarks is to be done just the way we kill open buffers.&lt;/p&gt;
+&lt;p&gt;Also, if a bookmark is set, it persists in subsequent sessions as well
+until its deleted. And to jump to any set bookmark, it doesn't require
+the buffer to be open.&lt;/p&gt;
+&lt;p&gt;I never used bookmarks in my previous ide which was eclipse. But here
+it seems quite useful to me. I personally don't like the open files in
+previous ide session auto-opening up at startup. I prefer starting
+with a clean slate. So I can just set a bookmark on the dired buffers
+of the projects that I am working on currently or just set one before
+wrapping up day's work so that I can start from there the next day.&lt;/p&gt;</summary><category term="emacs"></category><category term="editing"></category></entry><entry><title>Killing buffers</title><link href="http://naiquevin.github.com/killing-buffers.html" rel="alternate"></link><updated>2011-07-19T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2011-07-19:killing-buffers.html</id><summary type="html">&lt;p&gt;In emacs, as we open files, a lot of dired buffers get accumulated. I
+personally find them a nuisance after a while specially during longer
+emacs sessions. Killing them one by one using &lt;code&gt;C-X k&lt;/code&gt; would be quite
+tedious. Fortunately there is better way to kill many buffers at a
+time.&lt;/p&gt;
+&lt;p&gt;For this we list all the buffers using &lt;code&gt;C-X C-b&lt;/code&gt;. The list opens in
+a new buffer so we need to switch to this buffer using &lt;code&gt;C-x o&lt;/code&gt;. Now
+we need to mark all the buffers that we wish to kill by typing
+&lt;code&gt;d&lt;/code&gt;. As we mark, a capital &lt;code&gt;D&lt;/code&gt; appears alongside the buffers'
+names. After all buffers to be killed are marked, just press &lt;code&gt;x&lt;/code&gt; and
+all the buffers will get killed.&lt;/p&gt;</summary><category term="emacs"></category><category term="editing"></category></entry><entry><title>Keyboard macros in emacs</title><link href="http://naiquevin.github.com/keyboard-macros-in-emacs.html" rel="alternate"></link><updated>2011-07-16T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2011-07-16:keyboard-macros-in-emacs.html</id><summary type="html">&lt;p&gt;Just learnt how to set and use Keyboard Macros in emacs. This looks
+pretty useful and something I feel will come in handy while
+refactoring code.&lt;/p&gt;
+&lt;p&gt;Firstly, to set a keyboard macros means recording a sequence of
+actions (keystrokes) and saving them. Later you can ask emacs to just
+repeat them for you whenever you want using a single command.&lt;/p&gt;
+&lt;p&gt;Setting macros is quite simple,&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;C-X (&lt;/code&gt;  ......begin a macro definition&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;...&amp;lt;do some keystrokes that you want to record&amp;gt;...&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;C-X )&lt;/code&gt;  ......end the macro definition&lt;/p&gt;
+&lt;p&gt;Now to "play" your recording anywhere, all you need to do is &lt;code&gt;C-X e&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Lets imagine a screnario:&lt;/p&gt;
+&lt;p&gt;In a php class (say a controller in an MVC application) the following
+expression is written a number of times to get a particular request
+param and assign it to a variable&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+    &lt;span class="nv"&gt;$id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;request&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;param&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;..............&lt;/span&gt; &lt;span class="nv"&gt;$user_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;request&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;param&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;user_id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;    
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Suppose I want to pass a second optional parameter of value &lt;code&gt;0&lt;/code&gt; to 
+all of the function calls ie change them such as,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+    &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;request&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;param&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To do this using a macro, &lt;/p&gt;
+&lt;p&gt;move to the beginning of the buffer by typing &lt;code&gt;M-S-&amp;lt;&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;Begin the macro definition &lt;code&gt;C-X (&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Incremental search for &lt;code&gt;$this-&amp;gt;request-&amp;gt;param&lt;/code&gt; using &lt;code&gt;C-s&lt;/code&gt; and then &lt;code&gt;RET&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;end of line &lt;code&gt;C-e&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;backward twice &lt;code&gt;C-b * 2&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;type &lt;code&gt;, 0&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;end macro definition &lt;code&gt;C-X )&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Now keep doing &lt;code&gt;C-X e&lt;/code&gt; till all the method calls are modified.&lt;/p&gt;
+&lt;p&gt;(This was somewhat a vague example but I hope you get the idea :-))&lt;/p&gt;</summary><category term="emacs"></category><category term="editing"></category><category term="macros"></category></entry><entry><title>Speedy navigation across the buffer in emacs</title><link href="http://naiquevin.github.com/speedy-navigation-across-the-buffer-in-emacs.html" rel="alternate"></link><updated>2011-07-15T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2011-07-15:speedy-navigation-across-the-buffer-in-emacs.html</id><summary type="html">&lt;p&gt;Okay. So here goes the first one. Very often I find myself searching
+for a line of code in the same file so that I can copy it over into
+some other function or a method. This whole process of moving to the
+desired line of code, copying it over, coming back to where you
+started the search and yanking it can be done unbelievably fast in
+emacs. This is because emacs keeps setting marks for you automatically
+while you navigate through the lines of code (noticed the words "Mark
+Set" in the minibuffer ?). In other words it keeps saving your
+previous positions. So all you need to master is how to move back to
+the previous position quicky after copying. To move to the previous
+mark the command is C-u C-SPC&lt;/p&gt;
+&lt;p&gt;So for the above scenario the command sequence would be,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;C-s or C-r (search forward or backward)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;C-m or RET (after finding the desired line)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;C-a  (moving to the start of the line)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;C-SPC (to set the mark)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;C-e (move to the end of the line thereby selecting a region)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;M-w (copy region)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;C-u C--SPC * 2 (to return back to the initial mark)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Looks like too much work for the fingers but its definitely faster
+than the right click scroll thing one would have to do with a mouse.&lt;/p&gt;
+&lt;p&gt;Just think as if you are driving a racing car. It can go from 0-60 in
+3.5 secs, &lt;em&gt;provided&lt;/em&gt; you can shift gears fast enough :)&lt;/p&gt;</summary><category term="emacs"></category><category term="editing"></category></entry></feed>
