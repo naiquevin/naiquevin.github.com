@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Python generators and being lazy</title>
+    <link href="http://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./theme/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="./theme/css/pygments.css"/>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38557598-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>    <div class="container">
+      <div class="header">
+        <h1><a href="/">vineet@naik:~/$ cat mind &gt;&gt; web</a></h1>
+        <ul>
+                      <li><a href="http://github.com/naiquevin">github</a></li>
+                      <li><a href="/pages/about.html">about</a></li>
+                  </ul>
+      </div>
+      <div class="content">
+          <section class="article">
+    <h1 class="articleTitle">Python generators and being lazy</h1>
+    <div class="postInfo">
+      Written on <span class="published" title="2013-03-01T12:00:00">Fri 01 March 2013</span>
+    </div>
+    <div class="articleContent">
+      <p>This is going to be a rather long post (call it a tutorial if you
+wish), but in case you are a beginner I hope it will help you
+understand generators in Python and lazy evaluation and your time will
+be well spent. I usually take notes while learning any new stuff and
+now I am trying to experiment converting the notes into blog
+post/tutorials as I feel it will be a good way for me to revisit and
+revise the concepts while being helpful to others at the same time.</p>
+<p>And no, please don't grab a cup of coffee for this one
+;-) Instead fire up a Python shell and have your favourite editor
+ready because we will be trying out stuff.</p>
+<h4>A simple example</h4>
+<p>The good news is that, to work with Python generators it doesn't
+require us to learn much additional syntax. Here is a simple
+generator.</p>
+<div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">gen</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">i</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; g = gen()</span>
+<span class="go">    &gt;&gt;&gt; type(g)</span>
+<span class="go">    &lt;type &#39;generator&#39;&gt;</span>
+</pre></div>
+
+
+<p><code>g</code> is a generator here. What's happening is that the function <code>gen</code>
+when invoked returns a generator object which is assigned to <code>g</code>. If
+you think I am crazy to say it <em>returns</em> a generator object, I don't
+blame you because it's not immediately clear. After all there is no
+<code>return</code> keyword used. Instead, we see a new keyword <code>yield</code>. A
+function with yield statement will magically return a generator
+object.</p>
+<p>The call to the function will not execute any code inside it yet. For
+that we need to call the generator object's <code>next</code> method,</p>
+<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; g.next()</span>
+<span class="go">    0</span>
+<span class="go">    &gt;&gt;&gt; print &#39;Hello&#39;</span>
+<span class="go">    &gt;&gt;&gt; g.next()</span>
+<span class="go">    1        </span>
+</pre></div>
+
+
+<p>At the time of the first call to the <code>next</code>, the yield statement will
+be executed once and a value will be returned. At the same time, the
+control will also be returned back to the calling code. On the next
+call to the <code>next</code> method, the control goes back to the function and
+it can resume the execution from where it left with full access to the
+local variables again.</p>
+<h4>Iterator protocol and Generator expressions</h4>
+<p>Generators support the
+<a href="http://docs.python.org/2/library/stdtypes.html?highlight=iterator#iterator-types">iterator protocol</a>
+i.e. they implement the <code>next</code> and <code>__iter__</code> methods and raise
+<code>StopIteration</code> exception when no more values can be yielded. Hence
+we can use a for loop to generate values from a generator instead of
+calling the next method manually. <code>for</code> will implicitly handle
+<code>StopIteration</code> and when that happens, will end the loop.</p>
+<div class="codehilite"><pre>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">i</span>
+</pre></div>
+
+
+<p>In fact there also exist list comprehensions equivalent for generators
+called generator expressions. The syntax again is ridiculously
+similar, the only change being, round brackets <code>()</code> instead of
+square <code>[]</code>. The difference is that it will give us an iterator (a
+generator object) instead of an iterable (a list in memory).</p>
+<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; squares = [i*i for i in range(1, 11)] # list    </span>
+<span class="go">    &gt;&gt;&gt; type(squares)</span>
+<span class="go">    &lt;type &#39;list&#39;&gt;</span>
+<span class="go">    &gt;&gt;&gt; gen_squares = (i*i for i in range(1, 11)) # generator object</span>
+<span class="go">    &gt;&gt;&gt; type(gen_squares)</span>
+<span class="go">    &gt;&gt;&gt; &lt;type &#39;generator&#39;&gt;</span>
+<span class="go">    &gt;&gt;&gt; iter(gen_squares) is gen_squares</span>
+<span class="go">    True    </span>
+</pre></div>
+
+
+<h4>Why generators?</h4>
+<p>Now you may ask how does this differ from an ordinary list and what is
+the use of all this anyway? The key difference is that the generator
+gives out new values on the fly and doesn't keep the elements in
+memory. Turns out, our earlier example was not quite apt for
+understanding the concept as we used <code>range</code> to build a list in memory
+upfront. As a practical example, let's define a function to give us
+incremental values infinitely.</p>
+<div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">infinitely_incr</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">start</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">yield</span> <span class="n">n</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; iinf = infinitely_incr()</span>
+<span class="go">    &gt;&gt;&gt; iinf.next()</span>
+<span class="go">    1</span>
+<span class="go">    &gt;&gt;&gt; iinf.next()</span>
+<span class="go">    2</span>
+<span class="go">    &gt;&gt;&gt; iinf.next()</span>
+<span class="go">    3</span>
+</pre></div>
+
+
+<p>We can call <code>iinf.next()</code> as many times as we want to get an
+incremented number each time without having a list in memory. This is
+pretty cool.</p>
+<p>Let's consider another example. What if we have huge data in some file
+and need to process each of it's lines by calling one or many
+functions on them,</p>
+<div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">gen1</span><span class="p">():</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;hugedata.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">line</span>    
+    <span class="n">g</span> <span class="o">=</span> <span class="n">gen1</span><span class="p">()</span>    
+    <span class="n">g2</span> <span class="o">=</span> <span class="p">(</span><span class="n">process</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">g</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">g2</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">x</span>
+</pre></div>
+
+
+<p>In python, a file object can be iterated over to obtain one line at a
+time. In the above example, since the <code>process</code> function is called
+inside a generator expression, it will not be executed until the for
+loop starts consuming the generator. That is when the <code>process</code>
+function will execute for each value. Don't worry if all this sounds
+confusing at the moment since the next example will clarify
+things. But if you think about it, the cost of loading all data from
+the huge file into memory is avoided. On the other hand, it also means
+that the file cannot be closed until all the lines are processed.</p>
+<p>Also, not keeping the elements in memory implies that a generator
+object can be looped through or consumed only once. So it is obviously
+not a good choice if the sequence of items need to be reused in which
+case a normal list would be suitable.</p>
+<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; g = gen()</span>
+<span class="go">    &gt;&gt;&gt; squares = (i*i for i in g)</span>
+<span class="go">    &gt;&gt;&gt; squares</span>
+<span class="go">    [1, 4, 9, 16, 25]</span>
+<span class="go">    &gt;&gt;&gt; cubes = (i*i*i for i in g)</span>
+<span class="go">    []</span>
+</pre></div>
+
+
+<p>But if you have a series of functions, that need to be executed one
+after another on each line of a file, then the laziness of generator
+expressions can be tremendously useful.</p>
+<h4>Understanding the 'lazy' using a <s>concrete</s> contrived example</h4>
+<p>So, what does being lazy mean after all? Imagine our hugedata.txt
+contains some 100000 lines with 1 random number on each line and we
+want to find out the digit sum of the square of each number and print
+out the results in the shell. Here is an example that uses list
+comprehensions and hence will build and keep lists in memory.</p>
+<p>For the sake of an example and to make sense out of the results, let's
+assume that our hugedata.txt is actually a tiny file of just 5 lines
+containing the first 5 positive integers :-)</p>
+<div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&#39;Square of </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">,</span>
+        <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>        
+    <span class="k">def</span> <span class="nf">digit_sum</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&#39;Digit Sum of </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">,</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+    <span class="n">numbers</span> <span class="o">=</span> <span class="n">gen</span><span class="p">()</span>
+    <span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">square</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">]</span>
+    <span class="n">dsums</span> <span class="o">=</span> <span class="p">[</span><span class="n">digit_sum</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">squares</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">dsums</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">n</span>
+</pre></div>
+
+
+<p>Running the above snippet of code will produce an output as follows,</p>
+<div class="codehilite"><pre>    <span class="n">Square</span> <span class="n">of</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="n">Square</span> <span class="n">of</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="n">Square</span> <span class="n">of</span> <span class="mi">3</span> <span class="o">-&gt;</span> <span class="n">Square</span> <span class="n">of</span> <span class="mi">4</span> <span class="o">-&gt;</span> <span class="n">Square</span>
+    <span class="n">of</span> <span class="mi">5</span> <span class="o">-&gt;</span> <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">4</span> <span class="o">-&gt;</span> <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">9</span> <span class="o">-&gt;</span> <span class="n">Digit</span>
+    <span class="n">Sum</span> <span class="n">of</span> <span class="mi">16</span> <span class="o">-&gt;</span> <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">25</span> <span class="o">-&gt;</span> 
+    <span class="mi">1</span>
+    <span class="mi">4</span>
+    <span class="mi">9</span>
+    <span class="mi">7</span>
+    <span class="mi">7</span>
+</pre></div>
+
+
+<p>First all squares will be calculated, then their digit sums and then
+the results will be printed one by one.</p>
+<p>Now with generator expressions just see what we get,</p>
+<div class="codehilite"><pre>    <span class="n">numbers</span> <span class="o">=</span> <span class="n">gen1</span><span class="p">()</span>
+    <span class="n">squares</span> <span class="o">=</span> <span class="p">(</span><span class="n">square</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="n">in</span> <span class="n">numbers</span><span class="p">)</span>
+    <span class="n">dsums</span> <span class="o">=</span> <span class="p">(</span><span class="n">digit_sum</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="n">in</span> <span class="n">squares</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="n">in</span> <span class="n">dsums</span><span class="o">:</span>
+        <span class="n">print</span> <span class="n">n</span>
+</pre></div>
+
+
+<p>Output:</p>
+<div class="codehilite"><pre>    <span class="n">Square</span> <span class="n">of</span> <span class="mi">1</span> <span class="o">-&gt;</span>  <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">1</span> <span class="o">-&gt;</span>  <span class="mi">1</span>
+    <span class="n">Square</span> <span class="n">of</span> <span class="mi">2</span> <span class="o">-&gt;</span>  <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">4</span> <span class="o">-&gt;</span>  <span class="mi">4</span>
+    <span class="n">Square</span> <span class="n">of</span> <span class="mi">3</span> <span class="o">-&gt;</span>  <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">9</span> <span class="o">-&gt;</span>  <span class="mi">9</span>
+    <span class="n">Square</span> <span class="n">of</span> <span class="mi">4</span> <span class="o">-&gt;</span>  <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">16</span> <span class="o">-&gt;</span>  <span class="mi">7</span>
+    <span class="n">Square</span> <span class="n">of</span> <span class="mi">5</span> <span class="o">-&gt;</span>  <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">25</span> <span class="o">-&gt;</span>  <span class="mi">7</span>
+</pre></div>
+
+
+<p>Every item is processed by each function sequencially similar to how
+it would have been if there was just one <code>for</code> loop and all
+functions were called progressively on the derived values of the item
+in each iteration. This is quite awesome if you can imagine numbers
+flowing through functions similar to signals flowing through various
+stages of a signal processor.</p>
+<p>It's called lazy because the numbers are getting consumed late, at the
+time of iteration. The implicit call to <code>next</code> by the <code>for</code> loop
+asks for <code>digit_sum</code> of <code>1</code> from <code>dsums</code> which asks for the <code>square</code>
+of <code>1</code> from <code>squares</code> which asks for <code>1</code> from <code>numbers</code>. This
+continues till <code>numbers</code> can yield a value. Nothing is evaluated
+unless it is asked for.</p>
+<h4>Common traps and things to watch out for</h4>
+<p>Just like in case of many other cool language features, there are a
+few gotchas and things that we need to watch out for when using
+generators as it's very easy to screw things up.</p>
+<p>Rule #0 is - Use generators wisely. Don't use a generator expression
+only because the syntax is slightly different from list
+comprehensions.</p>
+<p>Also, as we saw earlier, if the sequence needs to be reused then
+simply use a list. Keeping stuff in memory is not bad after all (we do
+that all the time while caching values, don't we?)</p>
+<p>Another important thing to watch out for is the scope of the variables
+that are going to be used by functions when they execute in a lazy
+manner. This needs a bit more explanation so here is an example.</p>
+<p>Suppose we have a generator that yeilds alphabets and we need to add
+two suffixes to each alphabet for eg. we have alphabet <code>a</code>. First
+it's suffixed with <code>x</code> which makes it <code>ax</code> and then with <code>y</code> which
+makes it <code>axy</code>. We need to do this with multiple alphabets and we
+choose to use a generator object to yield each alphabet.</p>
+<div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">add_suffix</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">suffix</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">suffix</span><span class="p">)</span>        
+    <span class="k">def</span> <span class="nf">gen</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">]:</span>
+            <span class="k">yield</span> <span class="n">i</span>            
+    <span class="n">ns</span> <span class="o">=</span> <span class="n">gen</span><span class="p">()</span>
+    <span class="n">suffixes</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">suffixes</span><span class="p">:</span>
+        <span class="n">ns</span> <span class="o">=</span> <span class="p">(</span><span class="n">add_suffix</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ns</span><span class="p">)</span>
+    <span class="k">print</span> <span class="nb">list</span><span class="p">(</span><span class="n">ns</span><span class="p">)</span>
+</pre></div>
+
+
+<p>What do you think will be output of the above program? If your mind
+tells you <code>['axy', 'bxy', 'cxy', 'dxy']</code> then it's wrong. Just run it
+and see it for yourself that the output we get is
+<code>['ayy', 'byy', 'cyy', 'dyy']</code>. What's happening here?</p>
+<p>A generator can remember the local variables when it gets back the
+control on the call of <code>next</code> method. The local scope here is actually that of
+the <code>for</code> loop. By the time the generator is consumed upon call to
+<code>list(ns)</code>, the value of <code>s</code> in local scope is <code>y</code>. The value <code>x</code> in
+the previous iteration of suffixes is simply lost.</p>
+<p>To fix this, we just define another function wrapping over the call to
+the <code>add_suffix</code> function that will return a generator object</p>
+<div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">gen1</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">sfx</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">add_suffix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sfx</span><span class="p">)</span>            
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">suffixes</span><span class="p">:</span>
+        <span class="n">ns</span> <span class="o">=</span> <span class="n">gen1</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; list(ns)</span>
+<span class="go">    [&#39;axy&#39;, &#39;bxy&#39;, &#39;cxy&#39;, &#39;dxy&#39;]</span>
+</pre></div>
+
+
+<h4>This is by no means all about generators</h4>
+<p>I know there is lot more to generators than what this post covers. You
+should only consider this as a starting point for digging deeper into
+them. It would also be worth mentioning about the use of generator as
+co-routines where it can accept values from the calling code besides
+yeilding to it. Co-routines are pretty advanced and mind bending to
+understand and I am still trying to explore this topic. I got
+interested in it after attending a talk on 'Data processing pipelines'
+by Ami Tavory at SciPy India 2012 where he also showed
+<a href="http://code.google.com/p/dagpype/">Dagpype</a> - A framework written by
+him for data processing and preparation.</p>
+<h4>References</h4>
+<ul>
+<li><a href="http://www.dabeaz.com/generators/">Generator Tricks for system programmers</a> by David Beazley 
+  (particularly a must read)</li>
+<li><a href="http://www.ibm.com/developerworks/library/l-pycon/index.html">Iterators and simple generators</a> by David Mertz</li>
+<li><a href="http://www.amazon.com/Core-Python-Programming-Wesley-Chun/dp/0132269937">Core Python Programming Book</a> by Wesley Chun</li>
+<li>I would also like to recommend this recently published
+  <a href="http://excess.org/article/2013/02/itergen1/">article</a> by Ian Ward.</li>
+</ul>
+<h4>If you are curious about co-routines, also see</h4>
+<ul>
+<li><a href="http://dabeaz.com/coroutines/">A Curious Course on Coroutines and Concurrency</a>
+  (again by David Beazley) </li>
+<li><a href="http://excess.org/article/2013/02/itergen2/">Part II</a> of the above
+  article by Ian Ward</li>
+</ul>
+    </div>
+  </section>
+  <div class="articleEnd">---</div>
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'naiquevinsblog'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>      </div>
+      <div class="footer">
+        <div class="copyright">Copyright &copy; 2009-present, Vineet Naik</div>
+        <div class="courtesy">Powered
+          by <a href="http://docs.getpelican.com/en/3.1.1/">Pelican</a>
+          & <a href="https://help.github.com/articles/user-organization-and-project-pages">Github
+          pages</a>
+        </div>
+        <br class="clear"/>
+      </div>
+    </div>
+    <script type="text/javascript" src="./theme/javascript/main.js"></script>
+  </body>
+</html>

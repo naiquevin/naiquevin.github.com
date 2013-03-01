@@ -1,5 +1,299 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Vineet's blog</title><link href="http://naiquevin.github.com/" rel="alternate"></link><link href="http://naiquevin.github.com/feeds/all.atom.xml" rel="self"></link><id>http://naiquevin.github.com/</id><updated>2013-02-17T00:00:00+05:30</updated><entry><title>Pelicanized!</title><link href="http://naiquevin.github.com/pelicanized.html" rel="alternate"></link><updated>2013-02-17T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2013-02-17:pelicanized.html</id><summary type="html">&lt;p&gt;Just moved my blog from Octopress to
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Vineet's blog</title><link href="http://naiquevin.github.com/" rel="alternate"></link><link href="http://naiquevin.github.com/feeds/all.atom.xml" rel="self"></link><id>http://naiquevin.github.com/</id><updated>2013-03-01T12:00:00+05:30</updated><entry><title>Python generators and being lazy</title><link href="http://naiquevin.github.com/python-generators-and-being-lazy.html" rel="alternate"></link><updated>2013-03-01T12:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2013-03-01:python-generators-and-being-lazy.html</id><summary type="html">&lt;p&gt;This is going to be a rather long post (call it a tutorial if you
+wish), but in case you are a beginner I hope it will help you
+understand generators in Python and lazy evaluation and your time will
+be well spent. I usually take notes while learning any new stuff and
+now I am trying to experiment converting the notes into blog
+post/tutorials as I feel it will be a good way for me to revisit and
+revise the concepts while being helpful to others at the same time.&lt;/p&gt;
+&lt;p&gt;And no, please don't grab a cup of coffee for this one
+;-) Instead fire up a Python shell and have your favourite editor
+ready because we will be trying out stuff.&lt;/p&gt;
+&lt;h4&gt;A simple example&lt;/h4&gt;
+&lt;p&gt;The good news is that, to work with Python generators it doesn't
+require us to learn much additional syntax. Here is a simple
+generator.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;gen&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; g = gen()&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; type(g)&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;lt;type &amp;#39;generator&amp;#39;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;g&lt;/code&gt; is a generator here. What's happening is that the function &lt;code&gt;gen&lt;/code&gt;
+when invoked returns a generator object which is assigned to &lt;code&gt;g&lt;/code&gt;. If
+you think I am crazy to say it &lt;em&gt;returns&lt;/em&gt; a generator object, I don't
+blame you because it's not immediately clear. After all there is no
+&lt;code&gt;return&lt;/code&gt; keyword used. Instead, we see a new keyword &lt;code&gt;yield&lt;/code&gt;. A
+function with yield statement will magically return a generator
+object.&lt;/p&gt;
+&lt;p&gt;The call to the function will not execute any code inside it yet. For
+that we need to call the generator object's &lt;code&gt;next&lt;/code&gt; method,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; g.next()&lt;/span&gt;
+&lt;span class="go"&gt;    0&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; print &amp;#39;Hello&amp;#39;&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; g.next()&lt;/span&gt;
+&lt;span class="go"&gt;    1        &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;At the time of the first call to the &lt;code&gt;next&lt;/code&gt;, the yield statement will
+be executed once and a value will be returned. At the same time, the
+control will also be returned back to the calling code. On the next
+call to the &lt;code&gt;next&lt;/code&gt; method, the control goes back to the function and
+it can resume the execution from where it left with full access to the
+local variables again.&lt;/p&gt;
+&lt;h4&gt;Iterator protocol and Generator expressions&lt;/h4&gt;
+&lt;p&gt;Generators support the
+&lt;a href="http://docs.python.org/2/library/stdtypes.html?highlight=iterator#iterator-types"&gt;iterator protocol&lt;/a&gt;
+i.e. they implement the &lt;code&gt;next&lt;/code&gt; and &lt;code&gt;__iter__&lt;/code&gt; methods and raise
+&lt;code&gt;StopIteration&lt;/code&gt; exception when no more values can be yielded. Hence
+we can use a for loop to generate values from a generator instead of
+calling the next method manually. &lt;code&gt;for&lt;/code&gt; will implicitly handle
+&lt;code&gt;StopIteration&lt;/code&gt; and when that happens, will end the loop.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In fact there also exist list comprehensions equivalent for generators
+called generator expressions. The syntax again is ridiculously
+similar, the only change being, round brackets &lt;code&gt;()&lt;/code&gt; instead of
+square &lt;code&gt;[]&lt;/code&gt;. The difference is that it will give us an iterator (a
+generator object) instead of an iterable (a list in memory).&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; squares = [i*i for i in range(1, 11)] # list    &lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; type(squares)&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;lt;type &amp;#39;list&amp;#39;&amp;gt;&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; gen_squares = (i*i for i in range(1, 11)) # generator object&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; type(gen_squares)&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; &amp;lt;type &amp;#39;generator&amp;#39;&amp;gt;&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; iter(gen_squares) is gen_squares&lt;/span&gt;
+&lt;span class="go"&gt;    True    &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Why generators?&lt;/h4&gt;
+&lt;p&gt;Now you may ask how does this differ from an ordinary list and what is
+the use of all this anyway? The key difference is that the generator
+gives out new values on the fly and doesn't keep the elements in
+memory. Turns out, our earlier example was not quite apt for
+understanding the concept as we used &lt;code&gt;range&lt;/code&gt; to build a list in memory
+upfront. As a practical example, let's define a function to give us
+incremental values infinitely.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;infinitely_incr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;
+        &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+            &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; iinf = infinitely_incr()&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; iinf.next()&lt;/span&gt;
+&lt;span class="go"&gt;    1&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; iinf.next()&lt;/span&gt;
+&lt;span class="go"&gt;    2&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; iinf.next()&lt;/span&gt;
+&lt;span class="go"&gt;    3&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can call &lt;code&gt;iinf.next()&lt;/code&gt; as many times as we want to get an
+incremented number each time without having a list in memory. This is
+pretty cool.&lt;/p&gt;
+&lt;p&gt;Let's consider another example. What if we have huge data in some file
+and need to process each of it's lines by calling one or many
+functions on them,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;gen1&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;hugedata.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;    
+    &lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;gen1&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;    
+    &lt;span class="n"&gt;g2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;g2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In python, a file object can be iterated over to obtain one line at a
+time. In the above example, since the &lt;code&gt;process&lt;/code&gt; function is called
+inside a generator expression, it will not be executed until the for
+loop starts consuming the generator. That is when the &lt;code&gt;process&lt;/code&gt;
+function will execute for each value. Don't worry if all this sounds
+confusing at the moment since the next example will clarify
+things. But if you think about it, the cost of loading all data from
+the huge file into memory is avoided. On the other hand, it also means
+that the file cannot be closed until all the lines are processed.&lt;/p&gt;
+&lt;p&gt;Also, not keeping the elements in memory implies that a generator
+object can be looped through or consumed only once. So it is obviously
+not a good choice if the sequence of items need to be reused in which
+case a normal list would be suitable.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; g = gen()&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; squares = (i*i for i in g)&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; squares&lt;/span&gt;
+&lt;span class="go"&gt;    [1, 4, 9, 16, 25]&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; cubes = (i*i*i for i in g)&lt;/span&gt;
+&lt;span class="go"&gt;    []&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But if you have a series of functions, that need to be executed one
+after another on each line of a file, then the laziness of generator
+expressions can be tremendously useful.&lt;/p&gt;
+&lt;h4&gt;Understanding the 'lazy' using a &lt;s&gt;concrete&lt;/s&gt; contrived example&lt;/h4&gt;
+&lt;p&gt;So, what does being lazy mean after all? Imagine our hugedata.txt
+contains some 100000 lines with 1 random number on each line and we
+want to find out the digit sum of the square of each number and print
+out the results in the shell. Here is an example that uses list
+comprehensions and hence will build and keep lists in memory.&lt;/p&gt;
+&lt;p&gt;For the sake of an example and to make sense out of the results, let's
+assume that our hugedata.txt is actually a tiny file of just 5 lines
+containing the first 5 positive integers :-)&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;square&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Square of &lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;        
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;digit_sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Digit Sum of &lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+    &lt;span class="n"&gt;numbers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;gen&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;squares&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;square&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;numbers&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;dsums&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;digit_sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;squares&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dsums&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Running the above snippet of code will produce an output as follows,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="n"&gt;Square&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Square&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Square&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Square&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Square&lt;/span&gt;
+    &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Digit&lt;/span&gt; &lt;span class="n"&gt;Sum&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Digit&lt;/span&gt; &lt;span class="n"&gt;Sum&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Digit&lt;/span&gt; &lt;span class="n"&gt;Sum&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Digit&lt;/span&gt;
+    &lt;span class="n"&gt;Sum&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Digit&lt;/span&gt; &lt;span class="n"&gt;Sum&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;25&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; 
+    &lt;span class="mi"&gt;1&lt;/span&gt;
+    &lt;span class="mi"&gt;4&lt;/span&gt;
+    &lt;span class="mi"&gt;9&lt;/span&gt;
+    &lt;span class="mi"&gt;7&lt;/span&gt;
+    &lt;span class="mi"&gt;7&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;First all squares will be calculated, then their digit sums and then
+the results will be printed one by one.&lt;/p&gt;
+&lt;p&gt;Now with generator expressions just see what we get,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="n"&gt;numbers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;gen1&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;squares&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;square&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;numbers&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;dsums&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;digit_sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;squares&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dsums&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;print&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Output:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="n"&gt;Square&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;  &lt;span class="n"&gt;Digit&lt;/span&gt; &lt;span class="n"&gt;Sum&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt;
+    &lt;span class="n"&gt;Square&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;  &lt;span class="n"&gt;Digit&lt;/span&gt; &lt;span class="n"&gt;Sum&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;  &lt;span class="mi"&gt;4&lt;/span&gt;
+    &lt;span class="n"&gt;Square&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;  &lt;span class="n"&gt;Digit&lt;/span&gt; &lt;span class="n"&gt;Sum&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;  &lt;span class="mi"&gt;9&lt;/span&gt;
+    &lt;span class="n"&gt;Square&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;  &lt;span class="n"&gt;Digit&lt;/span&gt; &lt;span class="n"&gt;Sum&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;  &lt;span class="mi"&gt;7&lt;/span&gt;
+    &lt;span class="n"&gt;Square&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;  &lt;span class="n"&gt;Digit&lt;/span&gt; &lt;span class="n"&gt;Sum&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;25&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;  &lt;span class="mi"&gt;7&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Every item is processed by each function sequencially similar to how
+it would have been if there was just one &lt;code&gt;for&lt;/code&gt; loop and all
+functions were called progressively on the derived values of the item
+in each iteration. This is quite awesome if you can imagine numbers
+flowing through functions similar to signals flowing through various
+stages of a signal processor.&lt;/p&gt;
+&lt;p&gt;It's called lazy because the numbers are getting consumed late, at the
+time of iteration. The implicit call to &lt;code&gt;next&lt;/code&gt; by the &lt;code&gt;for&lt;/code&gt; loop
+asks for &lt;code&gt;digit_sum&lt;/code&gt; of &lt;code&gt;1&lt;/code&gt; from &lt;code&gt;dsums&lt;/code&gt; which asks for the &lt;code&gt;square&lt;/code&gt;
+of &lt;code&gt;1&lt;/code&gt; from &lt;code&gt;squares&lt;/code&gt; which asks for &lt;code&gt;1&lt;/code&gt; from &lt;code&gt;numbers&lt;/code&gt;. This
+continues till &lt;code&gt;numbers&lt;/code&gt; can yield a value. Nothing is evaluated
+unless it is asked for.&lt;/p&gt;
+&lt;h4&gt;Common traps and things to watch out for&lt;/h4&gt;
+&lt;p&gt;Just like in case of many other cool language features, there are a
+few gotchas and things that we need to watch out for when using
+generators as it's very easy to screw things up.&lt;/p&gt;
+&lt;p&gt;Rule #0 is - Use generators wisely. Don't use a generator expression
+only because the syntax is slightly different from list
+comprehensions.&lt;/p&gt;
+&lt;p&gt;Also, as we saw earlier, if the sequence needs to be reused then
+simply use a list. Keeping stuff in memory is not bad after all (we do
+that all the time while caching values, don't we?)&lt;/p&gt;
+&lt;p&gt;Another important thing to watch out for is the scope of the variables
+that are going to be used by functions when they execute in a lazy
+manner. This needs a bit more explanation so here is an example.&lt;/p&gt;
+&lt;p&gt;Suppose we have a generator that yeilds alphabets and we need to add
+two suffixes to each alphabet for eg. we have alphabet &lt;code&gt;a&lt;/code&gt;. First
+it's suffixed with &lt;code&gt;x&lt;/code&gt; which makes it &lt;code&gt;ax&lt;/code&gt; and then with &lt;code&gt;y&lt;/code&gt; which
+makes it &lt;code&gt;axy&lt;/code&gt;. We need to do this with multiple alphabets and we
+choose to use a generator object to yield each alphabet.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add_suffix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;suffix&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%s%s&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;suffix&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;        
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;gen&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;b&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+            &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;            
+    &lt;span class="n"&gt;ns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;gen&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;suffixes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;x&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;y&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;suffixes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;ns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add_suffix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;What do you think will be output of the above program? If your mind
+tells you &lt;code&gt;['axy', 'bxy', 'cxy', 'dxy']&lt;/code&gt; then it's wrong. Just run it
+and see it for yourself that the output we get is
+&lt;code&gt;['ayy', 'byy', 'cyy', 'dyy']&lt;/code&gt;. What's happening here?&lt;/p&gt;
+&lt;p&gt;A generator can remember the local variables when it gets back the
+control on the call of &lt;code&gt;next&lt;/code&gt; method. The local scope here is actually that of
+the &lt;code&gt;for&lt;/code&gt; loop. By the time the generator is consumed upon call to
+&lt;code&gt;list(ns)&lt;/code&gt;, the value of &lt;code&gt;s&lt;/code&gt; in local scope is &lt;code&gt;y&lt;/code&gt;. The value &lt;code&gt;x&lt;/code&gt; in
+the previous iteration of suffixes is simply lost.&lt;/p&gt;
+&lt;p&gt;To fix this, we just define another function wrapping over the call to
+the &lt;code&gt;add_suffix&lt;/code&gt; function that will return a generator object&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;gen1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sfx&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;add_suffix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sfx&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;            
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;suffixes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;ns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;gen1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ns&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; list(ns)&lt;/span&gt;
+&lt;span class="go"&gt;    [&amp;#39;axy&amp;#39;, &amp;#39;bxy&amp;#39;, &amp;#39;cxy&amp;#39;, &amp;#39;dxy&amp;#39;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;This is by no means all about generators&lt;/h4&gt;
+&lt;p&gt;I know there is lot more to generators than what this post covers. You
+should only consider this as a starting point for digging deeper into
+them. It would also be worth mentioning about the use of generator as
+co-routines where it can accept values from the calling code besides
+yeilding to it. Co-routines are pretty advanced and mind bending to
+understand and I am still trying to explore this topic. I got
+interested in it after attending a talk on 'Data processing pipelines'
+by Ami Tavory at SciPy India 2012 where he also showed
+&lt;a href="http://code.google.com/p/dagpype/"&gt;Dagpype&lt;/a&gt; - A framework written by
+him for data processing and preparation.&lt;/p&gt;
+&lt;h4&gt;References&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.dabeaz.com/generators/"&gt;Generator Tricks for system programmers&lt;/a&gt; by David Beazley 
+  (particularly a must read)&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.ibm.com/developerworks/library/l-pycon/index.html"&gt;Iterators and simple generators&lt;/a&gt; by David Mertz&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.amazon.com/Core-Python-Programming-Wesley-Chun/dp/0132269937"&gt;Core Python Programming Book&lt;/a&gt; by Wesley Chun&lt;/li&gt;
+&lt;li&gt;I would also like to recommend this recently published
+  &lt;a href="http://excess.org/article/2013/02/itergen1/"&gt;article&lt;/a&gt; by Ian Ward.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;If you are curious about co-routines, also see&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://dabeaz.com/coroutines/"&gt;A Curious Course on Coroutines and Concurrency&lt;/a&gt;
+  (again by David Beazley) &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://excess.org/article/2013/02/itergen2/"&gt;Part II&lt;/a&gt; of the above
+  article by Ian Ward&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="python"></category><category term="generators"></category></entry><entry><title>Pelicanized!</title><link href="http://naiquevin.github.com/pelicanized.html" rel="alternate"></link><updated>2013-02-17T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2013-02-17:pelicanized.html</id><summary type="html">&lt;p&gt;Just moved my blog from Octopress to
 &lt;a href="http://docs.getpelican.com/en/3.1.1/"&gt;Pelican&lt;/a&gt;, another fine static
 site generator.&lt;/p&gt;
 &lt;p&gt;Octopress is awesome but after some time I felt it didn't work for
