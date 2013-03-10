@@ -35,10 +35,13 @@ object.&lt;/p&gt;
 &lt;p&gt;The call to the function will not execute any code inside it yet. For
 that we need to call the generator object's &lt;code&gt;next&lt;/code&gt; method,&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; g.next()&lt;/span&gt;
-&lt;span class="go"&gt;    0&lt;/span&gt;
+&lt;span class="go"&gt;    1&lt;/span&gt;
 &lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; print &amp;#39;Hello&amp;#39;&lt;/span&gt;
+&lt;span class="go"&gt;    Hello&lt;/span&gt;
 &lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; g.next()&lt;/span&gt;
-&lt;span class="go"&gt;    1        &lt;/span&gt;
+&lt;span class="go"&gt;    2&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; g.next()&lt;/span&gt;
+&lt;span class="go"&gt;    3&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -278,7 +281,7 @@ interested in it after attending a talk on 'Data processing pipelines'
 by Ami Tavory at SciPy India 2012 where he also showed
 &lt;a href="http://code.google.com/p/dagpype/"&gt;Dagpype&lt;/a&gt; - A framework written by
 him for data processing and preparation.&lt;/p&gt;
-&lt;h4&gt;References&lt;/h4&gt;
+&lt;h4&gt;References:&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://www.dabeaz.com/generators/"&gt;Generator Tricks for system programmers&lt;/a&gt; by David Beazley 
   (particularly a must read)&lt;/li&gt;
@@ -287,12 +290,16 @@ him for data processing and preparation.&lt;/p&gt;
 &lt;li&gt;I would also like to recommend this recently published
   &lt;a href="http://excess.org/article/2013/02/itergen1/"&gt;article&lt;/a&gt; by Ian Ward.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;If you are curious about co-routines, also see&lt;/h4&gt;
+&lt;h4&gt;If you are curious about co-routines, also see,&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://dabeaz.com/coroutines/"&gt;A Curious Course on Coroutines and Concurrency&lt;/a&gt;
   (again by David Beazley) &lt;/li&gt;
 &lt;li&gt;&lt;a href="http://excess.org/article/2013/02/itergen2/"&gt;Part II&lt;/a&gt; of the above
   article by Ian Ward&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Thanks to,&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://twitter.com/jimymodi"&gt;Jimit&lt;/a&gt; for pointing out the bug in example #1&lt;/li&gt;
 &lt;/ul&gt;</summary><category term="python"></category><category term="generators"></category></entry><entry><title>Pelicanized!</title><link href="http://naiquevin.github.com/pelicanized.html" rel="alternate"></link><updated>2013-02-17T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2013-02-17:pelicanized.html</id><summary type="html">&lt;p&gt;Just moved my blog from Octopress to
 &lt;a href="http://docs.getpelican.com/en/3.1.1/"&gt;Pelican&lt;/a&gt;, another fine static
 site generator.&lt;/p&gt;

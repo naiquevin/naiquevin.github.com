@@ -71,10 +71,13 @@ object.</p>
 <p>The call to the function will not execute any code inside it yet. For
 that we need to call the generator object's <code>next</code> method,</p>
 <div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; g.next()</span>
-<span class="go">    0</span>
+<span class="go">    1</span>
 <span class="go">    &gt;&gt;&gt; print &#39;Hello&#39;</span>
+<span class="go">    Hello</span>
 <span class="go">    &gt;&gt;&gt; g.next()</span>
-<span class="go">    1        </span>
+<span class="go">    2</span>
+<span class="go">    &gt;&gt;&gt; g.next()</span>
+<span class="go">    3</span>
 </pre></div>
 
 
@@ -314,7 +317,7 @@ interested in it after attending a talk on 'Data processing pipelines'
 by Ami Tavory at SciPy India 2012 where he also showed
 <a href="http://code.google.com/p/dagpype/">Dagpype</a> - A framework written by
 him for data processing and preparation.</p>
-<h4>References</h4>
+<h4>References:</h4>
 <ul>
 <li><a href="http://www.dabeaz.com/generators/">Generator Tricks for system programmers</a> by David Beazley 
   (particularly a must read)</li>
@@ -323,12 +326,16 @@ him for data processing and preparation.</p>
 <li>I would also like to recommend this recently published
   <a href="http://excess.org/article/2013/02/itergen1/">article</a> by Ian Ward.</li>
 </ul>
-<h4>If you are curious about co-routines, also see</h4>
+<h4>If you are curious about co-routines, also see,</h4>
 <ul>
 <li><a href="http://dabeaz.com/coroutines/">A Curious Course on Coroutines and Concurrency</a>
   (again by David Beazley) </li>
 <li><a href="http://excess.org/article/2013/02/itergen2/">Part II</a> of the above
   article by Ian Ward</li>
+</ul>
+<h4>Thanks to,</h4>
+<ul>
+<li><a href="http://twitter.com/jimymodi">Jimit</a> for pointing out the bug in example #1</li>
 </ul>
     </div>
   </section>
