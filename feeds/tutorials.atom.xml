@@ -74,7 +74,7 @@ generator object) instead of an iterable (a list in memory).&lt;/p&gt;
 &lt;span class="go"&gt;    &amp;lt;type &amp;#39;list&amp;#39;&amp;gt;&lt;/span&gt;
 &lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; gen_squares = (i*i for i in range(1, 11)) # generator object&lt;/span&gt;
 &lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; type(gen_squares)&lt;/span&gt;
-&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; &amp;lt;type &amp;#39;generator&amp;#39;&amp;gt;&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;lt;type &amp;#39;generator&amp;#39;&amp;gt;&lt;/span&gt;
 &lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; iter(gen_squares) is gen_squares&lt;/span&gt;
 &lt;span class="go"&gt;    True    &lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -138,10 +138,10 @@ not a good choice if the sequence of items need to be reused in which
 case a normal list would be suitable.&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; g = gen()&lt;/span&gt;
 &lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; squares = (i*i for i in g)&lt;/span&gt;
-&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; squares&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; list(squares)&lt;/span&gt;
 &lt;span class="go"&gt;    [1, 4, 9, 16, 25]&lt;/span&gt;
 &lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; cubes = (i*i*i for i in g)&lt;/span&gt;
-&lt;span class="go"&gt;    []&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; list(cubes)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -158,10 +158,10 @@ comprehensions and hence will build and keep lists in memory.&lt;/p&gt;
 assume that our hugedata.txt is actually a tiny file of just 5 lines
 containing the first 5 positive integers :-)&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;square&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Square of &lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Square of &lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt; -&amp;gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;        
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;digit_sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Digit Sum of &lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Digit Sum of &lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt; -&amp;gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
     &lt;span class="n"&gt;numbers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;gen&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;squares&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;square&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;numbers&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
@@ -297,7 +297,8 @@ him for data processing and preparation.&lt;/p&gt;
 &lt;li&gt;&lt;a href="http://excess.org/article/2013/02/itergen2/"&gt;Part II&lt;/a&gt; of the above
   article by Ian Ward&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;Thanks to,&lt;/h4&gt;
+&lt;h4&gt;People who helped improve the post by pointing out errors and bugs. Thanks!&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="http://twitter.com/jimymodi"&gt;Jimit&lt;/a&gt; for pointing out the bug in example #1&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://twitter.com/jimymodi"&gt;Jimit Modi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Sanjay Bhangar&lt;/li&gt;
 &lt;/ul&gt;</summary><category term="python"></category><category term="generators"></category></entry></feed>

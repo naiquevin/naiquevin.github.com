@@ -110,7 +110,7 @@ generator object) instead of an iterable (a list in memory).</p>
 <span class="go">    &lt;type &#39;list&#39;&gt;</span>
 <span class="go">    &gt;&gt;&gt; gen_squares = (i*i for i in range(1, 11)) # generator object</span>
 <span class="go">    &gt;&gt;&gt; type(gen_squares)</span>
-<span class="go">    &gt;&gt;&gt; &lt;type &#39;generator&#39;&gt;</span>
+<span class="go">    &lt;type &#39;generator&#39;&gt;</span>
 <span class="go">    &gt;&gt;&gt; iter(gen_squares) is gen_squares</span>
 <span class="go">    True    </span>
 </pre></div>
@@ -174,10 +174,10 @@ not a good choice if the sequence of items need to be reused in which
 case a normal list would be suitable.</p>
 <div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; g = gen()</span>
 <span class="go">    &gt;&gt;&gt; squares = (i*i for i in g)</span>
-<span class="go">    &gt;&gt;&gt; squares</span>
+<span class="go">    &gt;&gt;&gt; list(squares)</span>
 <span class="go">    [1, 4, 9, 16, 25]</span>
 <span class="go">    &gt;&gt;&gt; cubes = (i*i*i for i in g)</span>
-<span class="go">    []</span>
+<span class="go">    &gt;&gt;&gt; list(cubes)</span>
 </pre></div>
 
 
@@ -194,10 +194,10 @@ comprehensions and hence will build and keep lists in memory.</p>
 assume that our hugedata.txt is actually a tiny file of just 5 lines
 containing the first 5 positive integers :-)</p>
 <div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s">&#39;Square of </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">,</span>
+        <span class="k">print</span> <span class="s">&#39;Square of </span><span class="si">%d</span><span class="s"> -&gt;&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">,</span>
         <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>        
     <span class="k">def</span> <span class="nf">digit_sum</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s">&#39;Digit Sum of </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">,</span>
+        <span class="k">print</span> <span class="s">&#39;Digit Sum of </span><span class="si">%d</span><span class="s"> -&gt;&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">,</span>
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
     <span class="n">numbers</span> <span class="o">=</span> <span class="n">gen</span><span class="p">()</span>
     <span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">square</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">]</span>
@@ -333,9 +333,10 @@ him for data processing and preparation.</p>
 <li><a href="http://excess.org/article/2013/02/itergen2/">Part II</a> of the above
   article by Ian Ward</li>
 </ul>
-<h4>Thanks to,</h4>
+<h4>People who helped improve the post by pointing out errors and bugs. Thanks!</h4>
 <ul>
-<li><a href="http://twitter.com/jimymodi">Jimit</a> for pointing out the bug in example #1</li>
+<li><a href="http://twitter.com/jimymodi">Jimit Modi</a></li>
+<li>Sanjay Bhangar</li>
 </ul>
     </div>
   </section>
