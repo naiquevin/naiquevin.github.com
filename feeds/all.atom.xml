@@ -142,6 +142,7 @@ case a normal list would be suitable.&lt;/p&gt;
 &lt;span class="go"&gt;    [1, 4, 9, 16, 25]&lt;/span&gt;
 &lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; cubes = (i*i*i for i in g)&lt;/span&gt;
 &lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; list(cubes)&lt;/span&gt;
+&lt;span class="go"&gt;    []&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
