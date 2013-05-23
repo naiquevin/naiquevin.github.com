@@ -1,5 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Vineet's blog</title><link href="http://naiquevin.github.com/" rel="alternate"></link><link href="http://naiquevin.github.com/feeds/all-en.atom.xml" rel="self"></link><id>http://naiquevin.github.com/</id><updated>2013-04-01T00:00:00+05:30</updated><entry><title>NaturalDocs for Javascript in Emacs</title><link href="http://naiquevin.github.com/naturaldocs-for-javascript-in-emacs.html" rel="alternate"></link><updated>2013-04-01T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2013-04-01:naturaldocs-for-javascript-in-emacs.html</id><summary type="html">&lt;p&gt;Last week we decided to use &lt;a href="http://www.naturaldocs.org/"&gt;NaturalDocs&lt;/a&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Vineet's blog</title><link href="http://naiquevin.github.com/" rel="alternate"></link><link href="http://naiquevin.github.com/feeds/all-en.atom.xml" rel="self"></link><id>http://naiquevin.github.com/</id><updated>2013-05-23T00:00:00+05:30</updated><entry><title>A look at some of Python's useful itertools</title><link href="http://naiquevin.github.com/a-look-at-some-of-pythons-useful-itertools.html" rel="alternate"></link><updated>2013-05-23T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2013-05-23:a-look-at-some-of-pythons-useful-itertools.html</id><summary type="html">&lt;p&gt;Couple of months back I enrolled for the
+&lt;a href="https://www.coursera.org/course/progfun"&gt;Functional Programming Principles in Scala&lt;/a&gt;
+course taught by Martin Odersky on Coursera. While solving one of the
+early assignments, I remember searching for "Scala equivalent to
+Python's range". By the end of the course, I was searching for python
+equivalents for some of the methods and operations on scala
+collections. There is no doubt that learning new and different
+languages help you as a programmer in more than one way. Ok, I am
+digressing, but what that search led me to was the insanely useful
+&lt;a href="http://docs.python.org/2/library/itertools.html"&gt;itertools&lt;/a&gt; module
+and it left me wondering - why didn't I take a &lt;em&gt;real&lt;/em&gt; look at it
+earlier!&lt;/p&gt;
+&lt;p&gt;In this article I am going to show some of the the must-know itertools
+that will make your everyday code more memory efficient, elegant and
+concise. Instead of focusing on one function/class from the module at
+a time, it would be helpful to see how these tools can be used
+together.&lt;/p&gt;
+&lt;p&gt;But before that, I should mention that I have tried all examples on
+Python 2.7.3 and would recommend you use 2.7.x to follow along,
+although they should &lt;em&gt;mostly&lt;/em&gt; work on Python 3.x too.&lt;/p&gt;
+&lt;h3&gt;Taking "lazy" to the next level&lt;/h3&gt;
+&lt;p&gt;In an
+&lt;a href="http://naiquevin.github.io/python-generators-and-being-lazy.html"&gt;earlier blog post&lt;/a&gt;,
+I had covered generators and how lazy evaluation can be used to write
+memory efficient code. Itertools let you do more with the lazily
+evaluated objects.&lt;/p&gt;
+&lt;p&gt;You may already know that the &lt;code&gt;map&lt;/code&gt; and &lt;code&gt;filter&lt;/code&gt; BIFs can accept
+not just a list but any iterator in general, which means we can also
+pass them a generator. But doing so doesn't give us truly lazy
+behaviour. Let's see an example to understand this.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;is_even&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;is_even called for &lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;even&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;is_even&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;xrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The above code defines a function &lt;code&gt;is_even&lt;/code&gt; to check if an integer
+is even. In &lt;code&gt;even&lt;/code&gt;, we pass &lt;code&gt;is_even&lt;/code&gt; as a predicate to &lt;code&gt;filter&lt;/code&gt;
+thus returning all even integers between 0 to 20. To get first four of
+such integers, we can use the slice operator.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; even()[:4]&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 0&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 1&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 2&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 3&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 4&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 5&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 6&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 7&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 8&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 9&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 10&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 11&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 12&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 13&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 14&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 15&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 16&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 17&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 18&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 19&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; [0, 2, 4, 6]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;While the result that we obtained is correct, our code is doing a lot
+of unnecessary work. We can see this from the statements that are
+getting printed every time &lt;code&gt;is_even&lt;/code&gt; is called (20
+times). Wait.. but we just need first 4 items right, why is it even
+getting called that many times?  The problem is that although we
+started with a generator, &lt;code&gt;filter&lt;/code&gt; needs to run each item through
+the predicate function and so the generator ends up getting
+consumed. Finally, we get a list and all we can do now is slice out
+the first 4 items.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; type(even())&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;lt;type &amp;#39;list&amp;#39;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;How can we do better? The idea is, we need a way to delay the
+application of filter on the items in the generator.
+&lt;code&gt;itertools.ifilter&lt;/code&gt; does exactly that by returning a lazy object
+instead of a list. Items will be filtered whenever some other function
+or a for loop consumes them. Lets define another function
+&lt;code&gt;lazy_even&lt;/code&gt;,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;lazy_even&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;itertools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ifilter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;is_even&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;xrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; nums = lazy_even()&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; type(nums)&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;lt;type &amp;#39;itertools.ifilter&amp;#39;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ok, this gives us a lazy object. But the problem now is, we still need
+a way to slice out the first 4 items without converting the entire
+thing to a list. Itertools provides &lt;code&gt;islice&lt;/code&gt; for this which takes
+the iterator, a start index and a stop index.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; first_four = itertools.islice(nums, 0, 4)&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; type(first_four)&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;lt;type &amp;#39;itertools.islice&amp;#39;&amp;gt;&lt;/span&gt;
+&lt;span class="go"&gt;    for i in first_four:&lt;/span&gt;
+&lt;span class="go"&gt;    ...     print i&lt;/span&gt;
+&lt;span class="go"&gt;    ... &lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 0&lt;/span&gt;
+&lt;span class="go"&gt;    0&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 1&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 2&lt;/span&gt;
+&lt;span class="go"&gt;    2&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 3&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 4&lt;/span&gt;
+&lt;span class="go"&gt;    4&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 5&lt;/span&gt;
+&lt;span class="go"&gt;    is_even called for 6&lt;/span&gt;
+&lt;span class="go"&gt;    6&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;As you can see, now &lt;code&gt;is_even&lt;/code&gt; is called only while it's required.&lt;/p&gt;
+&lt;h3&gt;Counting infinitely&lt;/h3&gt;
+&lt;p&gt;Let's take another example. This time we need to find out smallest 3
+numbers greater than 1000 that are powers of 2. In the eariler blog
+post on generators, there was an example of counting indefinitely
+using the &lt;code&gt;yield&lt;/code&gt; keyword. Here we need to do something similar to
+count integers one by one and test if they are powers of 2. The catch
+is that since we need to return 3 such numbers, we don't know when to
+stop counting. Ok, probably in this case it's easy to pre-calculate or
+guess, but the point is, what if the predicate function is a bit more
+complex for eg. a check for primality? With itertools, we can use the
+same technique as in the previous example. As a bonus, it comes with a
+&lt;code&gt;count&lt;/code&gt; function so we don't need to write our own.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; import math&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; from itertools import count, islice, ifilter&lt;/span&gt;
+
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; def is_pow_two(x):&lt;/span&gt;
+&lt;span class="go"&gt;    ...     ln = math.log(x, 2)&lt;/span&gt;
+&lt;span class="go"&gt;    ...     return math.floor(ln) == ln&lt;/span&gt;
+
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; list(islice(ifilter(is_pow_two, count(1000)), 0, 3))&lt;/span&gt;
+&lt;span class="go"&gt;    [1024, 2048, 4096]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;ifilter&lt;/code&gt; will run no more than 4096 times which is what we want.&lt;/p&gt;
+&lt;h3&gt;Grouping things in style&lt;/h3&gt;
+&lt;p&gt;If you often use Python to write scripts for extracting data,
+eg. scraping web pages or parsing log files, then you may have come
+across this common pattern -- reading content from some source,
+extracting useful data out of it and saving the extracted data in some
+other form (or directly using it). And quite often, we need to group
+data into parts say for eg. parsing web server access logs and group
+incoming requests by their response status
+codes. &lt;code&gt;itertools.groupby&lt;/code&gt; makes this very easy. It takes an
+iterable and a &lt;code&gt;key&lt;/code&gt; function. The &lt;code&gt;key&lt;/code&gt; function is used to group
+items with &lt;em&gt;consecutively&lt;/em&gt; similar key values together. Here is an
+example where given a list of integers we separate them into "even"
+and "odd" groups.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;groupby&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;groupby_even_odd&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;even&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;odd&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;gb&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;groupby&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;items&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;gb&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;   &amp;gt;&amp;gt;&amp;gt; groupby_even_odd([1, 3, 4, 5, 6, 8, 9, 11])&lt;/span&gt;
+&lt;span class="go"&gt;   odd: 1,3&lt;/span&gt;
+&lt;span class="go"&gt;   even: 4&lt;/span&gt;
+&lt;span class="go"&gt;   odd: 5&lt;/span&gt;
+&lt;span class="go"&gt;   even: 6,8&lt;/span&gt;
+&lt;span class="go"&gt;   odd: 9,11&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But something is strange, isn't it? The integers are indeed grouped
+but there are many "even" and "odd" groups. The reason behind this is,
+it only groups consecutive items together. To get around this, we can
+simply provide it a sorted iterable.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;groupby_even_odd&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;even&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;odd&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;gb&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;groupby&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;items&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;gb&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; groupby_even_odd([1, 3, 4, 5, 6, 8, 9, 11])&lt;/span&gt;
+&lt;span class="go"&gt;    even: 4,6,8&lt;/span&gt;
+&lt;span class="go"&gt;    odd: 1,3,5,9,11&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And now we get it correctly. An important thing to note is that the
+key function used to sort the list must be same as the one which is
+going to be passed to &lt;code&gt;groupby&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;"Flatmap that shit!"&lt;/h3&gt;
+&lt;p&gt;Flatmap is a commonly used pattern in functional programming where we
+map a function to a list giving a list of lists which then needs to be
+flattened. For eg. given a list of directories, we want to get the
+names of all their first level children.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; import os&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; dirs = [&amp;#39;project1/&amp;#39;, &amp;#39;project2/&amp;#39;, &amp;#39;project3/&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; map(lambda x: os.listdir(x), dirs)&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; [[&amp;#39;settings.py&amp;#39;, &amp;#39;wsgi.py&amp;#39;, &amp;#39;templates&amp;#39;],&lt;/span&gt;
+&lt;span class="go"&gt;         [&amp;#39;app.py&amp;#39;, &amp;#39;templates&amp;#39;], &lt;/span&gt;
+&lt;span class="go"&gt;         [&amp;#39;index.html, &amp;#39;config.json&amp;#39;]]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This gives us a nested list but we need to flatten it. There are of
+course many ways to do this, one way is to use &lt;code&gt;reduce&lt;/code&gt;. But here is
+an elegant way using &lt;code&gt;itertools.chain&lt;/code&gt; which takes many iterables as
+arguments and chains or appends them at ends. Let's define a function
+flatmap that will map a function to a list of items and flatten the
+results.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;flatmap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;itertools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;chain&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now we just replace the first &lt;code&gt;map&lt;/code&gt; call with a &lt;code&gt;flatmap&lt;/code&gt;,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; list(flatmap(lambda x: os.listdir(x), dirs))&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; [&amp;#39;settings.py&amp;#39;, &amp;#39;wsgi.py&amp;#39;, &amp;#39;templates&amp;#39;, &amp;#39;app.py&amp;#39;, &lt;/span&gt;
+&lt;span class="go"&gt;         &amp;#39;templates&amp;#39;, &amp;#39;index.html, &amp;#39;config.json&amp;#39;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Itertools for everything (for fun and learning!)&lt;/h3&gt;
+&lt;p&gt;As a final example, let's see how we can compose an elegant solution
+entirely using our newly acquired utility belt. The problem is to find
+a set of common factors of a list of integers. (I admit it's
+completely made up and not quite a real world problem but hopefully
+good enough for the sake of understanding)&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ifilter&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;takewhile&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;factors&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ifilter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;takewhile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;        
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; set(flatmap(factors, [9, 15, 16, 23, 76, 101]))&lt;/span&gt;
+&lt;span class="go"&gt;    set([1, 2, 3, 4, 5, 38, 8, 9, 76, 15, 16, 19, 23, 101])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That's all for now. If you reached this far, thanks for reading and
+hope you found it helpful. I have obviously skipped some functions
+from the module but thats mainly because I am yet to fully understand
+them myself. May be I will write a part II soon.&lt;/p&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://docs.python.org/2/library/itertools.html"&gt;Itertools docs&lt;/a&gt;
+  (Particularly, check the Recipes section)&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="python"></category></entry><entry><title>NaturalDocs for Javascript in Emacs</title><link href="http://naiquevin.github.com/naturaldocs-for-javascript-in-emacs.html" rel="alternate"></link><updated>2013-04-01T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2013-04-01:naturaldocs-for-javascript-in-emacs.html</id><summary type="html">&lt;p&gt;Last week we decided to use &lt;a href="http://www.naturaldocs.org/"&gt;NaturalDocs&lt;/a&gt;
 for Javascript documentation at work. I noticed that a few of my
 colleagues who are SublimeText users started using a plugin that
 inserts docstring skeleton in code. I tried to find a similar mode in
