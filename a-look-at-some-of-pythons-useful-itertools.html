@@ -47,12 +47,12 @@ digressing, but what that search led me to was the insanely useful
 <a href="http://docs.python.org/2/library/itertools.html">itertools</a> module
 and it left me wondering - why didn't I take a <em>real</em> look at it
 earlier!</p>
-<p>In this article I am going to show some of the the must-know itertools
+<p>In this article I am going to show some of the must-know itertools
 that will make your everyday code more memory efficient, elegant and
 concise. Instead of focusing on one function/class from the module at
-a time, it would be helpful to see how these tools can be used
-together.</p>
-<p>But before that, I should mention that I have tried all examples on
+a time, it would be helpful to see some real world (and not so real
+world) use cases and examples of itertools.</p>
+<p>But before that, I should mention that I have tried the examples on
 Python 2.7.3 and would recommend you use 2.7.x to follow along,
 although they should <em>mostly</em> work on Python 3.x too.</p>
 <h3>Taking "lazy" to the next level</h3>
@@ -109,20 +109,18 @@ getting printed every time <code>is_even</code> is called (20
 times). Wait.. but we just need first 4 items right, why is it even
 getting called that many times?  The problem is that although we
 started with a generator, <code>filter</code> needs to run each item through
-the predicate function and so the generator ends up getting
-consumed. Finally, we get a list and all we can do now is slice out
-the first 4 items.</p>
+the predicate and so the generator ends up getting consumed. Finally,
+we get a list from which we slice out the first 4 items.</p>
 <div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; type(even())</span>
 <span class="go">    &lt;type &#39;list&#39;&gt;</span>
 </pre></div>
 
 
 <p>How can we do better? The idea is, we need a way to delay the
-application of filter on the items in the generator.
-<code>itertools.ifilter</code> does exactly that by returning a lazy object
-instead of a list. Items will be filtered whenever some other function
-or a for loop consumes them. Lets define another function
-<code>lazy_even</code>,</p>
+application of filter on the generator. <code>itertools.ifilter</code> does
+exactly that by returning a lazy object instead of a list. Items will
+be filtered whenever some other function or a for loop consumes
+them. Lets define another function <code>lazy_even</code>,</p>
 <div class="codehilite"><pre>    <span class="kn">import</span> <span class="nn">itertools</span>
 
     <span class="k">def</span> <span class="nf">lazy_even</span><span class="p">():</span>
@@ -162,17 +160,17 @@ the iterator, a start index and a stop index.</p>
 
 <p>As you can see, now <code>is_even</code> is called only while it's required.</p>
 <h3>Counting infinitely</h3>
-<p>Let's take another example. This time we need to find out smallest 3
-numbers greater than 1000 that are powers of 2. In the eariler blog
-post on generators, there was an example of counting indefinitely
+<p>Let's take another example. This time we need to find out 3 smallest
+numbers that are greater than 1000 and powers of 2. In the eariler
+blog post on generators, there was an example of counting infinitely
 using the <code>yield</code> keyword. Here we need to do something similar to
-count integers one by one and test if they are powers of 2. The catch
-is that since we need to return 3 such numbers, we don't know when to
-stop counting. Ok, probably in this case it's easy to pre-calculate or
-guess, but the point is, what if the predicate function is a bit more
-complex for eg. a check for primality? With itertools, we can use the
-same technique as in the previous example. As a bonus, it comes with a
-<code>count</code> function so we don't need to write our own.</p>
+count integers and test whether or not each one is a power of 2. The
+catch is that since we need to return 3 such numbers, we don't know
+when to stop counting. Ok, probably in this case it's easy to
+pre-calculate or guess, but what if the predicate function is a bit
+more complex for eg. a check for primality? With itertools, we can use
+the same technique as in the previous example. As a bonus, the module
+comes with a <code>count</code> function so we don't need to write our own.</p>
 <div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; import math</span>
 <span class="go">    &gt;&gt;&gt; from itertools import count, islice, ifilter</span>
 
@@ -185,7 +183,7 @@ same technique as in the previous example. As a bonus, it comes with a
 </pre></div>
 
 
-<p><code>ifilter</code> will run no more than 4096 times which is what we want.</p>
+<p><code>ifilter</code> will run no more than 4096 times = win!</p>
 <h3>Grouping things in style</h3>
 <p>If you often use Python to write scripts for extracting data,
 eg. scraping web pages or parsing log files, then you may have come
@@ -220,8 +218,8 @@ and "odd" groups.</p>
 
 <p>But something is strange, isn't it? The integers are indeed grouped
 but there are many "even" and "odd" groups. The reason behind this is,
-it only groups consecutive items together. To get around this, we can
-simply provide it a sorted iterable.</p>
+it only groups <em>consecutive</em> items together. To get around this, we
+can simply provide it a sorted iterable.</p>
 <div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">groupby_even_odd</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
         <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s">&#39;even&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s">&#39;odd&#39;</span>
         <span class="n">gb</span> <span class="o">=</span> <span class="n">groupby</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">f</span><span class="p">),</span> <span class="n">f</span><span class="p">)</span>
@@ -236,36 +234,36 @@ simply provide it a sorted iterable.</p>
 </pre></div>
 
 
-<p>And now we get it correctly. An important thing to note is that the
-key function used to sort the list must be same as the one which is
-going to be passed to <code>groupby</code>.</p>
-<h3>"Flatmap that shit!"</h3>
-<p>Flatmap is a commonly used pattern in functional programming where we
-map a function to a list giving a list of lists which then needs to be
-flattened. For eg. given a list of directories, we want to get the
-names of all their first level children.</p>
+<p>And now the grouping happens the way we want it. An important thing to
+note is that the key function used to sort the list must be same as
+the one which is going to be passed to <code>groupby</code>.</p>
+<h3>Just flatmap that shit!</h3>
+<p>Flatmap is a commonly used pattern in functional programming where
+mapping a function to a list results in a list of lists that then
+needs to be flattened. For eg. given a list of directories, we want to
+get the names of all their first level children as a list.</p>
 <div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; import os</span>
 <span class="go">    &gt;&gt;&gt; dirs = [&#39;project1/&#39;, &#39;project2/&#39;, &#39;project3/&#39;]</span>
-<span class="go">    &gt;&gt;&gt; map(lambda x: os.listdir(x), dirs)</span>
+<span class="go">    &gt;&gt;&gt; map(os.listdir, dirs)</span>
 <span class="go">    &gt;&gt;&gt; [[&#39;settings.py&#39;, &#39;wsgi.py&#39;, &#39;templates&#39;],</span>
 <span class="go">         [&#39;app.py&#39;, &#39;templates&#39;], </span>
 <span class="go">         [&#39;index.html, &#39;config.json&#39;]]</span>
 </pre></div>
 
 
-<p>This gives us a nested list but we need to flatten it. There are of
-course many ways to do this, one way is to use <code>reduce</code>. But here is
-an elegant way using <code>itertools.chain</code> which takes many iterables as
-arguments and chains or appends them at ends. Let's define a function
-flatmap that will map a function to a list of items and flatten the
-results.</p>
+<p>This gives us a list of lists and we still need to flatten it. There
+are of course many ways to do this, one way is to use <code>reduce</code>. But
+here is an elegant way using <code>itertools.chain</code>. <code>chain</code> takes many
+iterables as arguments and chains or appends them at ends. Let's
+define a function <code>flatmap</code> that will map a function to a list of
+items and flatten the resulting list of lists.</p>
 <div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">flatmap</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">items</span><span class="p">))</span>
 </pre></div>
 
 
-<p>Now we just replace the first <code>map</code> call with a <code>flatmap</code>,</p>
-<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; list(flatmap(lambda x: os.listdir(x), dirs))</span>
+<p>And now we replace the first <code>map</code> call with a <code>flatmap</code>,</p>
+<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; list(flatmap(os.listdir, dirs))</span>
 <span class="go">    &gt;&gt;&gt; [&#39;settings.py&#39;, &#39;wsgi.py&#39;, &#39;templates&#39;, &#39;app.py&#39;, </span>
 <span class="go">         &#39;templates&#39;, &#39;index.html, &#39;config.json&#39;]</span>
 </pre></div>
@@ -274,9 +272,7 @@ results.</p>
 <h3>Itertools for everything (for fun and learning!)</h3>
 <p>As a final example, let's see how we can compose an elegant solution
 entirely using our newly acquired utility belt. The problem is to find
-a set of common factors of a list of integers. (I admit it's
-completely made up and not quite a real world problem but hopefully
-good enough for the sake of understanding)</p>
+a set of common factors of a list of integers.</p>
 <div class="codehilite"><pre>    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">ifilter</span><span class="p">,</span> <span class="n">takewhile</span><span class="p">,</span> <span class="n">count</span>
 
     <span class="k">def</span> <span class="nf">factors</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -290,9 +286,10 @@ good enough for the sake of understanding)</p>
 
 
 <p>That's all for now. If you reached this far, thanks for reading and
-hope you found it helpful. I have obviously skipped some functions
-from the module but thats mainly because I am yet to fully understand
-them myself. May be I will write a part II soon.</p>
+hope you found it helpful. Itertools obviously has many more useful
+functions and classes. I just skipped them since I failed to come up
+with good examples and use cases for them. May be I will do a part II
+some time later.</p>
 <h3>References</h3>
 <ul>
 <li><a href="http://docs.python.org/2/library/itertools.html">Itertools docs</a>

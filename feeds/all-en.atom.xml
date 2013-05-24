@@ -11,12 +11,12 @@ digressing, but what that search led me to was the insanely useful
 &lt;a href="http://docs.python.org/2/library/itertools.html"&gt;itertools&lt;/a&gt; module
 and it left me wondering - why didn't I take a &lt;em&gt;real&lt;/em&gt; look at it
 earlier!&lt;/p&gt;
-&lt;p&gt;In this article I am going to show some of the the must-know itertools
+&lt;p&gt;In this article I am going to show some of the must-know itertools
 that will make your everyday code more memory efficient, elegant and
 concise. Instead of focusing on one function/class from the module at
-a time, it would be helpful to see how these tools can be used
-together.&lt;/p&gt;
-&lt;p&gt;But before that, I should mention that I have tried all examples on
+a time, it would be helpful to see some real world (and not so real
+world) use cases and examples of itertools.&lt;/p&gt;
+&lt;p&gt;But before that, I should mention that I have tried the examples on
 Python 2.7.3 and would recommend you use 2.7.x to follow along,
 although they should &lt;em&gt;mostly&lt;/em&gt; work on Python 3.x too.&lt;/p&gt;
 &lt;h3&gt;Taking "lazy" to the next level&lt;/h3&gt;
@@ -73,20 +73,18 @@ getting printed every time &lt;code&gt;is_even&lt;/code&gt; is called (20
 times). Wait.. but we just need first 4 items right, why is it even
 getting called that many times?  The problem is that although we
 started with a generator, &lt;code&gt;filter&lt;/code&gt; needs to run each item through
-the predicate function and so the generator ends up getting
-consumed. Finally, we get a list and all we can do now is slice out
-the first 4 items.&lt;/p&gt;
+the predicate and so the generator ends up getting consumed. Finally,
+we get a list from which we slice out the first 4 items.&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; type(even())&lt;/span&gt;
 &lt;span class="go"&gt;    &amp;lt;type &amp;#39;list&amp;#39;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;How can we do better? The idea is, we need a way to delay the
-application of filter on the items in the generator.
-&lt;code&gt;itertools.ifilter&lt;/code&gt; does exactly that by returning a lazy object
-instead of a list. Items will be filtered whenever some other function
-or a for loop consumes them. Lets define another function
-&lt;code&gt;lazy_even&lt;/code&gt;,&lt;/p&gt;
+application of filter on the generator. &lt;code&gt;itertools.ifilter&lt;/code&gt; does
+exactly that by returning a lazy object instead of a list. Items will
+be filtered whenever some other function or a for loop consumes
+them. Lets define another function &lt;code&gt;lazy_even&lt;/code&gt;,&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;lazy_even&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
@@ -126,17 +124,17 @@ the iterator, a start index and a stop index.&lt;/p&gt;
 
 &lt;p&gt;As you can see, now &lt;code&gt;is_even&lt;/code&gt; is called only while it's required.&lt;/p&gt;
 &lt;h3&gt;Counting infinitely&lt;/h3&gt;
-&lt;p&gt;Let's take another example. This time we need to find out smallest 3
-numbers greater than 1000 that are powers of 2. In the eariler blog
-post on generators, there was an example of counting indefinitely
+&lt;p&gt;Let's take another example. This time we need to find out 3 smallest
+numbers that are greater than 1000 and powers of 2. In the eariler
+blog post on generators, there was an example of counting infinitely
 using the &lt;code&gt;yield&lt;/code&gt; keyword. Here we need to do something similar to
-count integers one by one and test if they are powers of 2. The catch
-is that since we need to return 3 such numbers, we don't know when to
-stop counting. Ok, probably in this case it's easy to pre-calculate or
-guess, but the point is, what if the predicate function is a bit more
-complex for eg. a check for primality? With itertools, we can use the
-same technique as in the previous example. As a bonus, it comes with a
-&lt;code&gt;count&lt;/code&gt; function so we don't need to write our own.&lt;/p&gt;
+count integers and test whether or not each one is a power of 2. The
+catch is that since we need to return 3 such numbers, we don't know
+when to stop counting. Ok, probably in this case it's easy to
+pre-calculate or guess, but what if the predicate function is a bit
+more complex for eg. a check for primality? With itertools, we can use
+the same technique as in the previous example. As a bonus, the module
+comes with a &lt;code&gt;count&lt;/code&gt; function so we don't need to write our own.&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; import math&lt;/span&gt;
 &lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; from itertools import count, islice, ifilter&lt;/span&gt;
 
@@ -149,7 +147,7 @@ same technique as in the previous example. As a bonus, it comes with a
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;code&gt;ifilter&lt;/code&gt; will run no more than 4096 times which is what we want.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ifilter&lt;/code&gt; will run no more than 4096 times = win!&lt;/p&gt;
 &lt;h3&gt;Grouping things in style&lt;/h3&gt;
 &lt;p&gt;If you often use Python to write scripts for extracting data,
 eg. scraping web pages or parsing log files, then you may have come
@@ -184,8 +182,8 @@ and "odd" groups.&lt;/p&gt;
 
 &lt;p&gt;But something is strange, isn't it? The integers are indeed grouped
 but there are many "even" and "odd" groups. The reason behind this is,
-it only groups consecutive items together. To get around this, we can
-simply provide it a sorted iterable.&lt;/p&gt;
+it only groups &lt;em&gt;consecutive&lt;/em&gt; items together. To get around this, we
+can simply provide it a sorted iterable.&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;groupby_even_odd&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;even&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;odd&amp;#39;&lt;/span&gt;
         &lt;span class="n"&gt;gb&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;groupby&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -200,36 +198,36 @@ simply provide it a sorted iterable.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;And now we get it correctly. An important thing to note is that the
-key function used to sort the list must be same as the one which is
-going to be passed to &lt;code&gt;groupby&lt;/code&gt;.&lt;/p&gt;
-&lt;h3&gt;"Flatmap that shit!"&lt;/h3&gt;
-&lt;p&gt;Flatmap is a commonly used pattern in functional programming where we
-map a function to a list giving a list of lists which then needs to be
-flattened. For eg. given a list of directories, we want to get the
-names of all their first level children.&lt;/p&gt;
+&lt;p&gt;And now the grouping happens the way we want it. An important thing to
+note is that the key function used to sort the list must be same as
+the one which is going to be passed to &lt;code&gt;groupby&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;Just flatmap that shit!&lt;/h3&gt;
+&lt;p&gt;Flatmap is a commonly used pattern in functional programming where
+mapping a function to a list results in a list of lists that then
+needs to be flattened. For eg. given a list of directories, we want to
+get the names of all their first level children as a list.&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; import os&lt;/span&gt;
 &lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; dirs = [&amp;#39;project1/&amp;#39;, &amp;#39;project2/&amp;#39;, &amp;#39;project3/&amp;#39;]&lt;/span&gt;
-&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; map(lambda x: os.listdir(x), dirs)&lt;/span&gt;
+&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; map(os.listdir, dirs)&lt;/span&gt;
 &lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; [[&amp;#39;settings.py&amp;#39;, &amp;#39;wsgi.py&amp;#39;, &amp;#39;templates&amp;#39;],&lt;/span&gt;
 &lt;span class="go"&gt;         [&amp;#39;app.py&amp;#39;, &amp;#39;templates&amp;#39;], &lt;/span&gt;
 &lt;span class="go"&gt;         [&amp;#39;index.html, &amp;#39;config.json&amp;#39;]]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;This gives us a nested list but we need to flatten it. There are of
-course many ways to do this, one way is to use &lt;code&gt;reduce&lt;/code&gt;. But here is
-an elegant way using &lt;code&gt;itertools.chain&lt;/code&gt; which takes many iterables as
-arguments and chains or appends them at ends. Let's define a function
-flatmap that will map a function to a list of items and flatten the
-results.&lt;/p&gt;
+&lt;p&gt;This gives us a list of lists and we still need to flatten it. There
+are of course many ways to do this, one way is to use &lt;code&gt;reduce&lt;/code&gt;. But
+here is an elegant way using &lt;code&gt;itertools.chain&lt;/code&gt;. &lt;code&gt;chain&lt;/code&gt; takes many
+iterables as arguments and chains or appends them at ends. Let's
+define a function &lt;code&gt;flatmap&lt;/code&gt; that will map a function to a list of
+items and flatten the resulting list of lists.&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;flatmap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;itertools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;chain&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Now we just replace the first &lt;code&gt;map&lt;/code&gt; call with a &lt;code&gt;flatmap&lt;/code&gt;,&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; list(flatmap(lambda x: os.listdir(x), dirs))&lt;/span&gt;
+&lt;p&gt;And now we replace the first &lt;code&gt;map&lt;/code&gt; call with a &lt;code&gt;flatmap&lt;/code&gt;,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; list(flatmap(os.listdir, dirs))&lt;/span&gt;
 &lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; [&amp;#39;settings.py&amp;#39;, &amp;#39;wsgi.py&amp;#39;, &amp;#39;templates&amp;#39;, &amp;#39;app.py&amp;#39;, &lt;/span&gt;
 &lt;span class="go"&gt;         &amp;#39;templates&amp;#39;, &amp;#39;index.html, &amp;#39;config.json&amp;#39;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -238,9 +236,7 @@ results.&lt;/p&gt;
 &lt;h3&gt;Itertools for everything (for fun and learning!)&lt;/h3&gt;
 &lt;p&gt;As a final example, let's see how we can compose an elegant solution
 entirely using our newly acquired utility belt. The problem is to find
-a set of common factors of a list of integers. (I admit it's
-completely made up and not quite a real world problem but hopefully
-good enough for the sake of understanding)&lt;/p&gt;
+a set of common factors of a list of integers.&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ifilter&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;takewhile&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;factors&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -254,9 +250,10 @@ good enough for the sake of understanding)&lt;/p&gt;
 
 
 &lt;p&gt;That's all for now. If you reached this far, thanks for reading and
-hope you found it helpful. I have obviously skipped some functions
-from the module but thats mainly because I am yet to fully understand
-them myself. May be I will write a part II soon.&lt;/p&gt;
+hope you found it helpful. Itertools obviously has many more useful
+functions and classes. I just skipped them since I failed to come up
+with good examples and use cases for them. May be I will do a part II
+some time later.&lt;/p&gt;
 &lt;h3&gt;References&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://docs.python.org/2/library/itertools.html"&gt;Itertools docs&lt;/a&gt;
