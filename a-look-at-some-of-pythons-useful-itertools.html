@@ -254,15 +254,22 @@ get the names of all their first level children as a list.</p>
 <p>This gives us a list of lists and we still need to flatten it. There
 are of course many ways to do this, one way is to use <code>reduce</code>. But
 here is an elegant way using <code>itertools.chain</code>. <code>chain</code> takes many
-iterables as arguments and chains or appends them at ends. Let's
-define a function <code>flatmap</code> that will map a function to a list of
-items and flatten the resulting list of lists.</p>
-<div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">flatmap</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">items</span><span class="p">))</span>
+iterables as arguments and chains or appends them at ends. (<strong>Edit</strong>:
+As correctly pointed out by
+<a href="https://news.ycombinator.com/item?id=5767462">masklinn on hacker news</a>,
+it's better to use <code>imap</code> instead of <code>map</code> and also the alternate
+<code>chain</code> constructor <code>chain.from_iterable</code> to avoid passing the
+lazy object as *args since the former will result in eager
+evaluation).  Let's define a function <code>flatmap</code> that will map a
+function to a list of items and flatten the resulting list of lists.</p>
+<div class="codehilite"><pre>    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span><span class="p">,</span> <span class="n">imap</span>
+
+    <span class="k">def</span> <span class="nf">flatmap</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">imap</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">items</span><span class="p">))</span>
 </pre></div>
 
 
-<p>And now we replace the first <code>map</code> call with a <code>flatmap</code>,</p>
+<p>And now we replace the call to <code>map</code> with <code>flatmap</code>,</p>
 <div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; list(flatmap(os.listdir, dirs))</span>
 <span class="go">    &gt;&gt;&gt; [&#39;settings.py&#39;, &#39;wsgi.py&#39;, &#39;templates&#39;, &#39;app.py&#39;, </span>
 <span class="go">         &#39;templates&#39;, &#39;index.html, &#39;config.json&#39;]</span>

@@ -218,15 +218,22 @@ get the names of all their first level children as a list.&lt;/p&gt;
 &lt;p&gt;This gives us a list of lists and we still need to flatten it. There
 are of course many ways to do this, one way is to use &lt;code&gt;reduce&lt;/code&gt;. But
 here is an elegant way using &lt;code&gt;itertools.chain&lt;/code&gt;. &lt;code&gt;chain&lt;/code&gt; takes many
-iterables as arguments and chains or appends them at ends. Let's
-define a function &lt;code&gt;flatmap&lt;/code&gt; that will map a function to a list of
-items and flatten the resulting list of lists.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;flatmap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;itertools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;chain&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+iterables as arguments and chains or appends them at ends. (&lt;strong&gt;Edit&lt;/strong&gt;:
+As correctly pointed out by
+&lt;a href="https://news.ycombinator.com/item?id=5767462"&gt;masklinn on hacker news&lt;/a&gt;,
+it's better to use &lt;code&gt;imap&lt;/code&gt; instead of &lt;code&gt;map&lt;/code&gt; and also the alternate
+&lt;code&gt;chain&lt;/code&gt; constructor &lt;code&gt;chain.from_iterable&lt;/code&gt; to avoid passing the
+lazy object as *args since the former will result in eager
+evaluation).  Let's define a function &lt;code&gt;flatmap&lt;/code&gt; that will map a
+function to a list of items and flatten the resulting list of lists.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;chain&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;imap&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;flatmap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;chain&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_iterable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;imap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;And now we replace the first &lt;code&gt;map&lt;/code&gt; call with a &lt;code&gt;flatmap&lt;/code&gt;,&lt;/p&gt;
+&lt;p&gt;And now we replace the call to &lt;code&gt;map&lt;/code&gt; with &lt;code&gt;flatmap&lt;/code&gt;,&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; list(flatmap(os.listdir, dirs))&lt;/span&gt;
 &lt;span class="go"&gt;    &amp;gt;&amp;gt;&amp;gt; [&amp;#39;settings.py&amp;#39;, &amp;#39;wsgi.py&amp;#39;, &amp;#39;templates&amp;#39;, &amp;#39;app.py&amp;#39;, &lt;/span&gt;
 &lt;span class="go"&gt;         &amp;#39;templates&amp;#39;, &amp;#39;index.html, &amp;#39;config.json&amp;#39;]&lt;/span&gt;
