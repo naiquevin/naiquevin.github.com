@@ -147,7 +147,7 @@ comes with a &lt;code&gt;count&lt;/code&gt; function so we don't need to write o
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;code&gt;ifilter&lt;/code&gt; will run no more than 4096 times = win!&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;is_pow_two&lt;/code&gt; will be called no more than 4096 times = win!&lt;/p&gt;
 &lt;h3&gt;Grouping things in style&lt;/h3&gt;
 &lt;p&gt;If you often use Python to write scripts for extracting data,
 eg. scraping web pages or parsing log files, then you may have come
