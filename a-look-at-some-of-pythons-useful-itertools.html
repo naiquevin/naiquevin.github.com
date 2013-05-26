@@ -70,10 +70,13 @@ behaviour. Let's see an example to understand this.</p>
         <span class="k">return</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
 
     <span class="k">def</span> <span class="nf">even</span><span class="p">():</span>
-        <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span><span class="n">is_even</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">20</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span><span class="n">is_even</span><span class="p">,</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 </pre></div>
 
 
+<p><em><strong>Edit</strong>: Thanks to many comments, I replaced the redundant generator
+expression <code>(i for i in xrange(20)</code> with just <code>xrange</code> in all
+examples.</em></p>
 <p>The above code defines a function <code>is_even</code> to check if an integer
 is even. In <code>even</code>, we pass <code>is_even</code> as a predicate to <code>filter</code>
 thus returning all even integers between 0 to 20. To get first four of
@@ -124,7 +127,7 @@ them. Lets define another function <code>lazy_even</code>,</p>
 <div class="codehilite"><pre>    <span class="kn">import</span> <span class="nn">itertools</span>
 
     <span class="k">def</span> <span class="nf">lazy_even</span><span class="p">():</span>
-        <span class="k">return</span> <span class="n">itertools</span><span class="o">.</span><span class="n">ifilter</span><span class="p">(</span><span class="n">is_even</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">20</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">itertools</span><span class="o">.</span><span class="n">ifilter</span><span class="p">(</span><span class="n">is_even</span><span class="p">,</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 </pre></div>
 
 
@@ -254,14 +257,15 @@ get the names of all their first level children as a list.</p>
 <p>This gives us a list of lists and we still need to flatten it. There
 are of course many ways to do this, one way is to use <code>reduce</code>. But
 here is an elegant way using <code>itertools.chain</code>. <code>chain</code> takes many
-iterables as arguments and chains or appends them at ends. (<strong>Edit</strong>:
-As correctly pointed out by
+iterables as arguments and chains or appends them at ends.</p>
+<p><em><strong>Edit</strong>: As correctly pointed out by
 <a href="https://news.ycombinator.com/item?id=5767462">masklinn on hacker news</a>,
 it's better to use <code>imap</code> instead of <code>map</code> and also the alternate
 <code>chain</code> constructor <code>chain.from_iterable</code> to avoid passing the
-lazy object as *args since the former will result in eager
-evaluation).  Let's define a function <code>flatmap</code> that will map a
-function to a list of items and flatten the resulting list of lists.</p>
+lazy object as *args since unpacking with *args will result in eager
+evaluation.</em></p>
+<p>Let's define a function <code>flatmap</code> that will map a function to a list
+of items and flatten the resulting list of lists.</p>
 <div class="codehilite"><pre>    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span><span class="p">,</span> <span class="n">imap</span>
 
     <span class="k">def</span> <span class="nf">flatmap</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
@@ -279,7 +283,9 @@ function to a list of items and flatten the resulting list of lists.</p>
 <h3>Itertools for everything (for fun and learning!)</h3>
 <p>As a final example, let's see how we can compose an elegant solution
 entirely using our newly acquired utility belt. The problem is to find
-a set of common factors of a list of integers.</p>
+a set of <s>common</s> (Thanks
+<a href="http://naiquevin.github.io/a-look-at-some-of-pythons-useful-itertools.html#comment-908642009">wcyee</a>)
+factors of a list of integers.</p>
 <div class="codehilite"><pre>    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">ifilter</span><span class="p">,</span> <span class="n">takewhile</span><span class="p">,</span> <span class="n">count</span>
 
     <span class="k">def</span> <span class="nf">factors</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>

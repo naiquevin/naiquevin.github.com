@@ -34,10 +34,13 @@ behaviour. Let's see an example to understand this.&lt;/p&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;even&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;is_even&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;xrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;is_even&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;xrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Edit&lt;/strong&gt;: Thanks to many comments, I replaced the redundant generator
+expression &lt;code&gt;(i for i in xrange(20)&lt;/code&gt; with just &lt;code&gt;xrange&lt;/code&gt; in all
+examples.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;The above code defines a function &lt;code&gt;is_even&lt;/code&gt; to check if an integer
 is even. In &lt;code&gt;even&lt;/code&gt;, we pass &lt;code&gt;is_even&lt;/code&gt; as a predicate to &lt;code&gt;filter&lt;/code&gt;
 thus returning all even integers between 0 to 20. To get first four of
@@ -88,7 +91,7 @@ them. Lets define another function &lt;code&gt;lazy_even&lt;/code&gt;,&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;lazy_even&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;itertools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ifilter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;is_even&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;xrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;itertools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ifilter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;is_even&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;xrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -218,14 +221,15 @@ get the names of all their first level children as a list.&lt;/p&gt;
 &lt;p&gt;This gives us a list of lists and we still need to flatten it. There
 are of course many ways to do this, one way is to use &lt;code&gt;reduce&lt;/code&gt;. But
 here is an elegant way using &lt;code&gt;itertools.chain&lt;/code&gt;. &lt;code&gt;chain&lt;/code&gt; takes many
-iterables as arguments and chains or appends them at ends. (&lt;strong&gt;Edit&lt;/strong&gt;:
-As correctly pointed out by
+iterables as arguments and chains or appends them at ends.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Edit&lt;/strong&gt;: As correctly pointed out by
 &lt;a href="https://news.ycombinator.com/item?id=5767462"&gt;masklinn on hacker news&lt;/a&gt;,
 it's better to use &lt;code&gt;imap&lt;/code&gt; instead of &lt;code&gt;map&lt;/code&gt; and also the alternate
 &lt;code&gt;chain&lt;/code&gt; constructor &lt;code&gt;chain.from_iterable&lt;/code&gt; to avoid passing the
-lazy object as *args since the former will result in eager
-evaluation).  Let's define a function &lt;code&gt;flatmap&lt;/code&gt; that will map a
-function to a list of items and flatten the resulting list of lists.&lt;/p&gt;
+lazy object as *args since unpacking with *args will result in eager
+evaluation.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Let's define a function &lt;code&gt;flatmap&lt;/code&gt; that will map a function to a list
+of items and flatten the resulting list of lists.&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;chain&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;imap&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;flatmap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -243,7 +247,9 @@ function to a list of items and flatten the resulting list of lists.&lt;/p&gt;
 &lt;h3&gt;Itertools for everything (for fun and learning!)&lt;/h3&gt;
 &lt;p&gt;As a final example, let's see how we can compose an elegant solution
 entirely using our newly acquired utility belt. The problem is to find
-a set of common factors of a list of integers.&lt;/p&gt;
+a set of &lt;s&gt;common&lt;/s&gt; (Thanks
+&lt;a href="http://naiquevin.github.io/a-look-at-some-of-pythons-useful-itertools.html#comment-908642009"&gt;wcyee&lt;/a&gt;)
+factors of a list of integers.&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ifilter&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;takewhile&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;factors&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
