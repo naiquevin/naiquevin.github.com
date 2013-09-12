@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Vineet's blog</title><link href="http://naiquevin.github.com/" rel="alternate"></link><link href="http://naiquevin.github.com/feeds/IE6%20issues.atom.xml" rel="self"></link><id>http://naiquevin.github.com/</id><updated>2009-05-14T17:21:00+05:30</updated><entry><title>HTML link color problem solved</title><link href="http://naiquevin.github.com/html-link-color-problem-solved.html" rel="alternate"></link><updated>2009-05-14T17:21:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-05-14:html-link-color-problem-solved.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Problem:&lt;/strong&gt; Some browsers show links in the default color in spite of being styled in CSS. On hover the CSS styling works.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Vineet's blog</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/ie6.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2009-05-14T17:21:00+05:30</updated><entry><title>HTML link color problem solved</title><link href="http://naiquevin.github.io/html-link-color-problem-solved.html" rel="alternate"></link><updated>2009-05-14T17:21:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2009-05-14:html-link-color-problem-solved.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Problem:&lt;/strong&gt; Some browsers show links in the default color in spite of being styled in CSS. On hover the CSS styling works.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Problem faced in:&lt;/strong&gt; Google Chrome and IE6. No problem in FF&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt;It is pretty simple by the way. There are two ways to resolve this ..&lt;/p&gt;
 &lt;ol&gt;
@@ -23,7 +23,7 @@
 
 
 &lt;p&gt;Remember the order. Its very important .. (Mnemonic - LoVe HAte)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Many thanks to:&lt;/strong&gt; A certain CSS freak at webmasterworld forums&lt;/p&gt;</summary><category term="hover"></category><category term="Chrome"></category><category term="IE6"></category><category term="HTML"></category><category term="link color"></category><category term="CSS"></category></entry><entry><title>HTML forms problem in IE6 solved</title><link href="http://naiquevin.github.com/html-forms-problem-in-ie6-solved.html" rel="alternate"></link><updated>2009-05-12T17:28:55+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-05-12:html-forms-problem-in-ie6-solved.html</id><summary type="html">&lt;p&gt;Ah relieved!... finally my website works on IE6. A big problem
+&lt;p&gt;&lt;strong&gt;Many thanks to:&lt;/strong&gt; A certain CSS freak at webmasterworld forums&lt;/p&gt;</summary><category term="hover"></category><category term="Chrome"></category><category term="IE6"></category><category term="HTML"></category><category term="link color"></category><category term="CSS"></category></entry><entry><title>HTML forms problem in IE6 solved</title><link href="http://naiquevin.github.io/html-forms-problem-in-ie6-solved.html" rel="alternate"></link><updated>2009-05-12T17:28:55+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2009-05-12:html-forms-problem-in-ie6-solved.html</id><summary type="html">&lt;p&gt;Ah relieved!... finally my website works on IE6. A big problem
 solved&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Problem:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Login and signup script not working in IE6. (works fine in FF &amp;amp;
@@ -60,4 +60,38 @@ to&lt;/p&gt;
 its fine.  But now I have already changed it, and I am too tired to
 change it back again to something else... so I'll let that be.. :)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Thanks to:&lt;/strong&gt; &lt;/p&gt;
-&lt;p&gt;Webmasterworld forums, Google&lt;/p&gt;</summary><category term="$_POST['submit']"></category><category term="images as buttons"></category><category term="HTML"></category><category term="form"></category><category term="IE6"></category></entry></feed>
+&lt;p&gt;Webmasterworld forums, Google&lt;/p&gt;</summary><category term="PHP"></category><category term="$_POST"></category><category term="images as buttons"></category><category term="HTML"></category><category term="form"></category><category term="IE6"></category></entry><entry><title>IE6 FIX-ed......Part I</title><link href="http://naiquevin.github.io/ie6-fix-edpart-i.html" rel="alternate"></link><updated>2009-05-06T03:44:44+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2009-05-06:ie6-fix-edpart-i.html</id><summary type="html">&lt;p&gt;Imagine a scenario,&lt;/p&gt;
+&lt;p&gt;For past one and a half month you have been working hard on your
+website, creating graphics in Ps, accurately positioning them along
+with all the other components using CSS and adding 100 lines of new
+code everyday... and then one day you read something about cross
+browser compatibility issues and open the website in IE6 just to see
+how it works there.&lt;/p&gt;
+&lt;p&gt;The feeling will be nothing less than what you will experience when
+you forget to use Ctrl+S and power cut occurs..&lt;/p&gt;
+&lt;p&gt;Two weeks back, I had a similar feeling when I noticed that IE6
+doesn't like my neatly made PNG images that use transparent
+backgrounds.&lt;/p&gt;
+&lt;p&gt;So I 'googled' to see if I can get any help and to my surprise it
+showed 368,000 results.&lt;/p&gt;
+&lt;p&gt;But only one fix yielded results. The one I found last night at
+&lt;a href="http://www.twinhelix.com/css/iepngfix/demo/"&gt;http://www.twinhelix.com/css/iepngfix/demo/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It was pretty easy, just paste the code in the header and it works
+beautifully. Although someday I would like to take a look at what the
+.htc file actually does, I guess this is not the right time to get
+into such details.&lt;/p&gt;
+&lt;p&gt;But now I realize that this was just one of the problems...&lt;/p&gt;
+&lt;p&gt;Other than PNG,&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Browser doesn't respond to links styled using CSS properly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;And the biggest blow is that the login script doesn't work! It
+   calls the same .php file but nothing happens.. not even an error msg..&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Hope, I ll be able to fix these problems soon. Off to 'google-ing'
+fixes now.&lt;/p&gt;
+&lt;p&gt;Edit: Both of the above mentioned problems are solved. Please check
+the 'CROSS BROWSER' page of this blog for the fixes.&lt;/p&gt;</summary><category term="IE6 fix"></category><category term="web development languages"></category><category term="CSS"></category></entry></feed>

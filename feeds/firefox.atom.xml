@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Vineet's blog</title><link href="http://naiquevin.github.com/" rel="alternate"></link><link href="http://naiquevin.github.com/feeds/misc.atom.xml" rel="self"></link><id>http://naiquevin.github.com/</id><updated>2010-07-07T00:12:02+05:30</updated><entry><title>Useful learning</title><link href="http://naiquevin.github.com/useful-learning.html" rel="alternate"></link><updated>2010-07-07T00:12:02+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2010-07-07:useful-learning.html</id><summary type="html">&lt;p&gt;Last week was one of those few weeks in which a lot of learning happens. Not very uncommon if you are in a profession that needs you to constantly keep pace with something as dynamic as the world wide web. But this time it made me understand what makes useful learning more enjoyable than compulsive learning. And the answer is simple - Because the we actually end up using the former.&lt;/p&gt;
-&lt;p&gt;Ever tried word power books for improving your vocabulary. I remember when I was reading Norman Lewis, words that I had recently learnt appeared in whatever I read at that time. Same way this time I found that almost every one was suddenly tweeting and sharing articles related to the information I was trying to dig up.&lt;/p&gt;</summary></entry><entry><title>Does Firefox gets you into bad coding habits?</title><link href="http://naiquevin.github.com/does-firefox-gets-you-into-bad-coding-habits.html" rel="alternate"></link><updated>2009-11-22T11:16:46+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-11-22:does-firefox-gets-you-into-bad-coding-habits.html</id><summary type="html">&lt;p&gt;We all know how good Firefox is and if something works in FF and
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Vineet's blog</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/firefox.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2009-11-22T11:16:46+05:30</updated><entry><title>Does Firefox gets you into bad coding habits?</title><link href="http://naiquevin.github.io/does-firefox-gets-you-into-bad-coding-habits.html" rel="alternate"></link><updated>2009-11-22T11:16:46+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2009-11-22:does-firefox-gets-you-into-bad-coding-habits.html</id><summary type="html">&lt;p&gt;We all know how good Firefox is and if something works in FF and
 doesn't work in other browsers, we generally blame the others for not
 being as good. Recently I have started to discover a downside of using
 FF. I came across a few situations where FF was too lenient and I
@@ -62,38 +61,4 @@ welcome.. )&lt;/p&gt;
 &lt;p&gt;So from now on its going to be simultaneous development and testing on
 both Firefox and chrome. But Firefox still remains my default browser
 for the firebug, the echofon, the frequent updates and every thing
-that makes Firefox exemplify the true open source spirit.&lt;/p&gt;</summary></entry><entry><title>IE6 FIX-ed......Part I</title><link href="http://naiquevin.github.com/ie6-fix-edpart-i.html" rel="alternate"></link><updated>2009-05-06T03:44:44+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.com,2009-05-06:ie6-fix-edpart-i.html</id><summary type="html">&lt;p&gt;Imagine a scenario,&lt;/p&gt;
-&lt;p&gt;For past one and a half month you have been working hard on your
-website, creating graphics in Ps, accurately positioning them along
-with all the other components using CSS and adding 100 lines of new
-code everyday... and then one day you read something about cross
-browser compatibility issues and open the website in IE6 just to see
-how it works there.&lt;/p&gt;
-&lt;p&gt;The feeling will be nothing less than what you will experience when
-you forget to use Ctrl+S and power cut occurs..&lt;/p&gt;
-&lt;p&gt;Two weeks back, I had a similar feeling when I noticed that IE6
-doesn't like my neatly made PNG images that use transparent
-backgrounds.&lt;/p&gt;
-&lt;p&gt;So I 'googled' to see if I can get any help and to my surprise it
-showed 368,000 results.&lt;/p&gt;
-&lt;p&gt;But only one fix yielded results. The one I found last night at
-&lt;a href="http://www.twinhelix.com/css/iepngfix/demo/"&gt;http://www.twinhelix.com/css/iepngfix/demo/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;It was pretty easy, just paste the code in the header and it works
-beautifully. Although someday I would like to take a look at what the
-.htc file actually does, I guess this is not the right time to get
-into such details.&lt;/p&gt;
-&lt;p&gt;But now I realize that this was just one of the problems...&lt;/p&gt;
-&lt;p&gt;Other than PNG,&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Browser doesn't respond to links styled using CSS properly.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;And the biggest blow is that the login script doesn't work! It
-   calls the same .php file but nothing happens.. not even an error msg..&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Hope, I ll be able to fix these problems soon. Off to 'google-ing'
-fixes now.&lt;/p&gt;
-&lt;p&gt;Edit: Both of the above mentioned problems are solved. Please check
-the 'CROSS BROWSER' page of this blog for the fixes.&lt;/p&gt;</summary><category term="IE6 fix"></category><category term="web development languages"></category><category term="CSS"></category></entry></feed>
+that makes Firefox exemplify the true open source spirit.&lt;/p&gt;</summary></entry></feed>
