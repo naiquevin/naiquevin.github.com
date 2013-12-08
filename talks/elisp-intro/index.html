@@ -185,9 +185,9 @@ ELISP> (setq b 30 c 40)
 <pre class="prettyprint lang-lisp" data-lang="elisp">
 ELISP> (setq p (cons 1 2))
 (1 . 2)
-ELISP> (car b)
+ELISP> (car p)
 1
-ELISP> (cdr b)
+ELISP> (cdr p)
 2
 </pre>
 
@@ -394,7 +394,7 @@ ELISP> (funcall (g (lambda (x) (+ 1 x))) 10)
 <slide class="nobackground" >
   
     <hgroup>
-      <h2>loading code</h2>
+      <h2>Loading code</h2>
       <h3></h3>
     </hgroup>
     <article ><p><code>load-path</code>: list of paths where files to load are looked up</p>

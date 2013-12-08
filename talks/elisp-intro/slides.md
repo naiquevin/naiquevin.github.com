@@ -120,9 +120,9 @@ class: nobackground
 <pre class="prettyprint lang-lisp" data-lang="elisp">
 ELISP> (setq p (cons 1 2))
 (1 . 2)
-ELISP> (car b)
+ELISP> (car p)
 1
-ELISP> (cdr b)
+ELISP> (cdr p)
 2
 </pre>
 
@@ -305,7 +305,7 @@ class: nobackground
 
 ---
 
-title: loading code
+title: Loading code
 class: nobackground
 
 `load-path`: list of paths where files to load are looked up
