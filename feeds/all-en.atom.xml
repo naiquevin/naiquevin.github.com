@@ -1,5 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/all-en.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2013-05-23T00:00:00+05:30</updated><entry><title>A look at some of Python's useful itertools</title><link href="http://naiquevin.github.io/a-look-at-some-of-pythons-useful-itertools.html" rel="alternate"></link><updated>2013-05-23T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2013-05-23:a-look-at-some-of-pythons-useful-itertools.html</id><summary type="html">&lt;p&gt;Couple of months back I enrolled for the
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/all-en.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2014-02-24T00:00:00+05:30</updated><entry><title>Using postgresql's enum types with Korma</title><link href="http://naiquevin.github.io/using-postgresqls-enum-types-with-korma.html" rel="alternate"></link><updated>2014-02-24T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2014-02-24:using-postgresqls-enum-types-with-korma.html</id><summary type="html">&lt;p&gt;I have been playing with Clojure on the side for a few months and
+these days I am trying to build a simple webapp using compojure,
+enlive and korma. One problem I faced early on was getting
+postgresql's enum type to work with korma. Insert and select queries
+using strings for enum type values failed. In the end, I could get it
+working but finding help online or from the docs wasn't easy. So I
+thought it's a good chance to write my first blog post about Clojure
+;-)&lt;/p&gt;
+&lt;p&gt;The example I will be using is a stripped down version of a table from
+the app which has a field named &lt;code&gt;impact&lt;/code&gt; that can either be "positive"
+or "negative". The name of the table is &lt;code&gt;activities&lt;/code&gt; and for
+simplicity, I have skipped primary keys, foreign key relations and
+other irrelevant details.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TYPE&lt;/span&gt; &lt;span class="n"&gt;impact_types&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;ENUM&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;positive&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;negative&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;activities&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="nb"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;140&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;NOT&lt;/span&gt; &lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;impact&lt;/span&gt; &lt;span class="n"&gt;impact_types&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's insert a row using the terminal client and then execute a query
+to get it. This works perfectly fine.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="n"&gt;activities&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;some activity&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;positive&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;activities&lt;/span&gt; &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;impact&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;positive&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+         &lt;span class="n"&gt;title&lt;/span&gt;     &lt;span class="o"&gt;|&lt;/span&gt;  &lt;span class="n"&gt;impact&lt;/span&gt;
+    &lt;span class="c1"&gt;---------------+----------&lt;/span&gt;
+     &lt;span class="k"&gt;some&lt;/span&gt; &lt;span class="n"&gt;activity&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;positive&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;row&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To do this in Clojure using korma, we first need to define a
+connection (that I'll skip) and then an entity representing the
+&lt;code&gt;activities&lt;/code&gt; table.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;use&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;korma.core&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defentity&lt;/span&gt; &lt;span class="nv"&gt;activities&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But now if we try to insert a row using korma by specifying the
+&lt;code&gt;impact&lt;/code&gt; value as a string, it fails as follows,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;insert&lt;/span&gt; &lt;span class="nv"&gt;activities&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;values&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;:title&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;another activity&amp;quot;&lt;/span&gt; &lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;negative&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="codehilite"&gt;&lt;pre&gt;    Failure to execute query with SQL:
+    INSERT INTO &amp;quot;activities&amp;quot; (&amp;quot;impact&amp;quot;, &amp;quot;title&amp;quot;) VALUES (?, ?)  ::  [negative another activity]
+    PSQLException:
+     Message: ERROR: column &amp;quot;impact&amp;quot; is of type impact_types but expression is of type character varying
+      Hint: You will need to rewrite or cast the expression.
+      Position: 54
+     SQLState: 42804
+     Error Code: 0
+    PSQLException ERROR: column &amp;quot;impact&amp;quot; is of type impact_types but expression is of type character varying
+      Hint: You will need to rewrite or cast the expression.
+      Position: 54  org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse (QueryExecutorImpl.java:2157)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Same thing happens when executing a query with &lt;code&gt;impact&lt;/code&gt; as a string in
+the &lt;code&gt;where&lt;/code&gt; clause.&lt;/p&gt;
+&lt;p&gt;Fortunately, the postgresql jdbc library does pretty well in terms of
+showing sensible error messages and hints. As you can see, it says we
+need to rewrite or cast the expression. But which type of object does
+it expect?  There is nothing mentioned about this in the docs. Turns
+out that the object is of class &lt;code&gt;org.postgresql.util.PGObject&lt;/code&gt;. In
+fact, we can find this by looking at the results of the select query
+closely.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;select &lt;/span&gt;&lt;span class="nv"&gt;activities&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="c1"&gt;;; [{:impact #&amp;lt;PGobject positive&amp;gt;, :title &amp;quot;some activity&amp;quot;}]&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;class &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;first &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;select &lt;/span&gt;&lt;span class="nv"&gt;activities&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+    &lt;span class="c1"&gt;;; org.postgresql.util.PGobject&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;As per the
+&lt;a href="http://jdbc.postgresql.org/documentation/publicapi/org/postgresql/util/PGobject.html"&gt;documentation of PGObject&lt;/a&gt;,
+it's used to describe any type that is unknown by JDBC
+standards. Let's write a helper function to do this conversion..&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;import &lt;/span&gt;&lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;org.postgresql.util&lt;/span&gt; &lt;span class="nv"&gt;PGobject&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;defn &lt;/span&gt;&lt;span class="nv"&gt;str-&amp;gt;pgobject&lt;/span&gt;
+      &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;type&lt;/span&gt; &lt;span class="nv"&gt;value&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;doto &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;PGobject.&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;.setType&lt;/span&gt; &lt;span class="nv"&gt;type&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;.setValue&lt;/span&gt; &lt;span class="nv"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;.. and try our earlier insert query again,&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;insert&lt;/span&gt; &lt;span class="nv"&gt;activities&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;values&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;:title&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;another activity&amp;quot;&lt;/span&gt;
+               &lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;str-&amp;gt;pgobject&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;impact_types&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;negative&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)}))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And now it works!&lt;/p&gt;
+&lt;p&gt;From the docs, it's also quite trivial to convert a &lt;code&gt;pgobject&lt;/code&gt; to a
+string at the time of post-processing the results.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;.getValue&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;first &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;select &lt;/span&gt;&lt;span class="nv"&gt;activities&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+    &lt;span class="c1"&gt;;; &amp;quot;positive&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The only annoyance is that we will need to remember to do these
+conversions as a preprocessing step before running insert/update and a
+post-processing step after getting query results. But korma has got us
+covered with &lt;code&gt;prepare&lt;/code&gt; and &lt;code&gt;transform&lt;/code&gt; functions that can be specified
+for applying common mutations to data. Read more about it in the
+&lt;a href="http://sqlkorma.com/docs#entities"&gt;docs&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;defn &lt;/span&gt;&lt;span class="nv"&gt;transform-for-impact&lt;/span&gt;
+      &lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="nv"&gt;impact&lt;/span&gt; &lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="ss"&gt;:as&lt;/span&gt; &lt;span class="nv"&gt;act&lt;/span&gt;&lt;span class="p"&gt;}]&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;assoc &lt;/span&gt;&lt;span class="nv"&gt;act&lt;/span&gt; &lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;.getValue&lt;/span&gt; &lt;span class="nv"&gt;impact&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;defn &lt;/span&gt;&lt;span class="nv"&gt;prepare-for-impact&lt;/span&gt;
+      &lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="nv"&gt;impact&lt;/span&gt; &lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="ss"&gt;:as&lt;/span&gt; &lt;span class="nv"&gt;act&lt;/span&gt;&lt;span class="p"&gt;}]&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;assoc &lt;/span&gt;&lt;span class="nv"&gt;act&lt;/span&gt; &lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;str-&amp;gt;pgobject&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;impact_types&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;impact&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+
+    &lt;span class="c1"&gt;;; modified entity definition&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defentity&lt;/span&gt; &lt;span class="nv"&gt;activities&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;transform&lt;/span&gt; &lt;span class="nv"&gt;transform-for-impact&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;prepare&lt;/span&gt; &lt;span class="nv"&gt;prepare-for-impact&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;select &lt;/span&gt;&lt;span class="nv"&gt;activities&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="c1"&gt;;; ({:impact &amp;quot;positive&amp;quot;, :title &amp;quot;some activity&amp;quot;} {:impact &amp;quot;negative&amp;quot;, :title &amp;quot;another activity&amp;quot;})&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note however that we would still need to explicitly pass a &lt;code&gt;pgobject&lt;/code&gt;
+instance to &lt;code&gt;where&lt;/code&gt; in order to filter the results by impact. We can
+still reuse the &lt;code&gt;prepare-for-impact&lt;/code&gt; on the map passed to &lt;code&gt;where&lt;/code&gt;
+though.&lt;/p&gt;
+&lt;p&gt;Hope this post was helpful.&lt;/p&gt;
+&lt;p&gt;PS: If you are a Clojure veteran and think the above code could be
+better or more idiomatic, please point it out. I am only getting
+started :-)&lt;/p&gt;</summary><category term="clojure"></category><category term="postgresql"></category></entry><entry><title>A look at some of Python's useful itertools</title><link href="http://naiquevin.github.io/a-look-at-some-of-pythons-useful-itertools.html" rel="alternate"></link><updated>2013-05-23T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2013-05-23:a-look-at-some-of-pythons-useful-itertools.html</id><summary type="html">&lt;p&gt;Couple of months back I enrolled for the
 &lt;a href="https://www.coursera.org/course/progfun"&gt;Functional Programming Principles in Scala&lt;/a&gt;
 course taught by Martin Odersky on Coursera. While solving one of the
 early assignments, I remember searching for "Scala equivalent to

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Using postgresql's enum types with Korma</title>
+    <link href="http://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="http://naiquevin.github.io/theme/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="http://naiquevin.github.io/theme/css/pygments.css"/>
+  </head>
+  <body>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38557598-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>    <div class="container">
+      <div class="header">
+        <h1><a href="/" title="Vineet's mind space on the internet">/home/vineet</a></h1>
+        <ul>
+            <li><a href="/feeds/all.atom.xml">feed</a></li>
+            <li><a href="/pages/music.html">music</a></li>
+            <li><a href="/pages/talks.html">talks</a></li>
+            <li><a href="http://github.com/naiquevin">code</a></li>
+            <li><a href="/pages/about-me.html">about</a></li>
+        </ul>
+      </div>
+      <div class="content">
+  <section class="article">
+    <h1 class="articleTitle">Using postgresql's enum types with Korma</h1>
+    <div class="postInfo">
+      Written on <span class="published" title="2014-02-24T00:00:00">Mon 24 February 2014</span>
+    </div>
+    <div class="articleContent">
+      <p>I have been playing with Clojure on the side for a few months and
+these days I am trying to build a simple webapp using compojure,
+enlive and korma. One problem I faced early on was getting
+postgresql's enum type to work with korma. Insert and select queries
+using strings for enum type values failed. In the end, I could get it
+working but finding help online or from the docs wasn't easy. So I
+thought it's a good chance to write my first blog post about Clojure
+;-)</p>
+<p>The example I will be using is a stripped down version of a table from
+the app which has a field named <code>impact</code> that can either be "positive"
+or "negative". The name of the table is <code>activities</code> and for
+simplicity, I have skipped primary keys, foreign key relations and
+other irrelevant details.</p>
+<div class="codehilite"><pre>    <span class="k">CREATE</span> <span class="k">TYPE</span> <span class="n">impact_types</span> <span class="k">AS</span> <span class="n">ENUM</span> <span class="p">(</span><span class="s1">&#39;positive&#39;</span><span class="p">,</span> <span class="s1">&#39;negative&#39;</span><span class="p">);</span>
+    <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">activities</span> <span class="p">(</span>
+        <span class="n">title</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">140</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+        <span class="n">impact</span> <span class="n">impact_types</span>
+    <span class="p">);</span>
+</pre></div>
+
+
+<p>Let's insert a row using the terminal client and then execute a query
+to get it. This works perfectly fine.</p>
+<div class="codehilite"><pre>    <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">activities</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;some activity&#39;</span><span class="p">,</span> <span class="s1">&#39;positive&#39;</span><span class="p">);</span>
+    <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">activities</span> <span class="k">WHERE</span> <span class="n">impact</span> <span class="o">=</span> <span class="s1">&#39;positive&#39;</span><span class="p">;</span>
+         <span class="n">title</span>     <span class="o">|</span>  <span class="n">impact</span>
+    <span class="c1">---------------+----------</span>
+     <span class="k">some</span> <span class="n">activity</span> <span class="o">|</span> <span class="n">positive</span>
+    <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+
+
+<p>To do this in Clojure using korma, we first need to define a
+connection (that I'll skip) and then an entity representing the
+<code>activities</code> table.</p>
+<div class="codehilite"><pre>    <span class="p">(</span><span class="nf">use</span> <span class="ss">&#39;korma.core</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">defentity</span> <span class="nv">activities</span><span class="p">)</span>
+</pre></div>
+
+
+<p>But now if we try to insert a row using korma by specifying the
+<code>impact</code> value as a string, it fails as follows,</p>
+<div class="codehilite"><pre>    <span class="p">(</span><span class="nf">insert</span> <span class="nv">activities</span> <span class="p">(</span><span class="nf">values</span> <span class="p">{</span><span class="ss">:title</span> <span class="s">&quot;another activity&quot;</span> <span class="ss">:impact</span> <span class="s">&quot;negative&quot;</span><span class="p">}))</span>
+</pre></div>
+
+
+<div class="codehilite"><pre>    Failure to execute query with SQL:
+    INSERT INTO &quot;activities&quot; (&quot;impact&quot;, &quot;title&quot;) VALUES (?, ?)  ::  [negative another activity]
+    PSQLException:
+     Message: ERROR: column &quot;impact&quot; is of type impact_types but expression is of type character varying
+      Hint: You will need to rewrite or cast the expression.
+      Position: 54
+     SQLState: 42804
+     Error Code: 0
+    PSQLException ERROR: column &quot;impact&quot; is of type impact_types but expression is of type character varying
+      Hint: You will need to rewrite or cast the expression.
+      Position: 54  org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse (QueryExecutorImpl.java:2157)
+</pre></div>
+
+
+<p>Same thing happens when executing a query with <code>impact</code> as a string in
+the <code>where</code> clause.</p>
+<p>Fortunately, the postgresql jdbc library does pretty well in terms of
+showing sensible error messages and hints. As you can see, it says we
+need to rewrite or cast the expression. But which type of object does
+it expect?  There is nothing mentioned about this in the docs. Turns
+out that the object is of class <code>org.postgresql.util.PGObject</code>. In
+fact, we can find this by looking at the results of the select query
+closely.</p>
+<div class="codehilite"><pre>    <span class="p">(</span><span class="nb">select </span><span class="nv">activities</span><span class="p">)</span>
+    <span class="c1">;; [{:impact #&lt;PGobject positive&gt;, :title &quot;some activity&quot;}]</span>
+    <span class="p">(</span><span class="nb">class </span><span class="p">(</span><span class="ss">:impact</span> <span class="p">(</span><span class="nb">first </span><span class="p">(</span><span class="nb">select </span><span class="nv">activities</span><span class="p">))))</span>
+    <span class="c1">;; org.postgresql.util.PGobject</span>
+</pre></div>
+
+
+<p>As per the
+<a href="http://jdbc.postgresql.org/documentation/publicapi/org/postgresql/util/PGobject.html">documentation of PGObject</a>,
+it's used to describe any type that is unknown by JDBC
+standards. Let's write a helper function to do this conversion..</p>
+<div class="codehilite"><pre>    <span class="p">(</span><span class="nb">import </span><span class="o">&#39;</span><span class="p">(</span><span class="nf">org.postgresql.util</span> <span class="nv">PGobject</span><span class="p">))</span>
+
+    <span class="p">(</span><span class="kd">defn </span><span class="nv">str-&gt;pgobject</span>
+      <span class="p">[</span><span class="nv">type</span> <span class="nv">value</span><span class="p">]</span>
+      <span class="p">(</span><span class="nb">doto </span><span class="p">(</span><span class="nf">PGobject.</span><span class="p">)</span>
+        <span class="p">(</span><span class="nf">.setType</span> <span class="nv">type</span><span class="p">)</span>
+        <span class="p">(</span><span class="nf">.setValue</span> <span class="nv">value</span><span class="p">)))</span>
+</pre></div>
+
+
+<p>.. and try our earlier insert query again,</p>
+<div class="codehilite"><pre>    <span class="p">(</span><span class="nf">insert</span> <span class="nv">activities</span>
+      <span class="p">(</span><span class="nf">values</span> <span class="p">{</span><span class="ss">:title</span> <span class="s">&quot;another activity&quot;</span>
+               <span class="ss">:impact</span> <span class="p">(</span><span class="nf">str-&gt;pgobject</span> <span class="s">&quot;impact_types&quot;</span> <span class="s">&quot;negative&quot;</span><span class="p">)}))</span>
+</pre></div>
+
+
+<p>And now it works!</p>
+<p>From the docs, it's also quite trivial to convert a <code>pgobject</code> to a
+string at the time of post-processing the results.</p>
+<div class="codehilite"><pre>    <span class="p">(</span><span class="nf">.getValue</span> <span class="p">(</span><span class="ss">:impact</span> <span class="p">(</span><span class="nb">first </span><span class="p">(</span><span class="nb">select </span><span class="nv">activities</span><span class="p">))))</span>
+    <span class="c1">;; &quot;positive&quot;</span>
+</pre></div>
+
+
+<p>The only annoyance is that we will need to remember to do these
+conversions as a preprocessing step before running insert/update and a
+post-processing step after getting query results. But korma has got us
+covered with <code>prepare</code> and <code>transform</code> functions that can be specified
+for applying common mutations to data. Read more about it in the
+<a href="http://sqlkorma.com/docs#entities">docs</a>.</p>
+<div class="codehilite"><pre>    <span class="p">(</span><span class="kd">defn </span><span class="nv">transform-for-impact</span>
+      <span class="p">[{</span><span class="nv">impact</span> <span class="ss">:impact</span> <span class="ss">:as</span> <span class="nv">act</span><span class="p">}]</span>
+      <span class="p">(</span><span class="nb">assoc </span><span class="nv">act</span> <span class="ss">:impact</span> <span class="p">(</span><span class="nf">.getValue</span> <span class="nv">impact</span><span class="p">)))</span>
+
+    <span class="p">(</span><span class="kd">defn </span><span class="nv">prepare-for-impact</span>
+      <span class="p">[{</span><span class="nv">impact</span> <span class="ss">:impact</span> <span class="ss">:as</span> <span class="nv">act</span><span class="p">}]</span>
+      <span class="p">(</span><span class="nb">assoc </span><span class="nv">act</span> <span class="ss">:impact</span> <span class="p">(</span><span class="nf">str-&gt;pgobject</span> <span class="s">&quot;impact_types&quot;</span> <span class="nv">impact</span><span class="p">)))</span>
+
+    <span class="c1">;; modified entity definition</span>
+    <span class="p">(</span><span class="nf">defentity</span> <span class="nv">activities</span>
+      <span class="p">(</span><span class="nf">transform</span> <span class="nv">transform-for-impact</span><span class="p">)</span>
+      <span class="p">(</span><span class="nf">prepare</span> <span class="nv">prepare-for-impact</span><span class="p">))</span>
+</pre></div>
+
+
+<div class="codehilite"><pre>    <span class="p">(</span><span class="nb">select </span><span class="nv">activities</span><span class="p">)</span>
+    <span class="c1">;; ({:impact &quot;positive&quot;, :title &quot;some activity&quot;} {:impact &quot;negative&quot;, :title &quot;another activity&quot;})</span>
+</pre></div>
+
+
+<p>Note however that we would still need to explicitly pass a <code>pgobject</code>
+instance to <code>where</code> in order to filter the results by impact. We can
+still reuse the <code>prepare-for-impact</code> on the map passed to <code>where</code>
+though.</p>
+<p>Hope this post was helpful.</p>
+<p>PS: If you are a Clojure veteran and think the above code could be
+better or more idiomatic, please point it out. I am only getting
+started :-)</p>
+    </div>
+  </section>
+  <div class="articleEnd">---</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'naiquevinsblog'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>      </div>
+      <div class="footer">
+        <div class="copyright">Copyright &copy; 2009-present, Vineet Naik</div>
+        <div class="courtesy">Powered
+          by <a href="http://docs.getpelican.com/en/3.1.1/">Pelican</a>
+          & <a href="https://help.github.com/articles/user-organization-and-project-pages">Github
+          pages</a>
+        </div>
+        <br class="clear"/>
+      </div>
+    </div>
+    <script type="text/javascript" src="http://naiquevin.github.io/theme/javascript/main.js"></script>
+  </body>
+</html>
