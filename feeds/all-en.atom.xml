@@ -140,7 +140,7 @@ though.&lt;/p&gt;
 &lt;p&gt;PS: If you are a Clojure veteran and think the above code could be
 better or more idiomatic, please point it out. I am only getting
 started :-)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Edit (28-02-2014):&lt;/strong&gt; Fixed &lt;code&gt;transform-for-impact&lt;/code&gt; to handle the case
+&lt;p&gt;&lt;strong&gt;Edit (27-02-2014):&lt;/strong&gt; Fixed &lt;code&gt;transform-for-impact&lt;/code&gt; to handle the case
 where the &lt;code&gt;impact&lt;/code&gt; field is not included in the result.&lt;/p&gt;</summary><category term="clojure"></category><category term="postgresql"></category></entry><entry><title>A look at some of Python's useful itertools</title><link href="http://naiquevin.github.io/a-look-at-some-of-pythons-useful-itertools.html" rel="alternate"></link><updated>2013-05-23T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2013-05-23:a-look-at-some-of-pythons-useful-itertools.html</id><summary type="html">&lt;p&gt;Couple of months back I enrolled for the
 &lt;a href="https://www.coursera.org/course/progfun"&gt;Functional Programming Principles in Scala&lt;/a&gt;
 course taught by Martin Odersky on Coursera. While solving one of the

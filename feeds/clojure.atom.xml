@@ -140,5 +140,5 @@ though.&lt;/p&gt;
 &lt;p&gt;PS: If you are a Clojure veteran and think the above code could be
 better or more idiomatic, please point it out. I am only getting
 started :-)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Edit (28-02-2014):&lt;/strong&gt; Fixed &lt;code&gt;transform-for-impact&lt;/code&gt; to handle the case
+&lt;p&gt;&lt;strong&gt;Edit (27-02-2014):&lt;/strong&gt; Fixed &lt;code&gt;transform-for-impact&lt;/code&gt; to handle the case
 where the &lt;code&gt;impact&lt;/code&gt; field is not included in the result.&lt;/p&gt;</summary><category term="clojure"></category><category term="postgresql"></category></entry></feed>
