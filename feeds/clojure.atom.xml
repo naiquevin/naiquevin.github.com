@@ -112,7 +112,9 @@ for applying common mutations to data. Read more about it in the
 &lt;a href="http://sqlkorma.com/docs#entities"&gt;docs&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;defn &lt;/span&gt;&lt;span class="nv"&gt;transform-for-impact&lt;/span&gt;
       &lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="nv"&gt;impact&lt;/span&gt; &lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="ss"&gt;:as&lt;/span&gt; &lt;span class="nv"&gt;act&lt;/span&gt;&lt;span class="p"&gt;}]&lt;/span&gt;
-      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;assoc &lt;/span&gt;&lt;span class="nv"&gt;act&lt;/span&gt; &lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;.getValue&lt;/span&gt; &lt;span class="nv"&gt;impact&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if &lt;/span&gt;&lt;span class="nv"&gt;impact&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;assoc &lt;/span&gt;&lt;span class="nv"&gt;act&lt;/span&gt; &lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;.getValue&lt;/span&gt; &lt;span class="nv"&gt;impact&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="nv"&gt;act&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 
     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;defn &lt;/span&gt;&lt;span class="nv"&gt;prepare-for-impact&lt;/span&gt;
       &lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="nv"&gt;impact&lt;/span&gt; &lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="ss"&gt;:as&lt;/span&gt; &lt;span class="nv"&gt;act&lt;/span&gt;&lt;span class="p"&gt;}]&lt;/span&gt;
@@ -137,4 +139,6 @@ though.&lt;/p&gt;
 &lt;p&gt;Hope this post was helpful.&lt;/p&gt;
 &lt;p&gt;PS: If you are a Clojure veteran and think the above code could be
 better or more idiomatic, please point it out. I am only getting
-started :-)&lt;/p&gt;</summary><category term="clojure"></category><category term="postgresql"></category></entry></feed>
+started :-)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Edit (28-02-2014):&lt;/strong&gt; Fixed &lt;code&gt;transform-for-impact&lt;/code&gt; to handle the case
+where the &lt;code&gt;impact&lt;/code&gt; field is not included in the result.&lt;/p&gt;</summary><category term="clojure"></category><category term="postgresql"></category></entry></feed>
