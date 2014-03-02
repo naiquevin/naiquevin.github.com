@@ -157,7 +157,9 @@ for applying common mutations to data. Read more about it in the
 
     <span class="p">(</span><span class="kd">defn </span><span class="nv">prepare-for-impact</span>
       <span class="p">[{</span><span class="nv">impact</span> <span class="ss">:impact</span> <span class="ss">:as</span> <span class="nv">act</span><span class="p">}]</span>
-      <span class="p">(</span><span class="nb">assoc </span><span class="nv">act</span> <span class="ss">:impact</span> <span class="p">(</span><span class="nf">str-&gt;pgobject</span> <span class="s">&quot;impact_types&quot;</span> <span class="nv">impact</span><span class="p">)))</span>
+      <span class="p">(</span><span class="k">if </span><span class="nv">impact</span>
+        <span class="p">(</span><span class="nb">assoc </span><span class="nv">act</span> <span class="ss">:impact</span> <span class="p">(</span><span class="nf">pgobject</span> <span class="s">&quot;impact_types&quot;</span> <span class="nv">impact</span><span class="p">))</span>
+        <span class="nv">act</span><span class="p">))</span>
 
     <span class="c1">;; modified entity definition</span>
     <span class="p">(</span><span class="nf">defentity</span> <span class="nv">activities</span>
@@ -179,8 +181,8 @@ though.</p>
 <p>PS: If you are a Clojure veteran and think the above code could be
 better or more idiomatic, please point it out. I am only getting
 started :-)</p>
-<p><strong>Edit (27-02-2014):</strong> Fixed <code>transform-for-impact</code> to handle the case
-where the <code>impact</code> field is not included in the result.</p>
+<p><strong>Edit (2nd March 2014):</strong> Fixed <code>*-for-impact</code> functions to handle
+the case where the <code>impact</code> field is not included in the map.</p>
     </div>
   </section>
   <div class="articleEnd">---</div>
