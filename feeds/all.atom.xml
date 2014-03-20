@@ -1,5 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/all.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2014-02-24T00:00:00+05:30</updated><entry><title>Using postgresql's enum types with Korma</title><link href="http://naiquevin.github.io/using-postgresqls-enum-types-with-korma.html" rel="alternate"></link><updated>2014-02-24T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2014-02-24:using-postgresqls-enum-types-with-korma.html</id><summary type="html">&lt;p&gt;I have been playing with Clojure on the side for a few months and
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/all.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2014-03-19T00:00:00+05:30</updated><entry><title>Toolbox: histit.py</title><link href="http://naiquevin.github.io/toolbox-histitpy.html" rel="alternate"></link><updated>2014-03-19T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2014-03-19:toolbox-histitpy.html</id><summary type="html">&lt;p&gt;(This is the first post of the series I plan to write on some tools I
+have built over the last couple of years to help me in my day-to-day
+tasks. I usually put all such tools in the repo
+&lt;a href="https://github.com/naiquevin/toolbox"&gt;toolbox&lt;/a&gt; until they turn out
+sufficiently useful to be worth separating into their own projects).&lt;/p&gt;
+&lt;p&gt;The first post is about a command line tool named &lt;code&gt;histit.py&lt;/code&gt; that I
+use for quickly plotting histograms &lt;a id="footnote-1-ref"
+href="#footnote-1"&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; by reading data from text
+files. It's basically a simple wrapper over
+&lt;a href="http://matplotlib.org/"&gt;matplotlib&lt;/a&gt;, a library that's quite popular
+for plotting all kinds of stuff in Python.&lt;/p&gt;
+&lt;p&gt;You can download the script from
+&lt;a href="https://raw.github.com/naiquevin/toolbox/master/histit.py"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nv"&gt;$ &lt;/span&gt;wget https://raw.github.com/naiquevin/toolbox/master/histit.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;hisit.py&lt;/code&gt; depends upon &lt;a href="http://www.numpy.org/"&gt;numpy&lt;/a&gt; and matplotlib
+so first make sure they are installed &lt;a id="footnote-2-ref"
+href="#footnote-2"&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;We need some data for the demo, so let's first dump values from a
+random normal distribution into a text file. The &lt;code&gt;numpy.random.normal&lt;/code&gt;
+function can be used for this.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+    &lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;data.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+       &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;     &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;normal&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+       &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now we can use &lt;code&gt;histit.py&lt;/code&gt; to plot the histogram as follows:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nv"&gt;$ &lt;/span&gt;python histit.py &lt;span class="s2"&gt;&amp;quot;Test histogram&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Test values&amp;quot;&lt;/span&gt; -d data.txt -a show -t float -b 100
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If all goes well, a window &lt;a id="footnote-3-ref"
+href="#footnote-3"&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt; will popout with the histogram as
+shown below. Although the values in your case would be different, a
+peculiar "bell curve" should be noticeable.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="histogram demo" src="theme/images/histit-demo.png" /&gt;&lt;/p&gt;
+&lt;p&gt;In the command we just run,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;"Test histogram" is the title of the plot,&lt;/li&gt;
+&lt;li&gt;"Test values" is the label on the X-axis.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-d&lt;/code&gt; option is for specifying the path to the data file&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-a&lt;/code&gt; option is for action (either of &lt;code&gt;show&lt;/code&gt; and &lt;code&gt;save&lt;/code&gt;, &lt;code&gt;show&lt;/code&gt; being
+  the default)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-t&lt;/code&gt; option is for specifying the type of input expected, here
+  &lt;code&gt;float&lt;/code&gt; but the default is &lt;code&gt;int&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-b&lt;/code&gt; option for specifying the no. of bins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Instead of loading data from a file, the script can also accept data
+on the standard input stream in which case, the &lt;code&gt;-d&lt;/code&gt; option must be
+skipped.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nv"&gt;$ &lt;/span&gt;cat data.txt | python histit.py &lt;span class="s2"&gt;&amp;quot;Test histogram&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Test values&amp;quot;&lt;/span&gt; -a show -t float -b 100
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I have been using this on a regular basis for some time but I am not
+entirely convinced if it's worth publishing as a package on
+PyPI. Anyway, at least it's got some documentation now :-)&lt;/p&gt;
+&lt;h4&gt;Footnotes&lt;/h4&gt;
+&lt;p&gt;&lt;b id="footnote-1"&gt;1.&lt;/b&gt; A histogram is a graphical representation of
+frequency distribution. In simpler words, a graph of all unique values
+in the data plotted against how many times each one appears. When
+working with sufficient quantity of data, a histogram turns out to be
+a pretty handy tool to guage the shape of the data at a
+glance. See also: &lt;a href="http://en.wikipedia.org/wiki/Histogram"&gt;wikipedia&lt;/a&gt; &lt;a
+href="#footnote-1-ref"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b id="footnote-2"&gt;2.&lt;/b&gt; Actually it doesn't depend on numpy directly
+but before installing matplotlib make sure numpy is installed in order
+to avoid frustation. &lt;a href="#footnote-2-ref"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b id="footnote-3"&gt;3.&lt;/b&gt; GTK window in my case as I am using the GTKAgg backend for
+matplotlib. Please consult the docs to configure your preferred
+backend. &lt;a href="#footnote-3-ref"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;</summary><category term="python"></category><category term="toolbox"></category><category term="histogram"></category></entry><entry><title>Using postgresql's enum types with Korma</title><link href="http://naiquevin.github.io/using-postgresqls-enum-types-with-korma.html" rel="alternate"></link><updated>2014-02-24T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2014-02-24:using-postgresqls-enum-types-with-korma.html</id><summary type="html">&lt;p&gt;I have been playing with Clojure on the side for a few months and
 these days I am trying to build a simple webapp using compojure,
 enlive and korma. One problem I faced early on was getting
 postgresql's enum type to work with korma. Insert and select queries
