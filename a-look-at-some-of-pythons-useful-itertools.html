@@ -35,7 +35,7 @@
   <section class="article">
     <h1 class="articleTitle">A look at some of Python's useful itertools</h1>
     <div class="postInfo">
-      Written on <span class="published" title="2013-05-23T00:00:00">Thu 23 May 2013</span>
+      Written on <span class="published" title="2013-05-23T00:00:00+05:30">Thu 23 May 2013</span>
     </div>
     <div class="articleContent">
       <p>Couple of months back I enrolled for the
@@ -68,8 +68,8 @@ evaluated objects.</p>
 not just a list but any iterator in general, which means we can also
 pass them a generator. But doing so doesn't give us truly lazy
 behaviour. Let's see an example to understand this.</p>
-<div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s">&#39;is_even called for </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,)</span>
+<div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s1">&#39;is_even called for </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,)</span>
         <span class="k">return</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
 
     <span class="k">def</span> <span class="nf">even</span><span class="p">():</span>
@@ -84,7 +84,7 @@ examples.</em></p>
 is even. In <code>even</code>, we pass <code>is_even</code> as a predicate to <code>filter</code>
 thus returning all even integers between 0 to 20. To get first four of
 such integers, we can use the slice operator.</p>
-<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; even()[:4]</span>
+<div class="codehilite"><pre><span></span><span class="go">    &gt;&gt;&gt; even()[:4]</span>
 <span class="go">    is_even called for 0</span>
 <span class="go">    is_even called for 1</span>
 <span class="go">    is_even called for 2</span>
@@ -117,7 +117,7 @@ getting called that many times?  The problem is that although we
 started with a generator, <code>filter</code> needs to run each item through
 the predicate and so the generator ends up getting consumed. Finally,
 we get a list from which we slice out the first 4 items.</p>
-<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; type(even())</span>
+<div class="codehilite"><pre><span></span><span class="go">    &gt;&gt;&gt; type(even())</span>
 <span class="go">    &lt;type &#39;list&#39;&gt;</span>
 </pre></div>
 
@@ -127,14 +127,14 @@ application of filter on the generator. <code>itertools.ifilter</code> does
 exactly that by returning a lazy object instead of a list. Items will
 be filtered whenever some other function or a for loop consumes
 them. Lets define another function <code>lazy_even</code>,</p>
-<div class="codehilite"><pre>    <span class="kn">import</span> <span class="nn">itertools</span>
+<div class="codehilite"><pre><span></span>    <span class="kn">import</span> <span class="nn">itertools</span>
 
     <span class="k">def</span> <span class="nf">lazy_even</span><span class="p">():</span>
         <span class="k">return</span> <span class="n">itertools</span><span class="o">.</span><span class="n">ifilter</span><span class="p">(</span><span class="n">is_even</span><span class="p">,</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 </pre></div>
 
 
-<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; nums = lazy_even()</span>
+<div class="codehilite"><pre><span></span><span class="go">    &gt;&gt;&gt; nums = lazy_even()</span>
 <span class="go">    &gt;&gt;&gt; type(nums)</span>
 <span class="go">    &lt;type &#39;itertools.ifilter&#39;&gt;</span>
 </pre></div>
@@ -144,7 +144,7 @@ them. Lets define another function <code>lazy_even</code>,</p>
 a way to slice out the first 4 items without converting the entire
 thing to a list. Itertools provides <code>islice</code> for this which takes
 the iterator, a start index and a stop index.</p>
-<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; first_four = itertools.islice(nums, 0, 4)</span>
+<div class="codehilite"><pre><span></span><span class="go">    &gt;&gt;&gt; first_four = itertools.islice(nums, 0, 4)</span>
 <span class="go">    &gt;&gt;&gt; type(first_four)</span>
 <span class="go">    &lt;type &#39;itertools.islice&#39;&gt;</span>
 <span class="go">    for i in first_four:</span>
@@ -177,7 +177,7 @@ pre-calculate or guess, but what if the predicate function is a bit
 more complex for eg. a check for primality? With itertools, we can use
 the same technique as in the previous example. As a bonus, the module
 comes with a <code>count</code> function so we don't need to write our own.</p>
-<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; import math</span>
+<div class="codehilite"><pre><span></span><span class="go">    &gt;&gt;&gt; import math</span>
 <span class="go">    &gt;&gt;&gt; from itertools import count, islice, ifilter</span>
 
 <span class="go">    &gt;&gt;&gt; def is_pow_two(x):</span>
@@ -203,17 +203,17 @@ iterable and a <code>key</code> function. The <code>key</code> function is used 
 items with <em>consecutively</em> similar key values together. Here is an
 example where given a list of integers we separate them into "even"
 and "odd" groups.</p>
-<div class="codehilite"><pre>    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">groupby</span>
+<div class="codehilite"><pre><span></span>    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">groupby</span>
 
     <span class="k">def</span> <span class="nf">groupby_even_odd</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s">&#39;even&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s">&#39;odd&#39;</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;even&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;odd&#39;</span>
         <span class="n">gb</span> <span class="o">=</span> <span class="n">groupby</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">gb</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">items</span><span class="p">)))</span>
+            <span class="k">print</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">items</span><span class="p">)))</span>
 </pre></div>
 
 
-<div class="codehilite"><pre><span class="go">   &gt;&gt;&gt; groupby_even_odd([1, 3, 4, 5, 6, 8, 9, 11])</span>
+<div class="codehilite"><pre><span></span><span class="go">   &gt;&gt;&gt; groupby_even_odd([1, 3, 4, 5, 6, 8, 9, 11])</span>
 <span class="go">   odd: 1,3</span>
 <span class="go">   even: 4</span>
 <span class="go">   odd: 5</span>
@@ -226,15 +226,15 @@ and "odd" groups.</p>
 but there are many "even" and "odd" groups. The reason behind this is,
 it only groups <em>consecutive</em> items together. To get around this, we
 can simply provide it a sorted iterable.</p>
-<div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">groupby_even_odd</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s">&#39;even&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s">&#39;odd&#39;</span>
+<div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">groupby_even_odd</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;even&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;odd&#39;</span>
         <span class="n">gb</span> <span class="o">=</span> <span class="n">groupby</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">f</span><span class="p">),</span> <span class="n">f</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">gb</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">items</span><span class="p">)))</span>
+            <span class="k">print</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">items</span><span class="p">)))</span>
 </pre></div>
 
 
-<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; groupby_even_odd([1, 3, 4, 5, 6, 8, 9, 11])</span>
+<div class="codehilite"><pre><span></span><span class="go">    &gt;&gt;&gt; groupby_even_odd([1, 3, 4, 5, 6, 8, 9, 11])</span>
 <span class="go">    even: 4,6,8</span>
 <span class="go">    odd: 1,3,5,9,11</span>
 </pre></div>
@@ -248,7 +248,7 @@ the one which is going to be passed to <code>groupby</code>.</p>
 mapping a function to a list results in a list of lists that then
 needs to be flattened. For eg. given a list of directories, we want to
 get the names of all their first level children as a list.</p>
-<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; import os</span>
+<div class="codehilite"><pre><span></span><span class="go">    &gt;&gt;&gt; import os</span>
 <span class="go">    &gt;&gt;&gt; dirs = [&#39;project1/&#39;, &#39;project2/&#39;, &#39;project3/&#39;]</span>
 <span class="go">    &gt;&gt;&gt; map(os.listdir, dirs)</span>
 <span class="go">    &gt;&gt;&gt; [[&#39;settings.py&#39;, &#39;wsgi.py&#39;, &#39;templates&#39;],</span>
@@ -269,7 +269,7 @@ lazy object as *args since unpacking with *args will result in eager
 evaluation.</em></p>
 <p>Let's define a function <code>flatmap</code> that will map a function to a list
 of items and flatten the resulting list of lists.</p>
-<div class="codehilite"><pre>    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span><span class="p">,</span> <span class="n">imap</span>
+<div class="codehilite"><pre><span></span>    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span><span class="p">,</span> <span class="n">imap</span>
 
     <span class="k">def</span> <span class="nf">flatmap</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">imap</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">items</span><span class="p">))</span>
@@ -277,7 +277,7 @@ of items and flatten the resulting list of lists.</p>
 
 
 <p>And now we replace the call to <code>map</code> with <code>flatmap</code>,</p>
-<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; list(flatmap(os.listdir, dirs))</span>
+<div class="codehilite"><pre><span></span><span class="go">    &gt;&gt;&gt; list(flatmap(os.listdir, dirs))</span>
 <span class="go">    &gt;&gt;&gt; [&#39;settings.py&#39;, &#39;wsgi.py&#39;, &#39;templates&#39;, &#39;app.py&#39;, </span>
 <span class="go">         &#39;templates&#39;, &#39;index.html, &#39;config.json&#39;]</span>
 </pre></div>
@@ -289,14 +289,14 @@ entirely using our newly acquired utility belt. The problem is to find
 a set of <s>common</s> (Thanks
 <a href="http://naiquevin.github.io/a-look-at-some-of-pythons-useful-itertools.html#comment-908642009">wcyee</a>)
 factors of a list of integers.</p>
-<div class="codehilite"><pre>    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">ifilter</span><span class="p">,</span> <span class="n">takewhile</span><span class="p">,</span> <span class="n">count</span>
+<div class="codehilite"><pre><span></span>    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">ifilter</span><span class="p">,</span> <span class="n">takewhile</span><span class="p">,</span> <span class="n">count</span>
 
     <span class="k">def</span> <span class="nf">factors</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">ifilter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">n</span> <span class="o">%</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">takewhile</span><span class="p">(</span><span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">,</span> <span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>        
 </pre></div>
 
 
-<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; set(flatmap(factors, [9, 15, 16, 23, 76, 101]))</span>
+<div class="codehilite"><pre><span></span><span class="go">    &gt;&gt;&gt; set(flatmap(factors, [9, 15, 16, 23, 76, 101]))</span>
 <span class="go">    set([1, 2, 3, 4, 5, 38, 8, 9, 76, 15, 16, 19, 23, 101])</span>
 </pre></div>
 

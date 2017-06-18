@@ -35,7 +35,7 @@
   <section class="article">
     <h1 class="articleTitle">Identifying clicked mouse button in IE &amp; other browsers</h1>
     <div class="postInfo">
-      Written on <span class="published" title="2010-07-28T23:37:34">Wed 28 July 2010</span>
+      Written on <span class="published" title="2010-07-28T23:37:34+05:30">Wed 28 July 2010</span>
     </div>
     <div class="articleContent">
       <p>Last month I spent some hours coding the popular game
@@ -59,7 +59,7 @@ clicked at the same time.</p>
 <p>Jquery makes identifying the clicked button very easy with the event
 object being passed to the callback functions of the mouse events
 by-default.</p>
-<div class="codehilite"><pre>    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.cell&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;mouseup&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+<div class="codehilite"><pre><span></span>    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.cell&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;mouseup&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
         <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">button</span><span class="p">;</span> <span class="c1">//this will return the mouse button as int&lt;/p&gt;</span>
     <span class="p">});</span>
 </pre></div>
@@ -68,9 +68,9 @@ by-default.</p>
 <p>When I checked, the problem was with mouse button detection. As I
 said, e.button will return an integer. Sadly, it means different
 things in IE and other browsers.</p>
-<p>For smarter ones:<br />
+<p>For smarter ones:<br>
 0 = left button; 1 = both buttons or the scroll wheel ; 2 = right button</p>
-<p>For IE:<br />
+<p>For IE:<br>
 1 = left button ; 2 = right button ; nothing for both buttons :|</p>
 <p>Obviously the solution was having different conditions for IE and the
 other browsers. Now comes the best part. Detecting the browser. This
@@ -78,7 +78,7 @@ is the most compact and insane hack I have ever come across for
 IE-detection (courtesy:
 <a href="http://dean.edwards.name/weblog/2007/03/sniff/">http://dean.edwards.name/weblog/2007/03/sniff/</a>
 )</p>
-<div class="codehilite"><pre>    <span class="kd">var</span> <span class="nx">IE</span> <span class="o">=</span> <span class="cm">/*@cc_on!@*/</span><span class="kc">false</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span>    <span class="kd">var</span> <span class="nx">IE</span> <span class="o">=</span> <span class="cm">/*@cc_on!@*/</span><span class="kc">false</span><span class="p">;</span>
 </pre></div>
 
 

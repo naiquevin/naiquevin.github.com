@@ -35,7 +35,7 @@
   <section class="article">
     <h1 class="articleTitle">HTML forms problem in IE6 solved</h1>
     <div class="postInfo">
-      Written on <span class="published" title="2009-05-12T17:28:55">Tue 12 May 2009</span>
+      Written on <span class="published" title="2009-05-12T17:28:55+05:30">Tue 12 May 2009</span>
     </div>
     <div class="articleContent">
       <p>Ah relieved!... finally my website works on IE6. A big problem
@@ -52,7 +52,7 @@ forms and not checking form submission as per IE6's liking!</p>
 <p>In FF and Chrome (and may be other browsers as well which I dont use),
 if we want to check if submit button is clicked and run a specific
 code, then this serves the purpose</p>
-<div class="codehilite"><pre><span class="x">    </span><span class="cp">&lt;?php</span>
+<div class="codehilite"><pre><span></span><span class="x">    </span><span class="cp">&lt;?php</span>
     <span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;submit&#39;</span><span class="p">]))</span> <span class="p">{</span>
         <span class="c1">// code to be executed</span>
     <span class="p">}</span>
@@ -63,7 +63,7 @@ code, then this serves the purpose</p>
 instead of just submit=parameter..</p>
 <p>so to make sure that the form functions in IE, change the above code
 to</p>
-<div class="codehilite"><pre><span class="x">    </span><span class="cp">&lt;?php</span>
+<div class="codehilite"><pre><span></span><span class="x">    </span><span class="cp">&lt;?php</span>
     <span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;submit_y&#39;</span><span class="p">])</span> <span class="o">||</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;submit_x&#39;</span><span class="p">]))</span> <span class="p">{</span>
         <span class="c1">// code to be executed</span>
     <span class="p">}</span>

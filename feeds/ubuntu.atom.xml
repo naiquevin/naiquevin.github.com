@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/ubuntu.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2010-06-12T23:29:03+05:30</updated><entry><title>Windows 7-Ubuntu dual boot without using wubi</title><link href="http://naiquevin.github.io/windows-7-ubuntu-dual-boot-without-using-wubi.html" rel="alternate"></link><updated>2010-06-12T23:29:03+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2010-06-12:windows-7-ubuntu-dual-boot-without-using-wubi.html</id><summary type="html">&lt;p&gt;Last week I finally managed to set up a windows 7 - Ubuntu dual boot
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet - ubuntu</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/ubuntu.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2010-06-12T23:29:03+05:30</updated><entry><title>Windows 7-Ubuntu dual boot without using wubi</title><link href="http://naiquevin.github.io/windows-7-ubuntu-dual-boot-without-using-wubi.html" rel="alternate"></link><published>2010-06-12T23:29:03+05:30</published><updated>2010-06-12T23:29:03+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2010-06-12:/windows-7-ubuntu-dual-boot-without-using-wubi.html</id><summary type="html">&lt;p&gt;Step by step guide to setting up Windows7-Ubuntu dual boot&lt;/p&gt;</summary><content type="html">&lt;p&gt;Last week I finally managed to set up a windows 7 - Ubuntu dual boot
 system on my home computer after spending substantial amount of time
 on the &lt;a href="http://ubuntuforums.org"&gt;ubuntuforums&lt;/a&gt;. So i thought, why not
 note down the process while all the new concepts, problems and
@@ -82,7 +82,7 @@ disk organized in more than one drives which have alphabetical names
 like C,D,E etc. In Linux however the naming convention is
 different. The drives C,D,E in windows will be called something like
 sda1, sda2, sda3 etc. To check this, open up the terminal and type,&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nv"&gt;$ &lt;/span&gt;sudo fdisk -l
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    $ sudo fdisk -l
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -153,4 +153,4 @@ windows 7.&lt;/p&gt;
 &lt;p&gt;I hope this helped. Now you might want to read my
 &lt;a href="http://www.kodeplay.com/2010/04/windows-to-linux-transition/"&gt;post&lt;/a&gt;
 on my company's &lt;a href="http://www.kodeplay.com/blog"&gt;blog&lt;/a&gt; about setting up
-PHP development environment on Ubuntu and a few other tricks.&lt;/p&gt;</summary><category term="Ubuntu"></category><category term="disk"></category><category term="partition"></category><category term="wubi"></category><category term="Linux"></category></entry></feed>
+PHP development environment on Ubuntu and a few other tricks.&lt;/p&gt;</content><category term="Ubuntu"></category><category term="disk"></category><category term="partition"></category><category term="wubi"></category><category term="Linux"></category></entry></feed>

@@ -35,7 +35,7 @@
   <section class="article">
     <h1 class="articleTitle">Python generators and being lazy</h1>
     <div class="postInfo">
-      Written on <span class="published" title="2013-03-01T12:00:00">Fri 01 March 2013</span>
+      Written on <span class="published" title="2013-03-01T12:00:00+05:30">Fri 01 March 2013</span>
     </div>
     <div class="articleContent">
       <p>This is going to be a rather long post (call it a tutorial if you
@@ -52,13 +52,13 @@ ready because we will be trying out stuff.</p>
 <p>The good news is that, to work with Python generators it doesn't
 require us to learn much additional syntax. Here is a simple
 generator.</p>
-<div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">gen</span><span class="p">():</span>
+<div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">gen</span><span class="p">():</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
             <span class="k">yield</span> <span class="n">i</span>
 </pre></div>
 
 
-<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; g = gen()</span>
+<div class="codehilite"><pre><span></span><span class="go">    &gt;&gt;&gt; g = gen()</span>
 <span class="go">    &gt;&gt;&gt; type(g)</span>
 <span class="go">    &lt;type &#39;generator&#39;&gt;</span>
 </pre></div>
@@ -73,7 +73,7 @@ function with yield statement will magically return a generator
 object.</p>
 <p>The call to the function will not execute any code inside it yet. For
 that we need to call the generator object's <code>next</code> method,</p>
-<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; g.next()</span>
+<div class="codehilite"><pre><span></span><span class="go">    &gt;&gt;&gt; g.next()</span>
 <span class="go">    1</span>
 <span class="go">    &gt;&gt;&gt; print &#39;Hello&#39;</span>
 <span class="go">    Hello</span>
@@ -98,7 +98,7 @@ i.e. they implement the <code>next</code> and <code>__iter__</code> methods and 
 we can use a for loop to generate values from a generator instead of
 calling the next method manually. <code>for</code> will implicitly handle
 <code>StopIteration</code> and when that happens, will end the loop.</p>
-<div class="codehilite"><pre>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
         <span class="k">print</span> <span class="n">i</span>
 </pre></div>
 
@@ -108,7 +108,7 @@ called generator expressions. The syntax again is ridiculously
 similar, the only change being, round brackets <code>()</code> instead of
 square <code>[]</code>. The difference is that it will give us an iterator (a
 generator object) instead of an iterable (a list in memory).</p>
-<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; squares = [i*i for i in range(1, 11)] # list    </span>
+<div class="codehilite"><pre><span></span><span class="go">    &gt;&gt;&gt; squares = [i*i for i in range(1, 11)] # list    </span>
 <span class="go">    &gt;&gt;&gt; type(squares)</span>
 <span class="go">    &lt;type &#39;list&#39;&gt;</span>
 <span class="go">    &gt;&gt;&gt; gen_squares = (i*i for i in range(1, 11)) # generator object</span>
@@ -127,7 +127,7 @@ memory. Turns out, our earlier example was not quite apt for
 understanding the concept as we used <code>range</code> to build a list in memory
 upfront. As a practical example, let's define a function to give us
 incremental values infinitely.</p>
-<div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">infinitely_incr</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">infinitely_incr</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="n">n</span> <span class="o">=</span> <span class="n">start</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
             <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -135,7 +135,7 @@ incremental values infinitely.</p>
 </pre></div>
 
 
-<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; iinf = infinitely_incr()</span>
+<div class="codehilite"><pre><span></span><span class="go">    &gt;&gt;&gt; iinf = infinitely_incr()</span>
 <span class="go">    &gt;&gt;&gt; iinf.next()</span>
 <span class="go">    1</span>
 <span class="go">    &gt;&gt;&gt; iinf.next()</span>
@@ -151,8 +151,8 @@ pretty cool.</p>
 <p>Let's consider another example. What if we have huge data in some file
 and need to process each of it's lines by calling one or many
 functions on them,</p>
-<div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">gen1</span><span class="p">():</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;hugedata.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">gen1</span><span class="p">():</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;hugedata.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
                 <span class="k">yield</span> <span class="n">line</span>    
     <span class="n">g</span> <span class="o">=</span> <span class="n">gen1</span><span class="p">()</span>    
@@ -175,7 +175,7 @@ that the file cannot be closed until all the lines are processed.</p>
 object can be looped through or consumed only once. So it is obviously
 not a good choice if the sequence of items need to be reused in which
 case a normal list would be suitable.</p>
-<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; g = gen()</span>
+<div class="codehilite"><pre><span></span><span class="go">    &gt;&gt;&gt; g = gen()</span>
 <span class="go">    &gt;&gt;&gt; squares = (i*i for i in g)</span>
 <span class="go">    &gt;&gt;&gt; list(squares)</span>
 <span class="go">    [1, 4, 9, 16, 25]</span>
@@ -197,11 +197,11 @@ comprehensions and hence will build and keep lists in memory.</p>
 <p>For the sake of an example and to make sense out of the results, let's
 assume that our hugedata.txt is actually a tiny file of just 5 lines
 containing the first 5 positive integers :-)</p>
-<div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s">&#39;Square of </span><span class="si">%d</span><span class="s"> -&gt;&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">,</span>
+<div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s1">&#39;Square of </span><span class="si">%d</span><span class="s1"> -&gt;&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">,</span>
         <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>        
     <span class="k">def</span> <span class="nf">digit_sum</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s">&#39;Digit Sum of </span><span class="si">%d</span><span class="s"> -&gt;&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">,</span>
+        <span class="k">print</span> <span class="s1">&#39;Digit Sum of </span><span class="si">%d</span><span class="s1"> -&gt;&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="p">,</span>
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
     <span class="n">numbers</span> <span class="o">=</span> <span class="n">gen</span><span class="p">()</span>
     <span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">square</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">]</span>
@@ -212,34 +212,34 @@ containing the first 5 positive integers :-)</p>
 
 
 <p>Running the above snippet of code will produce an output as follows,</p>
-<div class="codehilite"><pre>    <span class="n">Square</span> <span class="n">of</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="n">Square</span> <span class="n">of</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="n">Square</span> <span class="n">of</span> <span class="mi">3</span> <span class="o">-&gt;</span> <span class="n">Square</span> <span class="n">of</span> <span class="mi">4</span> <span class="o">-&gt;</span> <span class="n">Square</span>
-    <span class="n">of</span> <span class="mi">5</span> <span class="o">-&gt;</span> <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">4</span> <span class="o">-&gt;</span> <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">9</span> <span class="o">-&gt;</span> <span class="n">Digit</span>
-    <span class="n">Sum</span> <span class="n">of</span> <span class="mi">16</span> <span class="o">-&gt;</span> <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">25</span> <span class="o">-&gt;</span> 
-    <span class="mi">1</span>
-    <span class="mi">4</span>
-    <span class="mi">9</span>
-    <span class="mi">7</span>
-    <span class="mi">7</span>
+<div class="codehilite"><pre><span></span>    Square of 1 -&gt; Square of 2 -&gt; Square of 3 -&gt; Square of 4 -&gt; Square
+    of 5 -&gt; Digit Sum of 1 -&gt; Digit Sum of 4 -&gt; Digit Sum of 9 -&gt; Digit
+    Sum of 16 -&gt; Digit Sum of 25 -&gt; 
+    1
+    4
+    9
+    7
+    7
 </pre></div>
 
 
 <p>First all squares will be calculated, then their digit sums and then
 the results will be printed one by one.</p>
 <p>Now with generator expressions just see what we get,</p>
-<div class="codehilite"><pre>    <span class="n">numbers</span> <span class="o">=</span> <span class="n">gen1</span><span class="p">()</span>
-    <span class="n">squares</span> <span class="o">=</span> <span class="p">(</span><span class="n">square</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="n">in</span> <span class="n">numbers</span><span class="p">)</span>
-    <span class="n">dsums</span> <span class="o">=</span> <span class="p">(</span><span class="n">digit_sum</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="n">in</span> <span class="n">squares</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">n</span> <span class="n">in</span> <span class="n">dsums</span><span class="o">:</span>
-        <span class="n">print</span> <span class="n">n</span>
+<div class="codehilite"><pre><span></span>    numbers = gen1()
+    squares = (square(n) for n in numbers)
+    dsums = (digit_sum(n) for n in squares)
+    for n in dsums:
+        print n
 </pre></div>
 
 
 <p>Output:</p>
-<div class="codehilite"><pre>    <span class="n">Square</span> <span class="n">of</span> <span class="mi">1</span> <span class="o">-&gt;</span>  <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">1</span> <span class="o">-&gt;</span>  <span class="mi">1</span>
-    <span class="n">Square</span> <span class="n">of</span> <span class="mi">2</span> <span class="o">-&gt;</span>  <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">4</span> <span class="o">-&gt;</span>  <span class="mi">4</span>
-    <span class="n">Square</span> <span class="n">of</span> <span class="mi">3</span> <span class="o">-&gt;</span>  <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">9</span> <span class="o">-&gt;</span>  <span class="mi">9</span>
-    <span class="n">Square</span> <span class="n">of</span> <span class="mi">4</span> <span class="o">-&gt;</span>  <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">16</span> <span class="o">-&gt;</span>  <span class="mi">7</span>
-    <span class="n">Square</span> <span class="n">of</span> <span class="mi">5</span> <span class="o">-&gt;</span>  <span class="n">Digit</span> <span class="n">Sum</span> <span class="n">of</span> <span class="mi">25</span> <span class="o">-&gt;</span>  <span class="mi">7</span>
+<div class="codehilite"><pre><span></span>    Square of 1 -&gt;  Digit Sum of 1 -&gt;  1
+    Square of 2 -&gt;  Digit Sum of 4 -&gt;  4
+    Square of 3 -&gt;  Digit Sum of 9 -&gt;  9
+    Square of 4 -&gt;  Digit Sum of 16 -&gt;  7
+    Square of 5 -&gt;  Digit Sum of 25 -&gt;  7
 </pre></div>
 
 
@@ -273,13 +273,13 @@ two suffixes to each alphabet for eg. we have alphabet <code>a</code>. First
 it's suffixed with <code>x</code> which makes it <code>ax</code> and then with <code>y</code> which
 makes it <code>axy</code>. We need to do this with multiple alphabets and we
 choose to use a generator object to yield each alphabet.</p>
-<div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">add_suffix</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">suffix</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">suffix</span><span class="p">)</span>        
+<div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">add_suffix</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">suffix</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">suffix</span><span class="p">)</span>        
     <span class="k">def</span> <span class="nf">gen</span><span class="p">():</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]:</span>
             <span class="k">yield</span> <span class="n">i</span>            
     <span class="n">ns</span> <span class="o">=</span> <span class="n">gen</span><span class="p">()</span>
-    <span class="n">suffixes</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">]</span>
+    <span class="n">suffixes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">suffixes</span><span class="p">:</span>
         <span class="n">ns</span> <span class="o">=</span> <span class="p">(</span><span class="n">add_suffix</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ns</span><span class="p">)</span>
     <span class="k">print</span> <span class="nb">list</span><span class="p">(</span><span class="n">ns</span><span class="p">)</span>
@@ -297,7 +297,7 @@ the <code>for</code> loop. By the time the generator is consumed upon call to
 the previous iteration of suffixes is simply lost.</p>
 <p>To fix this, we just define another function wrapping over the call to
 the <code>add_suffix</code> function that will return a generator object</p>
-<div class="codehilite"><pre>    <span class="k">def</span> <span class="nf">gen1</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">sfx</span><span class="p">):</span>
+<div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">gen1</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">sfx</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
             <span class="k">yield</span> <span class="n">add_suffix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sfx</span><span class="p">)</span>            
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">suffixes</span><span class="p">:</span>
@@ -305,7 +305,7 @@ the <code>add_suffix</code> function that will return a generator object</p>
 </pre></div>
 
 
-<div class="codehilite"><pre><span class="go">    &gt;&gt;&gt; list(ns)</span>
+<div class="codehilite"><pre><span></span><span class="go">    &gt;&gt;&gt; list(ns)</span>
 <span class="go">    [&#39;axy&#39;, &#39;bxy&#39;, &#39;cxy&#39;, &#39;dxy&#39;]</span>
 </pre></div>
 

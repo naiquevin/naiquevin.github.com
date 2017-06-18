@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/erlang.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2012-07-21T18:14:00+05:30</updated><entry><title>Erlang is next, Clojure shall wait</title><link href="http://naiquevin.github.io/erlang-is-next-clojure-shall-wait.html" rel="alternate"></link><updated>2012-07-21T18:14:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2012-07-21:erlang-is-next-clojure-shall-wait.html</id><summary type="html">&lt;p&gt;A few weeks back, when I was close to completing chapter 1 exercises
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet - erlang</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/erlang.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2012-07-21T18:14:00+05:30</updated><entry><title>Erlang is next, Clojure shall wait</title><link href="http://naiquevin.github.io/erlang-is-next-clojure-shall-wait.html" rel="alternate"></link><published>2012-07-21T18:14:00+05:30</published><updated>2012-07-21T18:14:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2012-07-21:/erlang-is-next-clojure-shall-wait.html</id><summary type="html">&lt;p&gt;On why I decided to learn Erlang instead of Clojure&lt;/p&gt;</summary><content type="html">&lt;p&gt;A few weeks back, when I was close to completing chapter 1 exercises
 of &lt;a href="http://mitpress.mit.edu/sicp/"&gt;SICP&lt;/a&gt;, I had decided that after
 completing this chapter, I would take some time off it to learn
 Clojure. If you ask why Clojure, then frankly speaking, because it's
@@ -61,4 +61,4 @@ everytime some Clojure library or article gets featured on Hacker
 News!) But I will continue to solve SICP exercises as I find it
 relaxing as an after work activity. All pending work on my Python,
 PHP, Javascript side projects gets done this weeekend and in the
-coming week, looking forward to meet you erlang, Clojure shall wait.&lt;/p&gt;</summary></entry></feed>
+coming week, looking forward to meet you erlang, Clojure shall wait.&lt;/p&gt;</content></entry></feed>

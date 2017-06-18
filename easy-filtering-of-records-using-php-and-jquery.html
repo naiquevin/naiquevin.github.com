@@ -35,7 +35,7 @@
   <section class="article">
     <h1 class="articleTitle">Easy filtering of records using PHP and JQuery.</h1>
     <div class="postInfo">
-      Written on <span class="published" title="2010-01-05T18:11:05">Tue 05 January 2010</span>
+      Written on <span class="published" title="2010-01-05T18:11:05+05:30">Tue 05 January 2010</span>
     </div>
     <div class="articleContent">
       <p>I came upon a method for filtering records using jquery and php. I am
@@ -59,7 +59,7 @@ side scripting language)</p>
 </ol>
 <p>The above data can be actually fetched into a single associative array
 for ease of looping</p>
-<div class="codehilite"><pre><span class="x">    </span><span class="cp">&lt;?php</span>
+<div class="codehilite"><pre><span></span><span class="x">    </span><span class="cp">&lt;?php</span>
     <span class="nv">$products</span><span class="p">[]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">&#39;product_id&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
         <span class="s1">&#39;name&#39;</span><span class="o">=&gt;</span> <span class="s1">&#39;ipod&#39;</span><span class="p">,</span>
@@ -71,7 +71,7 @@ for ease of looping</p>
 <p>Then loop through the above array to show the products in a table and
 add multiple classes to the tr that represents each product depending
 upon the categories under which the product falls.</p>
-<div class="codehilite"><pre><span class="x">    &lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;</span>
+<div class="codehilite"><pre><span></span><span class="x">    &lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;</span>
 <span class="x">        </span><span class="cp">&lt;?php</span>  <span class="k">foreach</span><span class="p">(</span><span class="nv">$products</span> <span class="k">as</span> <span class="nv">$product</span><span class="p">){</span>  <span class="cp">?&gt;</span><span class="x"></span>
 <span class="x">            &lt;tr class=&quot;c_all </span><span class="cp">&lt;?php</span> <span class="k">foreach</span><span class="p">(</span><span class="nv">$product</span><span class="p">[</span><span class="s1">&#39;in_categories&#39;</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$cat</span><span class="p">){</span> <span class="k">echo</span> <span class="s1">&#39;c_&#39;</span> <span class="o">.</span> <span class="nv">$cat</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span><span class="p">;</span> <span class="p">}</span> <span class="cp">?&gt;</span><span class="x">&quot;&gt; </span>
 <span class="x">            &lt;!-- don&#39;t forget that space after each class --&gt;</span>
@@ -87,7 +87,7 @@ upon the categories under which the product falls.</p>
 <p>Once this is done, filtering is just a matter of writing a javascript
 function and calling it on the onChange event of the category drop
 down box.</p>
-<div class="codehilite"><pre>    <span class="kd">function</span> <span class="nx">filterProducts</span><span class="p">(</span><span class="nx">byCat</span><span class="p">){</span>
+<div class="codehilite"><pre><span></span>    <span class="kd">function</span> <span class="nx">filterProducts</span><span class="p">(</span><span class="nx">byCat</span><span class="p">){</span>
         <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;c_&quot;</span><span class="o">+</span><span class="nx">all</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span> <span class="c1">// first hide all records</span>
         <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;c_&quot;</span><span class="o">+</span><span class="nx">byCat</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span> <span class="c1">// show records of the category</span>
     <span class="p">}</span>

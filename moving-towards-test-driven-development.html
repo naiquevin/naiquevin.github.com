@@ -35,7 +35,7 @@
   <section class="article">
     <h1 class="articleTitle">Moving towards Test Driven Development</h1>
     <div class="postInfo">
-      Written on <span class="published" title="2010-12-14T17:48:28">Tue 14 December 2010</span>
+      Written on <span class="published" title="2010-12-14T17:48:28+05:30">Tue 14 December 2010</span>
     </div>
     <div class="articleContent">
       <p>Recently, I have been reading a lot about Unit Testing and other stuff
@@ -70,7 +70,7 @@ that would have been the call back of the request. The function takes
 an argument that later on would be replaced by the actual server
 response. Say for example, I need to post a form by making an ajax
 request.</p>
-<div class="codehilite"><pre>    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#submit&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">resp</span><span class="p">)</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span>    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#submit&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">resp</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span><span class="p">(</span><span class="mi">1</span> <span class="o">==</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;done!&#39;</span><span class="p">);</span>                 
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>          
@@ -92,7 +92,7 @@ where the CRUD will be first tested before it goes into its dedicated
 action. This gives a lot of confidence because the code will be dealt
 with a lot of test cases while it is still in the dummy action. To
 relate this example with the previous one,</p>
-<div class="codehilite"><pre><span class="x">    </span><span class="cp">&lt;?php</span>
+<div class="codehilite"><pre><span></span><span class="x">    </span><span class="cp">&lt;?php</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">dummyAction</span> <span class="p">()</span> <span class="p">{</span>
         <span class="nv">$post</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
             <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;vineet&#39;</span><span class="p">,</span> 
@@ -126,7 +126,7 @@ testing other actions in the same or different controllers thanks to
 the <code>forward</code> method of the <code>Zend_Controller_Action</code>. Also to avoid
 writing duplicate code for setting global variables, I created a
 simple class that acts as a Helper to the TestController</p>
-<div class="codehilite"><pre><span class="x">    </span><span class="cp">&lt;?php</span>
+<div class="codehilite"><pre><span></span><span class="x">    </span><span class="cp">&lt;?php</span>
     <span class="k">class</span> <span class="nc">MyTestHelper</span> <span class="p">{</span>
         <span class="k">public</span> <span class="k">function</span> <span class="nf">mergePost</span> <span class="p">(</span><span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
             <span class="nv">$_POST</span> <span class="o">=</span> <span class="nb">array_merge</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">,</span><span class="nv">$data</span><span class="p">);</span>
@@ -139,7 +139,7 @@ simple class that acts as a Helper to the TestController</p>
 
 
 <p>Then create our TestController that will hold all the tests.</p>
-<div class="codehilite"><pre><span class="x">    </span><span class="cp">&lt;?php</span>    
+<div class="codehilite"><pre><span></span><span class="x">    </span><span class="cp">&lt;?php</span>    
     <span class="k">class</span> <span class="nc">TestController</span> <span class="k">extends</span> <span class="nx">Zend_Controller_Action</span> <span class="p">{</span>
         <span class="k">public</span> <span class="k">function</span> <span class="nf">preDispatch</span> <span class="p">()</span> <span class="p">{</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">testHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyTestHelper</span><span class="p">();</span>
@@ -161,7 +161,7 @@ for the test action and run it in the browser. It also makes
 refactoring hastle free to some extent.</p>
 <p>An important point to note is that error reporting must be turned on
 for this to work.</p>
-<div class="codehilite"><pre><span class="x">    </span><span class="cp">&lt;?php</span>    
+<div class="codehilite"><pre><span></span><span class="x">    </span><span class="cp">&lt;?php</span>    
     <span class="nb">error_reporting</span><span class="p">(</span><span class="k">E_ALL</span> <span class="o">|</span> <span class="nx">E_STRICT</span><span class="p">);</span>
     <span class="nb">ini_set</span><span class="p">(</span><span class="s2">&quot;display_errors&quot;</span><span class="p">,</span><span class="s2">&quot;on&quot;</span><span class="p">);</span>
 </pre></div>

@@ -35,7 +35,7 @@
   <section class="article">
     <h1 class="articleTitle">Essential Javascript for Jquery users (Part 1 : DOM Selection)</h1>
     <div class="postInfo">
-      Written on <span class="published" title="2010-08-24T12:07:11">Tue 24 August 2010</span>
+      Written on <span class="published" title="2010-08-24T12:07:11+05:30">Tue 24 August 2010</span>
     </div>
     <div class="articleContent">
       <p>I remember when the first time I tried to learn some Javascript for
@@ -78,11 +78,11 @@ reader is familiar with the acronym
 real easy right ? But how to do it using plain js ?  There are
 different ways depending upon the element.</p>
 <p><strong>Selecting by id</strong></p>
-<div class="codehilite"><pre>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;myid&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<div class="codehilite"><pre><span></span>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myid&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </pre></div>
 
 
-<div class="codehilite"><pre>    <span class="c1">//select the first div by its id</span>
+<div class="codehilite"><pre><span></span>    <span class="c1">//select the first div by its id</span>
     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#myid&quot;</span><span class="p">)</span> <span class="c1">//jquery</span>
     <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myid&quot;</span><span class="p">);</span> <span class="c1">//plain js</span>
 
@@ -95,7 +95,7 @@ different ways depending upon the element.</p>
 
 
 <p><strong>Accessing by Tag Name</strong></p>
-<div class="codehilite"><pre>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">);</span>
+<div class="codehilite"><pre><span></span>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">);</span>
 </pre></div>
 
 
@@ -103,11 +103,11 @@ different ways depending upon the element.</p>
 number of ul elements in the document</p>
 <p><strong>Accessing Children of elements</strong></p>
 <p>In js all elements are referred to as nodes of the DOM tree.</p>
-<div class="codehilite"><pre>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;childtest&quot;</span><span class="nt">&gt;</span>Hello world. Now check this <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+<div class="codehilite"><pre><span></span>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;childtest&quot;</span><span class="p">&gt;</span>Hello world. Now check this <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>link<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </pre></div>
 
 
-<div class="codehilite"><pre>    <span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;childtest&quot;</span><span class="p">).</span><span class="nx">childNodes</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span>    <span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;childtest&quot;</span><span class="p">).</span><span class="nx">childNodes</span><span class="p">;</span>
 </pre></div>
 
 
@@ -121,14 +121,14 @@ also shows a Textnode (which is skipped by the jquery
 <code>$("#childtest").children()</code> code). To get its value just select
 that particular child and get the property 'nodeValue'. This is how
 the jquery <code>.text</code> method does the job.</p>
-<div class="codehilite"><pre>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;childtest&quot;</span><span class="p">).</span><span class="nx">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">nodeValue</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;childtest&quot;</span><span class="p">).</span><span class="nx">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">nodeValue</span><span class="p">;</span>
 </pre></div>
 
 
 <p><strong>Accessing the siblings</strong></p>
 <p>Jquery lets us get all siblings of an element as an array. Javascript
 gives us only the next and the previous sibling Something like this</p>
-<div class="codehilite"><pre>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;childtest&quot;</span><span class="p">).</span><span class="nx">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">nextSibling</span><span class="p">;</span> 
+<div class="codehilite"><pre><span></span>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;childtest&quot;</span><span class="p">).</span><span class="nx">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">nextSibling</span><span class="p">;</span> 
     <span class="c1">// or  ...childNodes[1].previousSibling</span>
 </pre></div>
 
@@ -137,7 +137,7 @@ gives us only the next and the previous sibling Something like this</p>
 can traverse to an elements parent and then get all its childNodes.</p>
 <p><strong>Accessing the parent element</strong></p>
 <p>As simple as it can get</p>
-<div class="codehilite"><pre>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;childtest&quot;</span><span class="p">).</span><span class="nx">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">parentNode</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;childtest&quot;</span><span class="p">).</span><span class="nx">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">parentNode</span><span class="p">;</span>
 </pre></div>
 
 

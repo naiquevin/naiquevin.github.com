@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/emacs.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2013-04-01T00:00:00+05:30</updated><entry><title>NaturalDocs for Javascript in Emacs</title><link href="http://naiquevin.github.io/naturaldocs-for-javascript-in-emacs.html" rel="alternate"></link><updated>2013-04-01T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2013-04-01:naturaldocs-for-javascript-in-emacs.html</id><summary type="html">&lt;p&gt;Last week we decided to use &lt;a href="http://www.naturaldocs.org/"&gt;NaturalDocs&lt;/a&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet - emacs</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/emacs.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2013-04-01T00:00:00+05:30</updated><entry><title>NaturalDocs for Javascript in Emacs</title><link href="http://naiquevin.github.io/naturaldocs-for-javascript-in-emacs.html" rel="alternate"></link><published>2013-04-01T00:00:00+05:30</published><updated>2013-04-01T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2013-04-01:/naturaldocs-for-javascript-in-emacs.html</id><summary type="html">&lt;p&gt;Adding NaturalDocs support for JS in emacs&lt;/p&gt;</summary><content type="html">&lt;p&gt;Last week we decided to use &lt;a href="http://www.naturaldocs.org/"&gt;NaturalDocs&lt;/a&gt;
 for Javascript documentation at work. I noticed that a few of my
 colleagues who are SublimeText users started using a plugin that
 inserts docstring skeleton in code. I tried to find a similar mode in
@@ -10,7 +10,7 @@ own!&lt;/p&gt;
 &lt;p&gt;So, I decided to spend a few hours of this weekend writing some elisp
 code for intelligently inserting NaturalDocs style docstring in
 javascript. Here is the result and I am quite happy with it.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="emacs ns-js in action" src="theme/images/nd-js-screenshot.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="emacs ns-js in action" src="theme/images/nd-js-screenshot.gif"&gt;&lt;/p&gt;
 &lt;p&gt;You can find the source code &lt;a href="https://github.com/naiquevin/emacs-config/blob/master/naiquevin/nd-js.el"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;It was an 'achievement unlocked' moment for me as this is the first
 time I have written emacs lisp that comes so close to being called a
@@ -46,11 +46,11 @@ accomplish and after breaking it down into smaller tasks it was very
 easy to search through the manual. I found it to be very well written
 and was sufficient most of the times although a few times I had to
 resort to stackoverflow.&lt;/p&gt;
-&lt;p&gt;Hopefully I will release it as a mode some day.&lt;/p&gt;</summary><category term="emacs"></category><category term="NaturalDocs"></category><category term="Javascript"></category></entry><entry><title>Own the Editor</title><link href="http://naiquevin.github.io/own-the-editor.html" rel="alternate"></link><updated>2012-05-11T23:28:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2012-05-11:own-the-editor.html</id><summary type="html">&lt;p&gt;Recently I have noticed a changing trend in the choice of text editor/IDE among my
+&lt;p&gt;Hopefully I will release it as a mode some day.&lt;/p&gt;</content><category term="emacs"></category><category term="NaturalDocs"></category><category term="Javascript"></category></entry><entry><title>Own the Editor</title><link href="http://naiquevin.github.io/own-the-editor.html" rel="alternate"></link><published>2012-05-11T23:28:00+05:30</published><updated>2012-05-11T23:28:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2012-05-11:/own-the-editor.html</id><summary type="html">&lt;p&gt;On getting the most out of the editor of your choice&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recently I have noticed a changing trend in the choice of text editor/IDE among my
 colleagues. From 100% Eclipse users a few months back, today we have -&lt;/p&gt;
-&lt;p&gt;6 &lt;a href="http://www.sublimetext.com/"&gt;Sublime Text 2&lt;/a&gt; Users&lt;br /&gt;
-3 &lt;a href="http://www.eclipse.org/projects/"&gt;Eclipse&lt;/a&gt; Users&lt;br /&gt;
-1 &lt;a href="http://www.vim.org/"&gt;Vim&lt;/a&gt; User&lt;br /&gt;
+&lt;p&gt;6 &lt;a href="http://www.sublimetext.com/"&gt;Sublime Text 2&lt;/a&gt; Users&lt;br&gt;
+3 &lt;a href="http://www.eclipse.org/projects/"&gt;Eclipse&lt;/a&gt; Users&lt;br&gt;
+1 &lt;a href="http://www.vim.org/"&gt;Vim&lt;/a&gt; User&lt;br&gt;
 1 &lt;a href="http://www.gnu.org/software/emacs/"&gt;Emacs&lt;/a&gt; User  &lt;/p&gt;
 &lt;p&gt;I am the lone emacs user which you would already guessed from the
 tagline of this blog. This post is not about emacs though.  I used
@@ -210,7 +210,7 @@ people use softwares that flood the screen with popouts such as email,
 irc or even twitter clients, note taking apps or even games.&lt;/p&gt;
 &lt;p&gt;So this is all I can think of right now. It's definitely by no means
 an exhaustive list but I hope this helps you get started with fast,
-efficient and enjoyable editing.&lt;/p&gt;</summary></entry><entry><title>Adding text vertically on multiple lines (region)</title><link href="http://naiquevin.github.io/adding-text-vertically-on-multiple-lines-region.html" rel="alternate"></link><updated>2011-08-04T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2011-08-04:adding-text-vertically-on-multiple-lines-region.html</id><summary type="html">&lt;p&gt;Ok. Finally a new emacs trick. Actually I had come across this a while
+efficient and enjoyable editing.&lt;/p&gt;</content></entry><entry><title>Adding text vertically on multiple lines (region)</title><link href="http://naiquevin.github.io/adding-text-vertically-on-multiple-lines-region.html" rel="alternate"></link><published>2011-08-04T00:00:00+05:30</published><updated>2011-08-04T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2011-08-04:/adding-text-vertically-on-multiple-lines-region.html</id><summary type="html"></summary><content type="html">&lt;p&gt;Ok. Finally a new emacs trick. Actually I had come across this a while
 back but then I went on a short vacation and later picked up a John
 Grisham book (one of the hard-to-put-down types) and so the delay.&lt;/p&gt;
 &lt;p&gt;This one is about adding stuff vertically in a line in the buffer. It
@@ -229,7 +229,7 @@ column 0 or the start of the line)&lt;/p&gt;
 &lt;p&gt;Then move the cursor to the ending line using C-n normally.&lt;/p&gt;
 &lt;p&gt;Then type, &lt;code&gt;C-x r t&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;String Rectangle :&lt;/code&gt; will appear in the mini buffer.&lt;/p&gt;
-&lt;p&gt;Type &lt;code&gt;//&lt;/code&gt; to comment out each line and press &lt;code&gt;RET&lt;/code&gt;.&lt;/p&gt;</summary><category term="emacs"></category><category term="editing"></category></entry><entry><title>Bookmarking in Emacs</title><link href="http://naiquevin.github.io/bookmarking-in-emacs.html" rel="alternate"></link><updated>2011-07-22T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2011-07-22:bookmarking-in-emacs.html</id><summary type="html">&lt;p&gt;Emacs allows bookmarking inside buffers so that you can quicky visit
+&lt;p&gt;Type &lt;code&gt;//&lt;/code&gt; to comment out each line and press &lt;code&gt;RET&lt;/code&gt;.&lt;/p&gt;</content><category term="emacs"></category><category term="editing"></category></entry><entry><title>Bookmarking in Emacs</title><link href="http://naiquevin.github.io/bookmarking-in-emacs.html" rel="alternate"></link><published>2011-07-22T00:00:00+05:30</published><updated>2011-07-22T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2011-07-22:/bookmarking-in-emacs.html</id><summary type="html"></summary><content type="html">&lt;p&gt;Emacs allows bookmarking inside buffers so that you can quicky visit
 those at a later time. And by later time I mean any time later, even
 if its a new emacs session.&lt;/p&gt;
 &lt;p&gt;The commands are as follows :&lt;/p&gt;
@@ -251,7 +251,7 @@ it seems quite useful to me. I personally don't like the open files in
 previous ide session auto-opening up at startup. I prefer starting
 with a clean slate. So I can just set a bookmark on the dired buffers
 of the projects that I am working on currently or just set one before
-wrapping up day's work so that I can start from there the next day.&lt;/p&gt;</summary><category term="emacs"></category><category term="editing"></category></entry><entry><title>Killing buffers</title><link href="http://naiquevin.github.io/killing-buffers.html" rel="alternate"></link><updated>2011-07-19T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2011-07-19:killing-buffers.html</id><summary type="html">&lt;p&gt;In emacs, as we open files, a lot of dired buffers get accumulated. I
+wrapping up day's work so that I can start from there the next day.&lt;/p&gt;</content><category term="emacs"></category><category term="editing"></category></entry><entry><title>Killing buffers</title><link href="http://naiquevin.github.io/killing-buffers.html" rel="alternate"></link><published>2011-07-19T00:00:00+05:30</published><updated>2011-07-19T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2011-07-19:/killing-buffers.html</id><summary type="html"></summary><content type="html">&lt;p&gt;In emacs, as we open files, a lot of dired buffers get accumulated. I
 personally find them a nuisance after a while specially during longer
 emacs sessions. Killing them one by one using &lt;code&gt;C-X k&lt;/code&gt; would be quite
 tedious. Fortunately there is better way to kill many buffers at a
@@ -261,7 +261,7 @@ a new buffer so we need to switch to this buffer using &lt;code&gt;C-x o&lt;/cod
 we need to mark all the buffers that we wish to kill by typing
 &lt;code&gt;d&lt;/code&gt;. As we mark, a capital &lt;code&gt;D&lt;/code&gt; appears alongside the buffers'
 names. After all buffers to be killed are marked, just press &lt;code&gt;x&lt;/code&gt; and
-all the buffers will get killed.&lt;/p&gt;</summary><category term="emacs"></category><category term="editing"></category></entry><entry><title>Keyboard macros in emacs</title><link href="http://naiquevin.github.io/keyboard-macros-in-emacs.html" rel="alternate"></link><updated>2011-07-16T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2011-07-16:keyboard-macros-in-emacs.html</id><summary type="html">&lt;p&gt;Just learnt how to set and use Keyboard Macros in emacs. This looks
+all the buffers will get killed.&lt;/p&gt;</content><category term="emacs"></category><category term="editing"></category></entry><entry><title>Keyboard macros in emacs</title><link href="http://naiquevin.github.io/keyboard-macros-in-emacs.html" rel="alternate"></link><published>2011-07-16T00:00:00+05:30</published><updated>2011-07-16T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2011-07-16:/keyboard-macros-in-emacs.html</id><summary type="html"></summary><content type="html">&lt;p&gt;Just learnt how to set and use Keyboard Macros in emacs. This looks
 pretty useful and something I feel will come in handy while
 refactoring code.&lt;/p&gt;
 &lt;p&gt;Firstly, to set a keyboard macros means recording a sequence of
@@ -276,14 +276,14 @@ repeat them for you whenever you want using a single command.&lt;/p&gt;
 &lt;p&gt;In a php class (say a controller in an MVC application) the following
 expression is written a number of times to get a particular request
 param and assign it to a variable&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
     &lt;span class="nv"&gt;$id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;request&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;param&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;..............&lt;/span&gt; &lt;span class="nv"&gt;$user_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;request&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;param&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;user_id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;    
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Suppose I want to pass a second optional parameter of value &lt;code&gt;0&lt;/code&gt; to 
 all of the function calls ie change them such as,&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
     &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;request&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;param&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -297,7 +297,7 @@ all of the function calls ie change them such as,&lt;/p&gt;
 &lt;p&gt;type &lt;code&gt;, 0&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;end macro definition &lt;code&gt;C-X )&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Now keep doing &lt;code&gt;C-X e&lt;/code&gt; till all the method calls are modified.&lt;/p&gt;
-&lt;p&gt;(This was somewhat a vague example but I hope you get the idea :-))&lt;/p&gt;</summary><category term="emacs"></category><category term="editing"></category><category term="macros"></category></entry><entry><title>Speedy navigation across the buffer in emacs</title><link href="http://naiquevin.github.io/speedy-navigation-across-the-buffer-in-emacs.html" rel="alternate"></link><updated>2011-07-15T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2011-07-15:speedy-navigation-across-the-buffer-in-emacs.html</id><summary type="html">&lt;p&gt;Okay. So here goes the first one. Very often I find myself searching
+&lt;p&gt;(This was somewhat a vague example but I hope you get the idea :-))&lt;/p&gt;</content><category term="emacs"></category><category term="editing"></category><category term="macros"></category></entry><entry><title>Speedy navigation across the buffer in emacs</title><link href="http://naiquevin.github.io/speedy-navigation-across-the-buffer-in-emacs.html" rel="alternate"></link><published>2011-07-15T00:00:00+05:30</published><updated>2011-07-15T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2011-07-15:/speedy-navigation-across-the-buffer-in-emacs.html</id><summary type="html"></summary><content type="html">&lt;p&gt;Okay. So here goes the first one. Very often I find myself searching
 for a line of code in the same file so that I can copy it over into
 some other function or a method. This whole process of moving to the
 desired line of code, copying it over, coming back to where you
@@ -335,4 +335,4 @@ mark the command is C-u C-SPC&lt;/p&gt;
 &lt;p&gt;Looks like too much work for the fingers but its definitely faster
 than the right click scroll thing one would have to do with a mouse.&lt;/p&gt;
 &lt;p&gt;Just think as if you are driving a racing car. It can go from 0-60 in
-3.5 secs, &lt;em&gt;provided&lt;/em&gt; you can shift gears fast enough :)&lt;/p&gt;</summary><category term="emacs"></category><category term="editing"></category></entry></feed>
+3.5 secs, &lt;em&gt;provided&lt;/em&gt; you can shift gears fast enough :)&lt;/p&gt;</content><category term="emacs"></category><category term="editing"></category></entry></feed>

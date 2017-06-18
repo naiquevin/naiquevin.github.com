@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/clojure.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2014-02-24T00:00:00+05:30</updated><entry><title>Using postgresql's enum types with Korma</title><link href="http://naiquevin.github.io/using-postgresqls-enum-types-with-korma.html" rel="alternate"></link><updated>2014-02-24T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2014-02-24:using-postgresqls-enum-types-with-korma.html</id><summary type="html">&lt;p&gt;I have been playing with Clojure on the side for a few months and
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet - clojure</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/clojure.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2014-02-24T00:00:00+05:30</updated><entry><title>Using postgresql's enum types with Korma</title><link href="http://naiquevin.github.io/using-postgresqls-enum-types-with-korma.html" rel="alternate"></link><published>2014-02-24T00:00:00+05:30</published><updated>2014-02-24T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2014-02-24:/using-postgresqls-enum-types-with-korma.html</id><summary type="html"></summary><content type="html">&lt;p&gt;I have been playing with Clojure on the side for a few months and
 these days I am trying to build a simple webapp using compojure,
 enlive and korma. One problem I faced early on was getting
 postgresql's enum type to work with korma. Insert and select queries
@@ -12,7 +12,7 @@ the app which has a field named &lt;code&gt;impact&lt;/code&gt; that can either 
 or "negative". The name of the table is &lt;code&gt;activities&lt;/code&gt; and for
 simplicity, I have skipped primary keys, foreign key relations and
 other irrelevant details.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TYPE&lt;/span&gt; &lt;span class="n"&gt;impact_types&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;ENUM&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;positive&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;negative&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TYPE&lt;/span&gt; &lt;span class="n"&gt;impact_types&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;ENUM&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;positive&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;negative&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
     &lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;activities&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
         &lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="nb"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;140&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;NOT&lt;/span&gt; &lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
         &lt;span class="n"&gt;impact&lt;/span&gt; &lt;span class="n"&gt;impact_types&lt;/span&gt;
@@ -22,7 +22,7 @@ other irrelevant details.&lt;/p&gt;
 
 &lt;p&gt;Let's insert a row using the terminal client and then execute a query
 to get it. This works perfectly fine.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="n"&gt;activities&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;some activity&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;positive&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="n"&gt;activities&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;some activity&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;positive&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
     &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;activities&lt;/span&gt; &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;impact&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;positive&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
          &lt;span class="n"&gt;title&lt;/span&gt;     &lt;span class="o"&gt;|&lt;/span&gt;  &lt;span class="n"&gt;impact&lt;/span&gt;
     &lt;span class="c1"&gt;---------------+----------&lt;/span&gt;
@@ -34,18 +34,18 @@ to get it. This works perfectly fine.&lt;/p&gt;
 &lt;p&gt;To do this in Clojure using korma, we first need to define a
 connection (that I'll skip) and then an entity representing the
 &lt;code&gt;activities&lt;/code&gt; table.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;use&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;korma.core&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;use&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;korma.core&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defentity&lt;/span&gt; &lt;span class="nv"&gt;activities&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;But now if we try to insert a row using korma by specifying the
 &lt;code&gt;impact&lt;/code&gt; value as a string, it fails as follows,&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;insert&lt;/span&gt; &lt;span class="nv"&gt;activities&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;values&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;:title&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;another activity&amp;quot;&lt;/span&gt; &lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;negative&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}))&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;insert&lt;/span&gt; &lt;span class="nv"&gt;activities&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;values&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;:title&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;another activity&amp;quot;&lt;/span&gt; &lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;negative&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="codehilite"&gt;&lt;pre&gt;    Failure to execute query with SQL:
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    Failure to execute query with SQL:
     INSERT INTO &amp;quot;activities&amp;quot; (&amp;quot;impact&amp;quot;, &amp;quot;title&amp;quot;) VALUES (?, ?)  ::  [negative another activity]
     PSQLException:
      Message: ERROR: column &amp;quot;impact&amp;quot; is of type impact_types but expression is of type character varying
@@ -68,7 +68,7 @@ it expect?  There is nothing mentioned about this in the docs. Turns
 out that the object is of class &lt;code&gt;org.postgresql.util.PGObject&lt;/code&gt;. In
 fact, we can find this by looking at the results of the select query
 closely.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;select &lt;/span&gt;&lt;span class="nv"&gt;activities&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;select &lt;/span&gt;&lt;span class="nv"&gt;activities&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="c1"&gt;;; [{:impact #&amp;lt;PGobject positive&amp;gt;, :title &amp;quot;some activity&amp;quot;}]&lt;/span&gt;
     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;class &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;first &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;select &lt;/span&gt;&lt;span class="nv"&gt;activities&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
     &lt;span class="c1"&gt;;; org.postgresql.util.PGobject&lt;/span&gt;
@@ -79,7 +79,7 @@ closely.&lt;/p&gt;
 &lt;a href="http://jdbc.postgresql.org/documentation/publicapi/org/postgresql/util/PGobject.html"&gt;documentation of PGObject&lt;/a&gt;,
 it's used to describe any type that is unknown by JDBC
 standards. Let's write a helper function to do this conversion..&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;import &lt;/span&gt;&lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;org.postgresql.util&lt;/span&gt; &lt;span class="nv"&gt;PGobject&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;import &lt;/span&gt;&lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;org.postgresql.util&lt;/span&gt; &lt;span class="nv"&gt;PGobject&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 
     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;defn &lt;/span&gt;&lt;span class="nv"&gt;str-&amp;gt;pgobject&lt;/span&gt;
       &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;type&lt;/span&gt; &lt;span class="nv"&gt;value&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
@@ -90,7 +90,7 @@ standards. Let's write a helper function to do this conversion..&lt;/p&gt;
 
 
 &lt;p&gt;.. and try our earlier insert query again,&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;insert&lt;/span&gt; &lt;span class="nv"&gt;activities&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;insert&lt;/span&gt; &lt;span class="nv"&gt;activities&lt;/span&gt;
       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;values&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;:title&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;another activity&amp;quot;&lt;/span&gt;
                &lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;str-&amp;gt;pgobject&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;impact_types&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;negative&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)}))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -99,7 +99,7 @@ standards. Let's write a helper function to do this conversion..&lt;/p&gt;
 &lt;p&gt;And now it works!&lt;/p&gt;
 &lt;p&gt;From the docs, it's also quite trivial to convert a &lt;code&gt;pgobject&lt;/code&gt; to a
 string at the time of post-processing the results.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;.getValue&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;first &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;select &lt;/span&gt;&lt;span class="nv"&gt;activities&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;.getValue&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;first &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;select &lt;/span&gt;&lt;span class="nv"&gt;activities&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
     &lt;span class="c1"&gt;;; &amp;quot;positive&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -110,7 +110,7 @@ post-processing step after getting query results. But korma has got us
 covered with &lt;code&gt;prepare&lt;/code&gt; and &lt;code&gt;transform&lt;/code&gt; functions that can be specified
 for applying common mutations to data. Read more about it in the
 &lt;a href="http://sqlkorma.com/docs#entities"&gt;docs&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;defn &lt;/span&gt;&lt;span class="nv"&gt;transform-for-impact&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;defn &lt;/span&gt;&lt;span class="nv"&gt;transform-for-impact&lt;/span&gt;
       &lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="nv"&gt;impact&lt;/span&gt; &lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="ss"&gt;:as&lt;/span&gt; &lt;span class="nv"&gt;act&lt;/span&gt;&lt;span class="p"&gt;}]&lt;/span&gt;
       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if &lt;/span&gt;&lt;span class="nv"&gt;impact&lt;/span&gt;
         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;assoc &lt;/span&gt;&lt;span class="nv"&gt;act&lt;/span&gt; &lt;span class="ss"&gt;:impact&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;.getValue&lt;/span&gt; &lt;span class="nv"&gt;impact&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
@@ -129,7 +129,7 @@ for applying common mutations to data. Read more about it in the
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;select &lt;/span&gt;&lt;span class="nv"&gt;activities&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;select &lt;/span&gt;&lt;span class="nv"&gt;activities&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="c1"&gt;;; ({:impact &amp;quot;positive&amp;quot;, :title &amp;quot;some activity&amp;quot;} {:impact &amp;quot;negative&amp;quot;, :title &amp;quot;another activity&amp;quot;})&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -143,4 +143,4 @@ though.&lt;/p&gt;
 better or more idiomatic, please point it out. I am only getting
 started :-)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Edit (2nd March 2014):&lt;/strong&gt; Fixed &lt;code&gt;*-for-impact&lt;/code&gt; functions to handle
-the case where the &lt;code&gt;impact&lt;/code&gt; field is not included in the map.&lt;/p&gt;</summary><category term="clojure"></category><category term="postgresql"></category></entry></feed>
+the case where the &lt;code&gt;impact&lt;/code&gt; field is not included in the map.&lt;/p&gt;</content><category term="clojure"></category><category term="postgresql"></category></entry></feed>

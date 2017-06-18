@@ -35,7 +35,7 @@
   <section class="article">
     <h1 class="articleTitle">Using postgresql's enum types with Korma</h1>
     <div class="postInfo">
-      Written on <span class="published" title="2014-02-24T00:00:00">Mon 24 February 2014</span>
+      Written on <span class="published" title="2014-02-24T00:00:00+05:30">Mon 24 February 2014</span>
     </div>
     <div class="articleContent">
       <p>I have been playing with Clojure on the side for a few months and
@@ -51,7 +51,7 @@ the app which has a field named <code>impact</code> that can either be "positive
 or "negative". The name of the table is <code>activities</code> and for
 simplicity, I have skipped primary keys, foreign key relations and
 other irrelevant details.</p>
-<div class="codehilite"><pre>    <span class="k">CREATE</span> <span class="k">TYPE</span> <span class="n">impact_types</span> <span class="k">AS</span> <span class="n">ENUM</span> <span class="p">(</span><span class="s1">&#39;positive&#39;</span><span class="p">,</span> <span class="s1">&#39;negative&#39;</span><span class="p">);</span>
+<div class="codehilite"><pre><span></span>    <span class="k">CREATE</span> <span class="k">TYPE</span> <span class="n">impact_types</span> <span class="k">AS</span> <span class="n">ENUM</span> <span class="p">(</span><span class="s1">&#39;positive&#39;</span><span class="p">,</span> <span class="s1">&#39;negative&#39;</span><span class="p">);</span>
     <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">activities</span> <span class="p">(</span>
         <span class="n">title</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">140</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
         <span class="n">impact</span> <span class="n">impact_types</span>
@@ -61,7 +61,7 @@ other irrelevant details.</p>
 
 <p>Let's insert a row using the terminal client and then execute a query
 to get it. This works perfectly fine.</p>
-<div class="codehilite"><pre>    <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">activities</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;some activity&#39;</span><span class="p">,</span> <span class="s1">&#39;positive&#39;</span><span class="p">);</span>
+<div class="codehilite"><pre><span></span>    <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">activities</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;some activity&#39;</span><span class="p">,</span> <span class="s1">&#39;positive&#39;</span><span class="p">);</span>
     <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">activities</span> <span class="k">WHERE</span> <span class="n">impact</span> <span class="o">=</span> <span class="s1">&#39;positive&#39;</span><span class="p">;</span>
          <span class="n">title</span>     <span class="o">|</span>  <span class="n">impact</span>
     <span class="c1">---------------+----------</span>
@@ -73,18 +73,18 @@ to get it. This works perfectly fine.</p>
 <p>To do this in Clojure using korma, we first need to define a
 connection (that I'll skip) and then an entity representing the
 <code>activities</code> table.</p>
-<div class="codehilite"><pre>    <span class="p">(</span><span class="nf">use</span> <span class="ss">&#39;korma.core</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span>    <span class="p">(</span><span class="nf">use</span> <span class="ss">&#39;korma.core</span><span class="p">)</span>
     <span class="p">(</span><span class="nf">defentity</span> <span class="nv">activities</span><span class="p">)</span>
 </pre></div>
 
 
 <p>But now if we try to insert a row using korma by specifying the
 <code>impact</code> value as a string, it fails as follows,</p>
-<div class="codehilite"><pre>    <span class="p">(</span><span class="nf">insert</span> <span class="nv">activities</span> <span class="p">(</span><span class="nf">values</span> <span class="p">{</span><span class="ss">:title</span> <span class="s">&quot;another activity&quot;</span> <span class="ss">:impact</span> <span class="s">&quot;negative&quot;</span><span class="p">}))</span>
+<div class="codehilite"><pre><span></span>    <span class="p">(</span><span class="nf">insert</span> <span class="nv">activities</span> <span class="p">(</span><span class="nf">values</span> <span class="p">{</span><span class="ss">:title</span> <span class="s">&quot;another activity&quot;</span> <span class="ss">:impact</span> <span class="s">&quot;negative&quot;</span><span class="p">}))</span>
 </pre></div>
 
 
-<div class="codehilite"><pre>    Failure to execute query with SQL:
+<div class="codehilite"><pre><span></span>    Failure to execute query with SQL:
     INSERT INTO &quot;activities&quot; (&quot;impact&quot;, &quot;title&quot;) VALUES (?, ?)  ::  [negative another activity]
     PSQLException:
      Message: ERROR: column &quot;impact&quot; is of type impact_types but expression is of type character varying
@@ -107,7 +107,7 @@ it expect?  There is nothing mentioned about this in the docs. Turns
 out that the object is of class <code>org.postgresql.util.PGObject</code>. In
 fact, we can find this by looking at the results of the select query
 closely.</p>
-<div class="codehilite"><pre>    <span class="p">(</span><span class="nb">select </span><span class="nv">activities</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span>    <span class="p">(</span><span class="nb">select </span><span class="nv">activities</span><span class="p">)</span>
     <span class="c1">;; [{:impact #&lt;PGobject positive&gt;, :title &quot;some activity&quot;}]</span>
     <span class="p">(</span><span class="nb">class </span><span class="p">(</span><span class="ss">:impact</span> <span class="p">(</span><span class="nb">first </span><span class="p">(</span><span class="nb">select </span><span class="nv">activities</span><span class="p">))))</span>
     <span class="c1">;; org.postgresql.util.PGobject</span>
@@ -118,7 +118,7 @@ closely.</p>
 <a href="http://jdbc.postgresql.org/documentation/publicapi/org/postgresql/util/PGobject.html">documentation of PGObject</a>,
 it's used to describe any type that is unknown by JDBC
 standards. Let's write a helper function to do this conversion..</p>
-<div class="codehilite"><pre>    <span class="p">(</span><span class="nb">import </span><span class="o">&#39;</span><span class="p">(</span><span class="nf">org.postgresql.util</span> <span class="nv">PGobject</span><span class="p">))</span>
+<div class="codehilite"><pre><span></span>    <span class="p">(</span><span class="nb">import </span><span class="o">&#39;</span><span class="p">(</span><span class="nf">org.postgresql.util</span> <span class="nv">PGobject</span><span class="p">))</span>
 
     <span class="p">(</span><span class="kd">defn </span><span class="nv">str-&gt;pgobject</span>
       <span class="p">[</span><span class="nv">type</span> <span class="nv">value</span><span class="p">]</span>
@@ -129,7 +129,7 @@ standards. Let's write a helper function to do this conversion..</p>
 
 
 <p>.. and try our earlier insert query again,</p>
-<div class="codehilite"><pre>    <span class="p">(</span><span class="nf">insert</span> <span class="nv">activities</span>
+<div class="codehilite"><pre><span></span>    <span class="p">(</span><span class="nf">insert</span> <span class="nv">activities</span>
       <span class="p">(</span><span class="nf">values</span> <span class="p">{</span><span class="ss">:title</span> <span class="s">&quot;another activity&quot;</span>
                <span class="ss">:impact</span> <span class="p">(</span><span class="nf">str-&gt;pgobject</span> <span class="s">&quot;impact_types&quot;</span> <span class="s">&quot;negative&quot;</span><span class="p">)}))</span>
 </pre></div>
@@ -138,7 +138,7 @@ standards. Let's write a helper function to do this conversion..</p>
 <p>And now it works!</p>
 <p>From the docs, it's also quite trivial to convert a <code>pgobject</code> to a
 string at the time of post-processing the results.</p>
-<div class="codehilite"><pre>    <span class="p">(</span><span class="nf">.getValue</span> <span class="p">(</span><span class="ss">:impact</span> <span class="p">(</span><span class="nb">first </span><span class="p">(</span><span class="nb">select </span><span class="nv">activities</span><span class="p">))))</span>
+<div class="codehilite"><pre><span></span>    <span class="p">(</span><span class="nf">.getValue</span> <span class="p">(</span><span class="ss">:impact</span> <span class="p">(</span><span class="nb">first </span><span class="p">(</span><span class="nb">select </span><span class="nv">activities</span><span class="p">))))</span>
     <span class="c1">;; &quot;positive&quot;</span>
 </pre></div>
 
@@ -149,7 +149,7 @@ post-processing step after getting query results. But korma has got us
 covered with <code>prepare</code> and <code>transform</code> functions that can be specified
 for applying common mutations to data. Read more about it in the
 <a href="http://sqlkorma.com/docs#entities">docs</a>.</p>
-<div class="codehilite"><pre>    <span class="p">(</span><span class="kd">defn </span><span class="nv">transform-for-impact</span>
+<div class="codehilite"><pre><span></span>    <span class="p">(</span><span class="kd">defn </span><span class="nv">transform-for-impact</span>
       <span class="p">[{</span><span class="nv">impact</span> <span class="ss">:impact</span> <span class="ss">:as</span> <span class="nv">act</span><span class="p">}]</span>
       <span class="p">(</span><span class="k">if </span><span class="nv">impact</span>
         <span class="p">(</span><span class="nb">assoc </span><span class="nv">act</span> <span class="ss">:impact</span> <span class="p">(</span><span class="nf">.getValue</span> <span class="nv">impact</span><span class="p">))</span>
@@ -168,7 +168,7 @@ for applying common mutations to data. Read more about it in the
 </pre></div>
 
 
-<div class="codehilite"><pre>    <span class="p">(</span><span class="nb">select </span><span class="nv">activities</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span>    <span class="p">(</span><span class="nb">select </span><span class="nv">activities</span><span class="p">)</span>
     <span class="c1">;; ({:impact &quot;positive&quot;, :title &quot;some activity&quot;} {:impact &quot;negative&quot;, :title &quot;another activity&quot;})</span>
 </pre></div>
 

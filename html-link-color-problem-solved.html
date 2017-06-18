@@ -35,7 +35,7 @@
   <section class="article">
     <h1 class="articleTitle">HTML link color problem solved</h1>
     <div class="postInfo">
-      Written on <span class="published" title="2009-05-14T17:21:00">Thu 14 May 2009</span>
+      Written on <span class="published" title="2009-05-14T17:21:00+05:30">Thu 14 May 2009</span>
     </div>
     <div class="articleContent">
       <p><strong>Problem:</strong> Some browsers show links in the default color in spite of being styled in CSS. On hover the CSS styling works.</p>
@@ -44,20 +44,20 @@
 <ol>
 <li>Dont use a:link ie. instead of</li>
 </ol>
-<div class="codehilite"><pre>    <span class="nc">.menu</span> <span class="nt">a</span><span class="nd">:link</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<div class="codehilite"><pre><span></span>    <span class="p">.</span><span class="nc">menu</span> <span class="nt">a</span><span class="p">:</span><span class="nd">link</span> <span class="p">{</span><span class="err">...</span><span class="p">}</span>
 </pre></div>
 
 
 <p>just use,</p>
-<div class="codehilite"><pre>    <span class="p">.</span><span class="n">menu</span> <span class="n">a</span> <span class="p">{...}</span>
+<div class="codehilite"><pre><span></span>    .menu a {...}
 </pre></div>
 
 
 <p>And the other way is declare the colors for all the states of the link</p>
-<div class="codehilite"><pre>    <span class="p">.</span><span class="n">menu</span> <span class="n">a</span><span class="o">:</span><span class="n">link</span> <span class="p">{...}</span>
-    <span class="p">.</span><span class="n">menu</span> <span class="n">a</span><span class="o">:</span><span class="n">visited</span> <span class="p">{...}</span>
-    <span class="p">.</span><span class="n">menu</span> <span class="n">a</span><span class="o">:</span><span class="n">hover</span> <span class="p">{...}</span>
-    <span class="p">.</span><span class="n">menu</span> <span class="n">a</span><span class="o">:</span><span class="n">active</span> <span class="p">{...}</span>
+<div class="codehilite"><pre><span></span>    .menu a:link {...}
+    .menu a:visited {...}
+    .menu a:hover {...}
+    .menu a:active {...}
 </pre></div>
 
 

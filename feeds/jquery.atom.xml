@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/jquery.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2009-08-04T23:32:45+05:30</updated><entry><title>To check if atleast one check box is checked using Jquery</title><link href="http://naiquevin.github.io/to-check-if-atleast-one-check-box-is-checked-using-jquery.html" rel="alternate"></link><updated>2009-08-04T23:32:45+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2009-08-04:to-check-if-atleast-one-check-box-is-checked-using-jquery.html</id><summary type="html">&lt;p&gt;It happens so many times that I need to code something to make the UI
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet - jquery</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/jquery.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2009-08-04T23:32:45+05:30</updated><entry><title>To check if atleast one check box is checked using Jquery</title><link href="http://naiquevin.github.io/to-check-if-atleast-one-check-box-is-checked-using-jquery.html" rel="alternate"></link><published>2009-08-04T23:32:45+05:30</published><updated>2009-08-04T23:32:45+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2009-08-04:/to-check-if-atleast-one-check-box-is-checked-using-jquery.html</id><summary type="html"></summary><content type="html">&lt;p&gt;It happens so many times that I need to code something to make the UI
 fool proof. While I have the logic clear in my mind, i often find that
 javascript is of little or no help at all.... Whats amazing is that
 99% of the time jquery does the trick with minimum code and the
@@ -10,7 +10,7 @@ submitting the form on the client side. I came across this when I was
 trying to figure out a way for similar validation when the number of
 check boxes was driven by the database and it was not possible to have
 a common className for them.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;validateCheckbox&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;validateCheckbox&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;input:checked&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;    
         &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;n&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
             &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -21,4 +21,4 @@ a common className for them.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;code&gt;input:checked&lt;/code&gt; matches all the check boxes which are checked.&lt;/p&gt;</summary></entry></feed>
+&lt;p&gt;&lt;code&gt;input:checked&lt;/code&gt; matches all the check boxes which are checked.&lt;/p&gt;</content></entry></feed>

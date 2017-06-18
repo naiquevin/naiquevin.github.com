@@ -35,7 +35,7 @@
   <section class="article">
     <h1 class="articleTitle">Toolbox: histit.py</h1>
     <div class="postInfo">
-      Written on <span class="published" title="2014-03-19T00:00:00">Wed 19 March 2014</span>
+      Written on <span class="published" title="2014-03-19T00:00:00+05:30">Wed 19 March 2014</span>
     </div>
     <div class="articleContent">
       <p>(This is the first post of the series I plan to write on some tools I
@@ -51,7 +51,7 @@ files. It's basically a simple wrapper over
 for plotting all kinds of stuff in Python.</p>
 <p>You can download the script from
 <a href="https://raw.github.com/naiquevin/toolbox/master/histit.py">here</a></p>
-<div class="codehilite"><pre>    <span class="nv">$ </span>wget https://raw.github.com/naiquevin/toolbox/master/histit.py
+<div class="codehilite"><pre><span></span>    $ wget https://raw.github.com/naiquevin/toolbox/master/histit.py
 </pre></div>
 
 
@@ -61,15 +61,15 @@ href="#footnote-2"><sup>2</sup></a></p>
 <p>We need some data for the demo, so let's first dump values from a
 random normal distribution into a text file. The <code>numpy.random.normal</code>
 function can be used for this.</p>
-<div class="codehilite"><pre>    <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-    <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;data.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-       <span class="o">...</span><span class="p">:</span>     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)))</span>
+<div class="codehilite"><pre><span></span>    <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+    <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+       <span class="o">...</span><span class="p">:</span>     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)))</span>
        <span class="o">...</span><span class="p">:</span>
 </pre></div>
 
 
 <p>Now we can use <code>histit.py</code> to plot the histogram as follows:</p>
-<div class="codehilite"><pre>    <span class="nv">$ </span>python histit.py <span class="s2">&quot;Test histogram&quot;</span> <span class="s2">&quot;Test values&quot;</span> -d data.txt -a show -t float -b 100
+<div class="codehilite"><pre><span></span>    $ python histit.py <span class="s2">&quot;Test histogram&quot;</span> <span class="s2">&quot;Test values&quot;</span> -d data.txt -a show -t float -b <span class="m">100</span>
 </pre></div>
 
 
@@ -77,7 +77,7 @@ function can be used for this.</p>
 href="#footnote-3"><sup>3</sup></a> will popout with the histogram as
 shown below. Although the values in your case would be different, a
 peculiar "bell curve" should be noticeable.</p>
-<p><img alt="histogram demo" src="theme/images/histit-demo.png" /></p>
+<p><img alt="histogram demo" src="theme/images/histit-demo.png"></p>
 <p>In the command we just run,</p>
 <ul>
 <li>"Test histogram" is the title of the plot,</li>
@@ -92,7 +92,7 @@ peculiar "bell curve" should be noticeable.</p>
 <p>Instead of loading data from a file, the script can also accept data
 on the standard input stream in which case, the <code>-d</code> option must be
 skipped.</p>
-<div class="codehilite"><pre>    <span class="nv">$ </span>cat data.txt | python histit.py <span class="s2">&quot;Test histogram&quot;</span> <span class="s2">&quot;Test values&quot;</span> -a show -t float -b 100
+<div class="codehilite"><pre><span></span>    $ cat data.txt <span class="p">|</span> python histit.py <span class="s2">&quot;Test histogram&quot;</span> <span class="s2">&quot;Test values&quot;</span> -a show -t float -b <span class="m">100</span>
 </pre></div>
 
 

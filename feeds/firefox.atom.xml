@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/firefox.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2009-11-22T11:16:46+05:30</updated><entry><title>Does Firefox gets you into bad coding habits?</title><link href="http://naiquevin.github.io/does-firefox-gets-you-into-bad-coding-habits.html" rel="alternate"></link><updated>2009-11-22T11:16:46+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2009-11-22:does-firefox-gets-you-into-bad-coding-habits.html</id><summary type="html">&lt;p&gt;We all know how good Firefox is and if something works in FF and
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet - firefox</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/firefox.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2009-11-22T11:16:46+05:30</updated><entry><title>Does Firefox gets you into bad coding habits?</title><link href="http://naiquevin.github.io/does-firefox-gets-you-into-bad-coding-habits.html" rel="alternate"></link><published>2009-11-22T11:16:46+05:30</published><updated>2009-11-22T11:16:46+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2009-11-22:/does-firefox-gets-you-into-bad-coding-habits.html</id><summary type="html"></summary><content type="html">&lt;p&gt;We all know how good Firefox is and if something works in FF and
 doesn't work in other browsers, we generally blame the others for not
 being as good. Recently I have started to discover a downside of using
 FF. I came across a few situations where FF was too lenient and I
@@ -19,7 +19,7 @@ field. You won't realize that its wrong unless you alert the value of
 the the hidden field by using one of &lt;a href="http://jquery.com/"&gt;jquery's&lt;/a&gt;
 &lt;a href="http://docs.jquery.com/DOM/Traversing"&gt;DOM traversing mothods&lt;/a&gt;.. something
 like,&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;#buttonInsideTD&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;click&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;#buttonInsideTD&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;click&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
         &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;parent&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;parent&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;siblings&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;:input&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;val&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
     &lt;span class="p"&gt;});&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -44,7 +44,7 @@ wrong. (The solution to make it work is by writing a separate function
 that makes the xml suitable for parsing .. but that would be a topic
 for another blog post)&lt;/p&gt;
 &lt;p&gt;3) Firefox doesnt have any problem with the following mark up&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -61,4 +61,4 @@ welcome.. )&lt;/p&gt;
 &lt;p&gt;So from now on its going to be simultaneous development and testing on
 both Firefox and chrome. But Firefox still remains my default browser
 for the firebug, the echofon, the frequent updates and every thing
-that makes Firefox exemplify the true open source spirit.&lt;/p&gt;</summary></entry></feed>
+that makes Firefox exemplify the true open source spirit.&lt;/p&gt;</content></entry></feed>
