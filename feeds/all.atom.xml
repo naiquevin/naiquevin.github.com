@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/all.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2014-03-19T00:00:00+05:30</updated><entry><title>Toolbox: histit.py</title><link href="http://naiquevin.github.io/toolbox-histitpy.html" rel="alternate"></link><published>2014-03-19T00:00:00+05:30</published><updated>2014-03-19T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2014-03-19:/toolbox-histitpy.html</id><summary type="html">&lt;p&gt;A command line tool to quickly plot histograms based on matplotlib&lt;/p&gt;</summary><content type="html">&lt;p&gt;(This is the first post of the series I plan to write on some tools I
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/home/vineet</title><link href="http://naiquevin.github.io/" rel="alternate"></link><link href="http://naiquevin.github.io/feeds/all.atom.xml" rel="self"></link><id>http://naiquevin.github.io/</id><updated>2017-08-13T00:00:00+05:30</updated><entry><title>Dan Carlin's Blueprint for Armageddon</title><link href="http://naiquevin.github.io/dan-carlins-blueprint-for-armageddon.html" rel="alternate"></link><published>2017-08-13T00:00:00+05:30</published><updated>2017-08-13T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2017-08-13:/dan-carlins-blueprint-for-armageddon.html</id><summary type="html">&lt;p&gt;Podcast recommendation&lt;/p&gt;</summary><content type="html">&lt;p&gt;I recently finished listening to
+&lt;a href="http://www.dancarlin.com/home-hh-54/"&gt;Blueprint for Armageddon&lt;/a&gt;, a
+podcast series from
+&lt;a href="http://www.dancarlin.com/hardcore-history-series/"&gt;Dan Carlin's Hard Core History&lt;/a&gt;. In
+a total of ~22 hours across 6 episodes, it takes you through World War
+I in painful detail.&lt;/p&gt;
+&lt;p&gt;Instead of merely presenting historical events as facts, he talks
+about the political and social situations that led to the conflicts
+and quotes from the memoirs of many historians, generals, soldiers and
+common people describing the extreme human conditions, both physical
+and psychological, on the battle field as well as the "home front". In
+spite of it's length, it's entertaining to the point that it feels
+almost like fiction.&lt;/p&gt;
+&lt;p&gt;There's a lot of content packed into each episode though and sometimes
+it did get a bit confusing chronologically. But understandably, it was
+a multi-front war with too many things happening at the same time.&lt;/p&gt;
+&lt;p&gt;For a history podcast Carlin does a great job at presenting it in a
+with an overall unbiased and balanced view. The most amazing part is
+where he occasionally makes you put yourself in the shoes of those who
+lived the horrors of the war - the victims as well as the
+perpetrators.&lt;/p&gt;
+&lt;p&gt;At several occasions while listening to it, I remembered a quote I had
+read somewhere before (but don't remember where exactly) -&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;"One thing that we should definitely learn from history is the consequence of not learning from history".&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I am glad I discovered this podcast and am grateful to my friend who
+told me about it. Can't recommend it enough!&lt;/p&gt;</content><category term="podcasts"></category><category term="history"></category></entry><entry><title>Toolbox: histit.py</title><link href="http://naiquevin.github.io/toolbox-histitpy.html" rel="alternate"></link><published>2014-03-19T00:00:00+05:30</published><updated>2014-03-19T00:00:00+05:30</updated><author><name>Vineet Naik</name></author><id>tag:naiquevin.github.io,2014-03-19:/toolbox-histitpy.html</id><summary type="html">&lt;p&gt;A command line tool to quickly plot histograms based on matplotlib&lt;/p&gt;</summary><content type="html">&lt;p&gt;(This is the first post of the series I plan to write on some tools I
 have built over the last couple of years to help me in my day-to-day
 tasks. I usually put all such tools in the repo
 &lt;a href="https://github.com/naiquevin/toolbox"&gt;toolbox&lt;/a&gt; until they turn out
